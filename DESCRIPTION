@@ -5,28 +5,28 @@ License: GPL (>= 2)
 Authors@R: c(person("Hassan", "Sadiq", role=c("aut","cre","cph"),
                     email="hassan.t.sadiq@gmail.com",
                     comment=c(ORCID="0000-0003-0192-7134")))
-Description: An elaborate population genetics framework that facilitates
+Description: An elaborate molecular evolutionary framework that facilitates
              straightforward simulation of codon genetic sequences
              subjected to different degrees and/or patterns of Darwinian
-             selection. The evolutionary framework was built upon the
-             fitness landscape paradigm of Sewall Wright, as popularised
-             by the mutation-selection model of Halpern and Bruno. This
-             enabled realistic evolutionary settings of living organisms
-             to be included seamlessly. For example, an
-             Ornstein-Uhlenbeck algorithm inspired fitness update
-             approach is incorporated herein. Otherwise complex
-             biological processes, such as the effect of the interplay
-             between genetic drift and mutation on diversifying selection,
-             may now be investigated with minimal effort.
-             Frequency-dependent and deterministic selection coefficients
-             update techniques are also available.
+             selection. The model was built upon the fitness landscape
+             paradigm of Sewall Wright, as popularised by the
+             mutation-selection model of Halpern and Bruno. This
+             enabled realistic evolutionary process of living organisms
+             to be reproduced seamlessly. For example, an
+             Ornstein-Uhlenbeck fitness update algorithm is incorporated
+             herein. Consequently, otherwise complex biological processes,
+             such as the effect of the interplay between genetic drift
+             and mutation on the inference of diversifying selection, may
+             now be investigated with minimal effort. Frequency-dependent
+             and deterministic fitness landscape update techniques are
+             also available.
 Depends: R (>= 4.4.1), Matrix
 Suggests: BiocManager, BiocStyle, bookdown, htmltools, knitr, yaml
 VignetteBuilder: knitr
 biocViews: Alignment, Classification, ComparativeGenomics, Genetics,
            MathematicalBiology, ResearchField, Software, StatisticalMethod,
            WorkflowStep
-Title: Codon Simulator with Darwinian Selection Modelled as an OU Process
+Title: Simulate Codons with Darwinian Selection Modelled as an OU Process
 Contact: <hassan.t.sadiq@gmail.com>
 URL: https://github.com/thsadiq/scoup
 BugReports: https://github.com/thsadiq/scoup/issues

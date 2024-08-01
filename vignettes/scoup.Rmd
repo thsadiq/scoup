@@ -1,5 +1,6 @@
 ---
-title: "scoup: Simulate Codons with an OU Evolutionary Pattern"
+title: "scoup: Simulate Codons with Darwinian Selection Incorporated as an
+        Ornstein-Uhlenbeck Process"
 author: Hassan Sadiq
 output:
   BiocStyle::html_document:
@@ -67,6 +68,14 @@ statistic is consequently posited as a quality selection discriminant metric.
 phylogenetic modelling literature. Example code of how to successfully use
 the package is presented below.
 
+# Installation
+Use the following code to install `scoup` from the Bioconductor platform.
+```{r, eval=FALSE}
+if(!requireNamespace("BiocManager", quietly=TRUE))
+   install.packages("BiocManager")
+BiocManager::install("scoup")
+```
+
 # Sample Code
 Three primary evolutionary algorithms are available in `scoup`. These
 include the frequency-dependent [@jones2017; @ayala1974], the
@@ -89,11 +98,11 @@ installed the `scoup` package.
 library(scoup)
 
 # Number of extant taxa
-## Excluded values contributed to results in published article
+## Excluded values contributed to results presented in article
 leaves <- 8 # 64
 
 # Number of codon sites
-## Excluded values contributed to results in published article
+## Excluded values contributed to results presented in article
 sSize <- 15 # 250
 
 # Number of data replications for each parameter combination
@@ -101,11 +110,11 @@ sSize <- 15 # 250
 sims <- 1 # 50
 
 # OU reversion parameter (Theta) value
-## Excluded values contributed to results in published article
+## Excluded values contributed to results presented in article
 eThta <- c(0.01) # c(0.01, 0.1, 1)
 
 # OU asymptotic variance value
-## Excluded values contributed to results in published article 
+## Excluded values contributed to results presented in article 
 eVary <- c(0.0001) # c(0.0001, 0.01, 1)
 
 # OU landscape shift parameters
@@ -136,7 +145,8 @@ simData$cseq
 ```
 As expected, the correlation coefficient estimate was approximately
 $0.9974$ when the means of the inferred ($\omega$) and the calculated
-($\mathrm{d}N/\mathrm{d}S$) selection effects were compared.
+($\mathrm{d}N/\mathrm{d}S$) selection effects were compared. The
+correlation estimation included all the commented values.
 
 
 ## vN/vS Sensitivity
@@ -200,14 +210,14 @@ frequency-dependent evolutionary technique with the package.
 library(scoup)
 
 # Number of codon sites
-## Commented value was used for results presented in publication
+## Commented value was used for results presented in article
 sitesize<- 15 # 100
 
 # Variance of non-synonymous selection coefficients
 nsynVary <- 0.01
 
 # Number of extant taxa
-## Commented value was used for results presented in publication
+## Commented value was used for results presented in article
 taxasize <- 8 # 1024
 
 # Sequence alignment size information
@@ -308,7 +318,9 @@ meantime, to cite this package, use <em>Sadiq, H. 2024. "scoup:
 Simulate Codon Sequences with Darwinian Selection Incorporated as an
 Ornstein-Uhlenbeck Process".</em>
 
-# References {.unnumbered}
+# References
+::: {#refs}
+:::
 
 # Appendix
 

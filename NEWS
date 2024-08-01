@@ -4,7 +4,9 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
-- (2024-07-31) submitted on Bioconductor for review.
+- (2024-08-01) submitted on Bioconductor for review.
+- (2024-08-01) edited the DESCRIPTION, README and vignettes with
+  Bioconductor-esque installation instructions
 
 - (to-do) include citation of the package in CITATION file
 - (to-do) update references of the package in vignette and example file
