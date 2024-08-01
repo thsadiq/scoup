@@ -1,0 +1,44 @@
+import(Matrix)
+importFrom("stats", "rexp", "rgamma", "rnorm", "runif")
+importFrom("utils", "write.table")
+
+S3method(alignsim, ou)
+S3method(alignsim, omega)
+S3method(alignsim, discrete)
+S3method(aaSCupdate, discrete)
+S3method(aaSCupdate, ou)
+S3method(sitesim, discrete)
+S3method(sitesim, ou)
+S3method(sitesim, omega)
+
+export(
+    "aaGamma",
+    "aaGauss",
+    "aaSCupdate",
+    "aaSCupdate.discrete",
+    "aaSCupdate.ou",
+    "alignsim",
+    "alignsim.discrete",
+    "alignsim.ou",
+    "alignsim.omega",
+    "biTree",
+    "codonCoeffs",
+    "codonFreq",
+    "discreteInput",
+    "dndsCalculator",
+    "fixMatrix",
+    "hbInput",
+    "ouEvolve",
+    "ouInput",
+    "print.aminoSC",
+    "print.codonvalues",
+    "seqDetails",
+    "seqWriter",
+    "sitesim",
+    "sitesim.discrete",
+    "sitesim.ou",
+    "sitesim.omega",
+    "subsMatrix",
+    "wInput"
+)
+
