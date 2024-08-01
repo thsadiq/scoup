@@ -17,7 +17,9 @@ A R package intended for the Bioconductor platform that avails an opportunity to
 
 ## Installation
 Upon acceptance on the Bioconductor platform, `scoup` can be installed from the platform with the following command:
-`if(!requireNamespace("BiocManager", quietly=TRUE))
-    install.packages("BiocManager")
- BiocManager::install("scoup")`
 
+``` r
+if(!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+ BiocManager::install("scoup")
+```
