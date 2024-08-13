@@ -1,5 +1,5 @@
 import(Matrix)
-import(Biostrings)
+importFrom("Biostrings", "DNAStringSet")
 importFrom("methods", "is")
 importFrom("stats", "rexp", "rgamma", "rnorm", "runif")
 importFrom("utils", "write.table")
