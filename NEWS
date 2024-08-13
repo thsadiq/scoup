@@ -21,7 +21,7 @@ To-Do: 0.00.0
 + Adjusted spaces to size 4.
 + Bumped package version number to *.**.1.
 
-0.99.2 - 0.99.9 (2024-08-13): Additional Pre-Review Changes
+0.99.2 - 0.99.11 (2024-08-13): Additional Pre-Review Changes
 + Updated temporary inst/CITATION file.
 + Updated seqDetails.R to accommodate NOTE from Bioc report about use of "is".
 + Updated NAMESPACE as recommended by Bioc report: imported "methods" & "is".

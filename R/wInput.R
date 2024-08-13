@@ -105,7 +105,7 @@ alignsim.omega <- function(adaptIn, seqIn, modelIn=NULL, filename=NA){
     cdnSEQs <- seqDframe(alignment)
     if(is.null(filename)){
         coloredSQS <- seqColored(cdnSEQs)}else{coloredSQS <- NA}
-    if(!is.na(filename)){
+    if(is(filename, "character")){
         empty <- seqWriter(alignment, treeData, commentText, filename)
     }
     return(list(seqs=alignment, DNDS=dnds_matrix,

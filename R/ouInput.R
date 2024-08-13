@@ -90,7 +90,7 @@ alignsim.ou <- function(adaptIn, seqIn, modelIn, filename=NA){
     if(is.null(filename)){
         coloredSQS <- seqColored(cdnSEQs)}else{coloredSQS <- NA}
     commentText <- paste0(adaptIn$w, ";   ", seqIn$w, ";   ", modelIn$w)
-    if(!is.na(filename)){
+    if(is(filename, "character")){
         empty <- seqWriter(alignment, treeData, commentText, filename)
     }
     return(list(seqs=alignment, DNDS=dnds_matrix,
