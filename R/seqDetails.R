@@ -9,7 +9,6 @@
 
 # ><>< # Create Sequence Details Input
 seqDetails <- function(seqVector=0){
-    is(seqVector, "character")
     if(is(seqVector, "character")){
         idModel <- which(names(seqVector)=="terModel")
         newVector <- as.numeric(seqVector[-idModel])
