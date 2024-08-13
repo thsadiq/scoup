@@ -26,3 +26,6 @@ To-Do: 0.00.0
 
 0.99.3 (2024-08-13): Additional Pre-Review Changes
 + Updated temporary inst/CITATION file.
+
+0.99.4 (2024-08-13): Additional Pre-Review Changes
++ Updated seqDetails.R to accommodate NOTE from Bioc report about use of "is".
