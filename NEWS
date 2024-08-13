@@ -4,9 +4,20 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
-- (2024-08-01) submitted on Bioconductor for review.
-- (2024-08-01) edited the DESCRIPTION, README and vignettes with
-  Bioconductor-esque installation instructions
+To-Do: 0.00.0
++ Update references of the package in inst/CITATION,
+  man/*.Rd and vignettes/scoup.Rmd files.
 
-- (to-do) include citation of the package in CITATION file
-- (to-do) update references of the package in vignette and example file
+0.99.0 (2024-08-01): First Submitted Version
++ Submitted on Bioconductor for review.
++ Edited the DESCRIPTION, README and vignettes with
+  Bioconductor-esque installation instructions.
+
+0.99.1 (2024-08-13): Pre-Review Changes
++ Updated temporary inst/CITATION file.
++ Deleted redundant LICENSE file.
++ Removed patchlevel dependency attached to R in DESCRIPTION file.
++ Shortened code lengths and corrected T/F.
++ Adjusted spaces to size 4.
++ Bumped package version number to *.**.1.
+

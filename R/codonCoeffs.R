@@ -1,26 +1,31 @@
-# ><>< ========================================================================= ><>< #
-# ><><   scoup: Simulate Codon Sequences with Darwinian Selection Incorporated   ><>< #
-# ><><                     as an Ornstein-Uhlenbeck Process.                     ><>< #
-# ><><                           ~~~~~~~~~~~~~~~~~~~~~                           ><>< #
-# ><><                             General Functions                             ><>< #
-# ><><                           ~~~~~~~~~~~~~~~~~~~~~                           ><>< #
-# ><><                               18 May, 2024.                               ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================ ><>< #
+# ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
+# ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                    <- codonCoeffs -> Function                    ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                         V0: 18 May, 2024                         ><>< #
+# ><>< ================================================================ ><>< #
 
 # ><>< # Transform Amino Acid to Codon Selection Coefficients (Reviewed)
 codonCoeffs <- function(s01x22, fixed=NULL){
-  logicMat <- matrix(F, 20, 61); codonSC <- rep(0, 61); count <- 0
-  for(a0 in seq(1,20)){ newID <- which(amino2codon==a0); logicMat[a0,newID] <- T }
-  synVar <- s01x22["synVar"]; nsynVar <- s01x22["nsynVar"]; aacoeff <- s01x22[seq(1,20)]
-  if(nsynVar > 1e-12){ aaID <- seq(1,20) }else{ aaID <- fixed }
-  
-  for(a1 in aaID){ count <- count + 1; syns <- logicMat[a1,]
-    if(sum(syns) == 1){ codonSC[syns] <- aacoeff[count] }else{
-      minU <- aacoeff[count] - sqrt(3*synVar); minU <- max(minU, 0)
-      maxU <- aacoeff[count] + sqrt(3*synVar)
-      codonSC[syns] <- runif(sum(syns), minU, maxU) } }
-  class(codonSC) <- "codonvalues"
-  return(codonSC)
+    logicMat <- matrix(FALSE, 20, 61); codonSC <- rep(0, 61); count <- 0
+    for(a0 in seq(1,20)){
+        newID <- which(amino2codon==a0); logicMat[a0,newID] <- TRUE }
+    
+    synVar <- s01x22["synVar"]
+    nsynVar <- s01x22["nsynVar"]
+    aacoeff <- s01x22[seq(1,20)]
+    
+    if(nsynVar > 1e-12){ aaID <- seq(1,20) }else{ aaID <- fixed }
+    
+    for(a1 in aaID){ count <- count + 1; syns <- logicMat[a1,]
+        if(sum(syns) == 1){ codonSC[syns] <- aacoeff[count] }else{
+            minU <- aacoeff[count] - sqrt(3*synVar); minU <- max(minU, 0)
+            maxU <- aacoeff[count] + sqrt(3*synVar)
+            codonSC[syns] <- runif(sum(syns), minU, maxU) } }
+    class(codonSC) <- "codonvalues"
+    return(codonSC)
 }
 ## ><>< ============ ><>< #
 ## ><>< ## Example 1:
@@ -41,6 +46,6 @@ codonCoeffs <- function(s01x22, fixed=NULL){
 # csc03 <- codonCoeffs(aaEG1, c(2,6))
 # print(csc03)
 
-# ><>< ========================================================================= ><>< #
-# ><><                              CODE ENDS HERE.                              ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================ ><>< #
+# ><><                          CODE ENDS HERE                          ><>< #
+# ><>< ================================================================ ><>< #

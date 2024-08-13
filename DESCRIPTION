@@ -1,5 +1,5 @@
 Package: scoup
-Version: 0.99.0
+Version: 0.99.1
 Date: 2024-07-31
 License: GPL (>= 2)
 Authors@R: c(person("Hassan", "Sadiq", role=c("aut","cre","cph"),
@@ -20,7 +20,7 @@ Description: An elaborate molecular evolutionary framework that facilitates
              now be investigated with minimal effort. Frequency-dependent
              and deterministic fitness landscape update techniques are
              also available.
-Depends: R (>= 4.4.1), Matrix
+Depends: R (>= 4.4), Matrix
 Suggests: BiocManager, BiocStyle, bookdown, htmltools, knitr, yaml
 VignetteBuilder: knitr
 biocViews: Alignment, Classification, ComparativeGenomics, Genetics,

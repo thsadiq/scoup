@@ -3,8 +3,8 @@ title: "scoup: Simulate Codons with Darwinian Selection Incorporated as an
         Ornstein-Uhlenbeck Process"
 author: Hassan Sadiq
 output:
-  BiocStyle::html_document:
-    toc_float: true
+    BiocStyle::html_document:
+        toc_float: true
 package: BiocStyle
 bibliography: citation.bib
 abstract: |
@@ -23,13 +23,13 @@ abstract: |
     presented as a reliable selection discriminant metric. Example code of
     how to use the package are presented with elaborate comments.  
 vignette: |
-  %\VignetteIndexEntry{Authoring R Markdown vignettes}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+    %\VignetteIndexEntry{Authoring R Markdown vignettes}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
 ---
 
 ```{r style, echo = FALSE, results = 'asis'}
-  BiocStyle::markdown()
+    BiocStyle::markdown()
 ```
 
 # Introduction
@@ -72,7 +72,7 @@ the package is presented below.
 Use the following code to install `scoup` from the Bioconductor platform.
 ```{r, eval=FALSE}
 if(!requireNamespace("BiocManager", quietly=TRUE))
-   install.packages("BiocManager")
+    install.packages("BiocManager")
 BiocManager::install("scoup")
 ```
 
@@ -125,20 +125,20 @@ seqStat <- seqDetails(c(nsite=sSize, ntaxa=leaves))
 
 # Iterate over all listed OU variance values
 for(g in seq(1,length(eVary))){
-  
-  # Iterate over all listed OU reversion parameter values
-  for(h in seq(1,length(eThta))){
 
-    # Create appropriate simulation function ("ou") object
-    adaptStat <- ouInput(c(eVar=eVary[g],Theta=eThta[h]))
+    # Iterate over all listed OU reversion parameter values
+    for(h in seq(1,length(eThta))){
 
-    # Iterate over the specified number of replicates
-    for(i in seq(1,sims)){
+        # Create appropriate simulation function ("ou") object
+        adaptStat <- ouInput(c(eVar=eVary[g],Theta=eThta[h]))
 
-      # Execute simulation
-      simData <- alignsim(adaptStat, seqStat, hbrunoStat, NA)
+        # Iterate over the specified number of replicates
+        for(i in seq(1,sims)){
+
+            # Execute simulation
+            simData <- alignsim(adaptStat, seqStat, hbrunoStat, NA)
+        }
     }
-  }
 }
 # Print simulated alignment
 simData$cseq
@@ -180,19 +180,19 @@ seqStat <- seqDetails(c(nsite=siteSize, ntaxa=xtant))
 # Iterate over all listed coefficient variance ratios
 for(a in seq(1,length(vNvSvec))){
 
-  # Iterate over all listed non-synonymous coefficients variance
-  for(b in seq(1,length(nsynVary))){
-    
-    # Create appropriate simulation function ("omega") object
-    adaptData <- wInput(list(vNvS=vNvSvec[a],nsynVar=nsynVary[b]))
-    
-    # Iterate over the specified number of replicates
-    for(i in seq(1,simSize)){
-      
-      # Execute simulation
-      simulateSeq <- alignsim(adaptData, seqStat, NULL, NA)
+    # Iterate over all listed non-synonymous coefficients variance
+    for(b in seq(1,length(nsynVary))){
+
+        # Create appropriate simulation function ("omega") object
+        adaptData <- wInput(list(vNvS=vNvSvec[a],nsynVar=nsynVary[b]))
+        
+        # Iterate over the specified number of replicates
+        for(i in seq(1,simSize)){
+
+            # Execute simulation
+            simulateSeq <- alignsim(adaptData, seqStat, NULL, NA)
+        }
     }
-  }
 }
 # Print simulated alignment
 simulateSeq$cseq
@@ -233,12 +233,12 @@ sratio <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 1000)
 
 # Iterate over all listed coefficient variance ratios
 for(a0 in seq(1,length(sratio))){
-  
-  # OU landscape shift parameters
-  mValues <- hbInput(c(vNvS=sratio[a0], nsynVar=nsynVary))
-  
-  # Execute simulation
-  simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
+
+    # OU landscape shift parameters
+    mValues <- hbInput(c(vNvS=sratio[a0], nsynVar=nsynVary))
+    
+    # Execute simulation
+    simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
 }
 # Print simulated codon sequence
 simSeq$cseq
@@ -278,20 +278,20 @@ seqsBwise <- seqDetails(c(nsite=siteCount, blength=0.10))
 
 # Iterate over all listed coefficient variance ratios
 for(h in seq(1,length(vNvSvec))){
-  
-  # Iterate over the specified number of replicates
-  for(i in seq(1,nsim)){
-    
-    # Create the parameter set applicable at each internal tree node
-    scInput <- rbind(vNvS=c(rep(0,iNode-1),vNvSvec[h]),
-                     nsynVar=rep(nsnV,iNode))
-    
-    # Create the applicable ("discrete") object for simulation function
-    adaptBranch <- discreteInput(list(p02xnodes=scInput))
-    
-    # Execute simulation
-    genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
-  }
+
+    # Iterate over the specified number of replicates
+    for(i in seq(1,nsim)){
+
+        # Create the parameter set applicable at each internal tree node
+        scInput <- rbind(vNvS=c(rep(0,iNode-1),vNvSvec[h]),
+                        nsynVar=rep(nsnV,iNode))
+        
+        # Create the applicable ("discrete") object for simulation function
+        adaptBranch <- discreteInput(list(p02xnodes=scInput))
+        
+        # Execute simulation
+        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
+    }
 }
 # Print simulated sequence data
 genSeq$cseq
@@ -333,22 +333,22 @@ replicates) from the episodic analyses code, with the `model` entry
 replaced with `2`. The `scoup` simulated sequence data and
 tree are `seq.nex` and `seq.tre`, respectively.
 ```{bash, eval=FALSE}
-      seqfile = seq.nex
-     treefile = seq.tre
-      outfile = seq.out
-        noisy = 0
-      verbose = 0
-      seqtype = 1
-        ndata = 1
-        icode = 0
+    seqfile   = seq.nex
+    treefile  = seq.tre
+    outfile   = seq.out
+    noisy     = 0
+    verbose   = 0
+    seqtype   = 1
+    ndata     = 1
+    icode     = 0
     cleandata = 0
-        model = 0
-      NSsites = 0
+    model     = 0
+    NSsites   = 0
     CodonFreq = 3
-      estFreq = 0
-        clock = 0
+    estFreq   = 0
+    clock     = 0
     fix_omega = 0
-        omega = 1e-05
+    omega     = 1e-05
 ```
 
 \vspace*{1cm}
@@ -359,7 +359,7 @@ was already installed on the computer. The `seq.nex` input is the
 NEXUS file with the tree data. The NEXUS file resides in the
 working directory.
 ```{bash, eval=FALSE}
-hyphy fubar --code Universal --alignment seq.nex --tree seq.nex --output seq.json
+hyphy fubar --code Universal --alignment seq.nex --tree seq.nex
 ```
 
 ## Session info
