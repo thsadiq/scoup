@@ -86,7 +86,9 @@ alignsim.ou <- function(adaptIn, seqIn, modelIn, filename=NA){
         aaSC <- scFunc(modelIn$vNvS, modelIn$nsynVar)
         simOut <- sitesim(adaptIn, nodeLen, popsize, ntaxons, aaSC)
         alignment[,b0] <- simOut$codons; dnds_matrix[,b0] <- simOut$dnds
-    }; cdnSEQs <- seqDframe(alignment); coloredSQS <- seqColored(cdnSEQs)
+    }; cdnSEQs <- seqDframe(alignment)
+    if(is.null(filename)){
+        coloredSQS <- seqColored(cdnSEQs)}else{coloredSQS <- NA}
     commentText <- paste0(adaptIn$w, ";   ", seqIn$w, ";   ", modelIn$w)
     if(!is.na(filename)){
         empty <- seqWriter(alignment, treeData, commentText, filename)

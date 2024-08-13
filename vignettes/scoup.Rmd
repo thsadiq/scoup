@@ -136,7 +136,7 @@ for(g in seq(1,length(eVary))){
         for(i in seq(1,sims)){
 
             # Execute simulation
-            simData <- alignsim(adaptStat, seqStat, hbrunoStat, NA)
+            simData <- alignsim(adaptStat, seqStat, hbrunoStat, NULL)
         }
     }
 }
@@ -195,7 +195,7 @@ for(a in seq(1,length(vNvSvec))){
     }
 }
 # Print simulated alignment
-simulateSeq$seqCOL
+simulateSeq$cseq
 ```
 Sequences generated with the presented code (with the excluded values
 activated) produced strongly correlated selection inferences
@@ -241,7 +241,7 @@ for(a0 in seq(1,length(sratio))){
     simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
 }
 # Print simulated codon sequence
-simSeq$seqCOL
+simSeq$cseq
 ```
 This is another example of how to call the OU shifting landscape
 evolutionary approach. The results obtained yielded a pairwise
@@ -290,7 +290,7 @@ for(h in seq(1,length(vNvSvec))){
         adaptBranch <- discreteInput(list(p02xnodes=scInput))
         
         # Execute simulation
-        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
+        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NULL)
     }
 }
 # Print simulated sequence data

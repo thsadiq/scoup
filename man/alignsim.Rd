@@ -38,7 +38,8 @@
         that will contain the simulated alignment in NEXUS format. Say it is
         given as \code{"seq.nex"}, a file with that name will be printed in
         the working directory. When set as \code{NA} (default), no file will
-        be saved.}
+        be saved. When set as \code{NULL}, a \code{DNAStringSet} object will
+        be returned.}
 }
 \details{
     This is the primary function of the package. Codon sequence alignment be
@@ -63,7 +64,8 @@
             sequence alignment.}
         \item{\code{cseq}}{A dataframe of the simulated codon sequence
             alignment.}
-        \item{\code{seqCOL}}{A DNAStringSet object with colorful sequences.}
+        \item{\code{seqCOL}}{A DNAStringSet object with colorful sequences.
+            Only applicable when \code{filename=NULL}.}
     }
 }
 
@@ -90,9 +92,9 @@
 }
 
 \examples{
-    alignsim(wInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$seqCOL
+    alignsim(wInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$cseq
     
-    alignsim(ouInput(), seqDetails(c(ntaxa=8,nsite=10)), hbInput(), NA)$seqCOL
+    alignsim(ouInput(), seqDetails(c(ntaxa=8,nsite=10)), hbInput(), NA)$cseq
     
-    alignsim(discreteInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$seqCOL
+    alignsim(discreteInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$cseq
 }

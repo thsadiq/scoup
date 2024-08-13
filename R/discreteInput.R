@@ -98,7 +98,9 @@ alignsim.discrete <- function(adaptIn, seqIn, modelIn=NULL, filename=NA){
     notes <- paste0("Discrete Parameters: method=", aWord,
         " node-wise=(vNvS,nsynVar|", mString, ")")
     commentText <- paste0(seqIn$w, ";   ", notes)
-    cdnSEQs <- seqDframe(alignment); coloredSQS <- seqColored(cdnSEQs)
+    cdnSEQs <- seqDframe(alignment)
+    if(is.null(filename)){
+        coloredSQS <- seqColored(cdnSEQs)}else{coloredSQS <- NA}
     if(!is.na(filename)){
         empty <- seqWriter(alignment, treeData, commentText, filename)
     }
