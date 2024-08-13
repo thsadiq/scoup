@@ -63,6 +63,7 @@
             sequence alignment.}
         \item{\code{cseq}}{A dataframe of the simulated codon sequence
             alignment.}
+        \item{\code{seqCOL}}{A DNAStringSet object with colorful sequences.}
     }
 }
 
@@ -75,18 +76,23 @@
     parameters needed to successfully utilise this function. These include,
     (a.) \code{\link{discreteInput}}, (b.) \code{\link{hbInput}},
     (c.) \code{\link{ouInput}}, (d.) \code{\link{seqDetails}} and (d.)
-    \code{\link{wInput}}.
+    \code{\link{wInput}}. See also \code{DNAStringSet} in the \code{Biostrings}
+    package.
 }
 
 \references{
     Sadiq, H. et al. (in progress) \code{scoup}: \emph{Simulate Codon Sequences
     with Darwinian Selection Incorporated as an Ornstein-Uhlenbeck Process}.
+
+    Pages H, Aboyoun P, Gentleman R, DebRoy S (2024). \emph{Biostrings:
+    Efficient manipulation of biological strings. R package version 2.72.1},
+    https://bioconductor.org/packages/Biostrings.
 }
 
 \examples{
-    alignsim(wInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$cseq
+    alignsim(wInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$seqCOL
     
-    alignsim(ouInput(), seqDetails(c(ntaxa=8,nsite=10)), hbInput(), NA)$cseq
+    alignsim(ouInput(), seqDetails(c(ntaxa=8,nsite=10)), hbInput(), NA)$seqCOL
     
-    alignsim(discreteInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$cseq
+    alignsim(discreteInput(), seqDetails(c(ntaxa=8,nsite=10)), NULL, NA)$seqCOL
 }

@@ -98,12 +98,12 @@ alignsim.discrete <- function(adaptIn, seqIn, modelIn=NULL, filename=NA){
     notes <- paste0("Discrete Parameters: method=", aWord,
         " node-wise=(vNvS,nsynVar|", mString, ")")
     commentText <- paste0(seqIn$w, ";   ", notes)
-    cdnSEQs <- seqDframe(alignment)
+    cdnSEQs <- seqDframe(alignment); coloredSQS <- seqColored(cdnSEQs)
     if(!is.na(filename)){
         empty <- seqWriter(alignment, treeData, commentText, filename)
     }
     return(list(seqs=alignment, DNDS=dnds_matrix,
-                aInfo=commentText, cseq=cdnSEQs))
+                aInfo=commentText, cseq=cdnSEQs, seqCOL=coloredSQS))
 }
 # ><>< ======== ><>< # Example:
 # nodeTheta <- matrix(rep(c(1e-04,1e-05),5), 2, byrow=FALSE)

@@ -53,6 +53,14 @@ seqDframe <- function(alignmentMatrix){
     return( as.data.frame(seqBank) )
 }
 
+# ><>< # Use Biostrings to Generate Fancy Sequences
+seqColored <- function(framedSEQ){
+    vectorSEQ <- c(framedSEQ)[[1]]
+    sqNames <- paste0("S", sprintf("%03.0f",seq(1,nrow(framedSEQ))))
+    coloredOUT <- DNAStringSet(vectorSEQ); names(coloredOUT) <- sqNames
+    return(coloredOUT)
+}
+
 # ><>< ================================================================ ><>< #
 # ><><                          CODE ENDS HERE                          ><>< #
 # ><>< ================================================================ ><>< #

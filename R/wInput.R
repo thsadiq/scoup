@@ -102,12 +102,12 @@ alignsim.omega <- function(adaptIn, seqIn, modelIn=NULL, filename=NA){
     notes <- paste0("Omega-Based Parameters: method=", aWord, " vNvS=",
         adaptIn$vNvS, " nsynVar=", adaptIn$nsynVar, " NonZero-AA=", nzaa)
     commentText <- paste0(seqIn$w, ";   ", notes)
-    cdnSEQs <- seqDframe(alignment)
+    cdnSEQs <- seqDframe(alignment); coloredSQS <- seqColored(cdnSEQs)
     if(!is.na(filename)){
         empty <- seqWriter(alignment, treeData, commentText, filename)
     }
     return(list(seqs=alignment, DNDS=dnds_matrix,
-                aInfo=commentText, cseq=cdnSEQs))
+                aInfo=commentText, cseq=cdnSEQs, seqCOL=coloredSQS))
 }
 # ><>< ======== ><>< # Example:
 # omgEntry <- alignsim( wInput(), seqDetails(), NULL, "~/Desktop/seq.nex")

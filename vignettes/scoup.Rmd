@@ -141,7 +141,7 @@ for(g in seq(1,length(eVary))){
     }
 }
 # Print simulated alignment
-simData$cseq
+simData$seqCOL
 ```
 As expected, the correlation coefficient estimate was approximately
 $0.9974$ when the means of the inferred ($\omega$) and the calculated
@@ -195,7 +195,7 @@ for(a in seq(1,length(vNvSvec))){
     }
 }
 # Print simulated alignment
-simulateSeq$cseq
+simulateSeq$seqCOL
 ```
 Sequences generated with the presented code (with the excluded values
 activated) produced strongly correlated selection inferences
@@ -241,7 +241,7 @@ for(a0 in seq(1,length(sratio))){
     simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
 }
 # Print simulated codon sequence
-simSeq$cseq
+simSeq$seqCOL
 ```
 This is another example of how to call the OU shifting landscape
 evolutionary approach. The results obtained yielded a pairwise
@@ -294,7 +294,7 @@ for(h in seq(1,length(vNvSvec))){
     }
 }
 # Print simulated sequence data
-genSeq$cseq
+genSeq$seqCOL
 ```
 The correlation coefficient between the averages of the analytical
 $\mathrm{d}N/\mathrm{d}S$ and the inferred $\omega$ estimates was
