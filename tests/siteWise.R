@@ -1,6 +1,6 @@
-# ><>< ========================================================================= ><>< #
-# ><><                            Site-wise Analyses.                            ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                        Site-wise Analyses.                        ><>< #
+# ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
 library(scoup)
@@ -28,13 +28,13 @@ sratio <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 1000)
 # Iterate over all listed coefficient variance ratios
 for(a0 in 1:length(sratio)){
   
-  # OU landscape shift parameters
-  mValues <- hbInput(c(vNvS=sratio[a0], nsynVar=nsynVary))
-  
-  # Execute simulation
-  simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
+    # OU landscape shift parameters
+    mValues <- hbInput(c(vNvS=sratio[a0], nsynVar=nsynVary))
+    
+    # Execute simulation
+    simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
 }
 
-# ><>< ========================================================================= ><>< #
-# ><><                              CODE ENDS HERE.                              ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                          CODE ENDS HERE.                          ><>< #
+# ><>< ================================================================= ><>< #

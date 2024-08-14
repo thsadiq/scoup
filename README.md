@@ -7,7 +7,6 @@ A R package intended for the Bioconductor platform. It avails an opportunity to 
 ## Contents
 - DESCRIPTION: file describing the package more elaborately.
 - inst: a folder containing an unfinalised citation file
-- LICENSE: an appropriate license file obtain from Cran-R
 - man: a folder where the R markdown files were saved.
 - NAMESPACE: what functions and/or classes were imported and/or exported.
 - NEWS: Progress and/or some to-do comments

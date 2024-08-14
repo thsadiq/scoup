@@ -1,6 +1,6 @@
-# ><>< ========================================================================= ><>< #
-# ><><                          OU Sensitivity Analyses                          ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                      OU Sensitivity Analyses                      ><>< #
+# ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
 library(scoup)
@@ -29,21 +29,21 @@ seqStat <- seqDetails(c(nsite=250, ntaxa=leaves))
 # Iterate over all listed OU variance values
 for(g in 1:length(eVary)){
   
-  # Iterate over all listed OU reversion parameter values
-  for(h in 1:length(eThta)){
+    # Iterate over all listed OU reversion parameter values
+    for(h in 1:length(eThta)){
 
-    # Create appropriate simulation function ("ou") object
-    adaptStat <- ouInput(c(eVar=eVary[g],Theta=eThta[h]))
+        # Create appropriate simulation function ("ou") object
+        adaptStat <- ouInput(c(eVar=eVary[g],Theta=eThta[h]))
 
-    # Iterate over the specified number of replicates
-    for(i in 1:sims){
+        # Iterate over the specified number of replicates
+        for(i in 1:sims){
 
-      # Execute simulation
-      simData <- alignsim(adaptStat, seqStat, hbrunoStat, NA)
+            # Execute simulation
+            simData <- alignsim(adaptStat, seqStat, hbrunoStat, NA)
+        }
     }
-  }
 }
 
-# ><>< ========================================================================= ><>< #
-# ><><                              CODE ENDS HERE.                              ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                          CODE ENDS HERE.                          ><>< #
+# ><>< ================================================================= ><>< #

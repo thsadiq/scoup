@@ -9,6 +9,7 @@
 
 # ><>< # Generate Amino Acid Selection Coefficients (reviewed)
 aaGamma <- function(vNvS, nsynVar){
+    if(is(nsynVar, "character")) stop("`nsynVar` should be non-negative!")
     vNvS <- ifelse(vNvS <= 0, Inf, vNvS)
     if(nsynVar > 1e-12){
         synVar <- (1 / vNvS) * nsynVar

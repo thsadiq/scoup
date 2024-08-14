@@ -7,6 +7,8 @@ This file documents package changes since first submission on Bioconductor.
 To-Do: 0.00.0
 + Update references of the package in inst/CITATION,
   man/*.Rd and vignettes/scoup.Rmd files.
++ Continue to update unit tests.
++ Include additional helpful WARNING/ERROR messages.
 
 0.99.0 (2024-08-01): First Submitted Version
 + Submitted on Bioconductor for review.
@@ -21,9 +23,10 @@ To-Do: 0.00.0
 + Adjusted spaces to size 4.
 + Bumped package version number to *.**.1.
 
-0.99.2 - 0.99.11 (2024-08-13): Additional Pre-Review Changes
+0.99.2 - 0.99.12 (2024-08-14): Additional Pre-Review Changes
 + Updated temporary inst/CITATION file.
 + Updated seqDetails.R to accommodate NOTE from Bioc report about use of "is".
 + Updated NAMESPACE as recommended by Bioc report: imported "methods" & "is".
 + Incorporated Biostrings: used to generate colorful sequences.
++ Initiated unit tests.
 

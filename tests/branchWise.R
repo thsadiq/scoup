@@ -1,6 +1,6 @@
-# ><>< ========================================================================= ><>< #
-# ><><                           Branch-wise Analyses.                           ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                       Branch-wise Analyses.                       ><>< #
+# ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
 library(scoup)
@@ -25,21 +25,21 @@ seqsBwise <- seqDetails(c(nsite=1000, blength=0.10))
 # Iterate over all listed coefficient variance ratios
 for(h in 1:length(vNvSvec)){
   
-  # Iterate over the specified number of replicates
-  for(i in 1:nsim){
-    
-    # Create the parameter set applicable at each internal tree node
-    scInput <- rbind(vNvS=c(rep(0,iNode-1),vNvSvec[h]),
-                     nsynVar=rep(nsnV,iNode))
-    
-    # Create the applicable ("discrete") object for simulation function
-    adaptBranch <- discreteInput(list(p02xnodes=scInput))
-    
-    # Execute simulation
-    genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
-  }
+    # Iterate over the specified number of replicates
+    for(i in 1:nsim){
+      
+        # Create the parameter set applicable at each internal tree node
+        scInput <- rbind(vNvS=c(rep(0,iNode-1),vNvSvec[h]),
+                         nsynVar=rep(nsnV,iNode))
+        
+        # Create the applicable ("discrete") object for simulation function
+        adaptBranch <- discreteInput(list(p02xnodes=scInput))
+        
+        # Execute simulation
+        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
+    }
 }
 
-# ><>< ========================================================================= ><>< #
-# ><><                              CODE ENDS HERE.                              ><>< #
-# ><>< ========================================================================= ><>< #
+# ><>< ================================================================= ><>< #
+# ><><                          CODE ENDS HERE.                          ><>< #
+# ><>< ================================================================= ><>< #
