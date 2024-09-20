@@ -4,7 +4,7 @@
 
 \title{Populate Sequence Alignment Information}
 \description{
-    Creat a \code{seqParameters} object that contains features of the sequence
+    Create a \code{seqParameters} object that contains features of the sequence
     that needs to be simulated.
 }
 \usage{
