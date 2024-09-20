@@ -1,10 +1,6 @@
 # ><>< ================================================================ ><>< #
 # ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
 # ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                      <- biTree -> Function.                      ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                         V0: 18 May, 2024                         ><>< #
 # ><>< ================================================================ ><>< #
 
 # ><>< # Simulate Balanced Bifurcating Tree
@@ -24,10 +20,6 @@ biTree <- function(ntaxa, bLength, terModel=NA){
     tree <- paste0("(", taxaTags[1], ",", taxaTags[2], "):", bLength, ";")
     return(tree)
 }
-## ><>< ======== ><>< # Example:
-# print( biTree(16,0.01, "{foreground}"))
-# print( biTree(16,0.01, " #1"))
-# print( biTree(16,0.01))
 
 # ><>< ================================================================ ><>< #
 # ><><                          CODE ENDS HERE                          ><>< #

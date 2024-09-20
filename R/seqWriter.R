@@ -1,10 +1,6 @@
 # ><>< ================================================================ ><>< #
 # ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
 # ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                    Sequence Output Functions.                    ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                         V0: 18 May, 2024                         ><>< #
 # ><>< ================================================================ ><>< #
 
 # ><>< # Write Simulated Sequence to File
@@ -20,7 +16,7 @@ seqWriter <- function(alignmentMatrix, treeInfo=NA, addText="", fileTag=NULL){
     closeText <- paste0("\n;\nend;")
     
     if(is.null(fileTag)){
-        seqFile <- paste0(tempdir(), "/cranrSeqs.nex")}else{seqFile <- fileTag}
+        seqFile <- file.path(tempdir(),"cranrSeqs.nex")}else{seqFile<- fileTag}
     write.table(openText, seqFile, FALSE, 
         FALSE, row.names=FALSE, col.names=FALSE)
     taxaNames <- paste0(" S", sprintf("%03.0f",seq(1,nTaxa)))
@@ -35,7 +31,8 @@ seqWriter <- function(alignmentMatrix, treeInfo=NA, addText="", fileTag=NULL){
                 row.names=FALSE, col.names=FALSE)
     write.table(treetext, seqFile, TRUE, FALSE,
                 row.names=FALSE, col.names=FALSE)
-    writeLines(paste0("Simulated sequence was written to file: ",seqFile))
+    statement <- paste0("Simulated sequence was written to file: ",seqFile)
+    message(statement)
 }
 
 # ><>< # Convert Sequence to Data Frame
@@ -57,7 +54,8 @@ seqDframe <- function(alignmentMatrix){
 seqColored <- function(framedSEQ){
     vectorSEQ <- c(framedSEQ)[[1]]
     sqNames <- paste0("S", sprintf("%03.0f",seq(1,nrow(framedSEQ))))
-    coloredOUT <- DNAStringSet(vectorSEQ); names(coloredOUT) <- sqNames
+    coloredOUT <- DNAStringSet(vectorSEQ)
+    names(coloredOUT) <- sqNames
     return(coloredOUT)
 }
 

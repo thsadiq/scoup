@@ -36,7 +36,7 @@ for(a in 1:length(vNvSvec)){
         for(i in 1:simSize){
           
             # Execute simulation
-            simulateSeq <- alignsim(adaptData, seqStat, NULL, NA)
+            simulateSeq <- alignsim(adaptData, seqStat, NA)
         }
     }
 }

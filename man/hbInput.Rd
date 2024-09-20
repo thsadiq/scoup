@@ -11,9 +11,10 @@
     hbInput(hbVector=0)
 }
 \arguments{
-    \item{hbVector}{A named vector that provides values of the parameters
-        necessary to successfully create a codon substitution model for
-        simulation purpose. See \bold{Details} for further information.}
+    \item{hbVector}{A named vector that provides values of the
+        parameters necessary to successfully create a codon substitution
+        model for simulation of genetic sequences. See \bold{Details} for
+        further information.}
 }
 \details{
     When fully specified, \code{hbVector} will be a four-element named vector.
@@ -36,10 +37,8 @@
             synonymous selection coefficients.}
         \item{\code{nsVar}}{Variance of the non-synonymous selection
             coefficients.}
-        \item{\code{meth}}{Probability distribution for generating the initial
-            selection coefficients.}
-        \item{\code{words}}{Comments that contain details of the set parameters,
-            for the output alignment file.}
+        \item{\code{sampler}}{Probability distribution for generating the
+            initial selection coefficients.}
     }
 }
 \author{
@@ -51,6 +50,10 @@
     \code{\link{alignsim}}.
 }
 \examples{
-    hbInput()
-    hbInput(c(Ne=100, meth=2, vNvS=1e-08, nsynVar=1e-08))
+    h0 <- hbInput()
+    vNvS(h0)
+    h0
+    
+    h1 <- hbInput(c(Ne=100, meth=2, vNvS=1e-08, nsynVar=1e-08))
+    sampler(h1)
 }

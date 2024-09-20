@@ -2,7 +2,7 @@
 \name{discreteInput}
 \alias{discreteInput}
 
-\title{Populate Discretised Seascape Model Parameters}
+\title{Populate Deterministic Seascape Model Parameters}
 \description{
     Create an object that has a \code{discrete} class attribute. It is
     particularly useful for defining one of the possible inputs of the main
@@ -29,7 +29,7 @@
     determine the number of internal nodes to assume for the simulation
     phylogeny. Each column of the matrix will be used to determine the
     parameters of the sampling distribution where the coefficient updates
-    will be sampled ta every node. Default is a \eqn{2 \times 4} matrix,
+    will be sampled at every node. Default is a \eqn{2 \times 4} matrix,
     wherein all the values in the \dQuote{\code{vNvS}} row are equal to 1
     and all the entries in the \dQuote{\code{nsynVar}} row are equal to
     \eqn{10^{-5}_{}}. (b.) \code{technique}: a binary integer that could be
@@ -37,7 +37,7 @@
     distribution. It informs about the probability distribution to be used
     for updating the coefficients. (c.) \code{pSize}: (default = 1000) is
     the effective population size. (d.) \code{nodeIndex}: a nuisance input
-    that is best set as \code{NULL}. It is updated within the \code{alignsim}
+    that is best left unspecified. It is updated within the \code{alignsim}
     operation. (e.) \code{leafModel}: a text that may be used to suffix the
     names of the terminal nodes (default = \code{NA}). Note that this
     function was not designed to be used in isolation. Its purpose is to
@@ -46,11 +46,10 @@
 \value{
     A \code{discrete} object that contains the following.
     \describe{
-        \item{\code{p02xnodes}}{Matrix containing landscape parameters.}
-        \item{\code{technique}}{An integer that could be 1 or 2.}
-        \item{\code{nodeIndex}}{Nuisance input.}
-        \item{\code{pnum}}{Effective population size.}
-        \item{\code{t3mdl}}{Suffix text for the names of the extant nodes.}
+        \item{\code{lscape}}{Matrix containing landscape parameters.}
+        \item{\code{sampler}}{Name of the sampling distribution used for
+            selection coefficient updates.}
+        \item{\code{effpop}}{Effective population size.}
     }
 }
 \author{
@@ -61,5 +60,8 @@
     \code{\link{aaGauss}},\verb{  } \code{\link{biTree}}.
 }
 \examples{
-    discreteInput()
+    dtest <- discreteInput()
+    effpop(dtest)
+    lscape(dtest)
+    sampler(dtest)
 }

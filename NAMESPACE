@@ -1,28 +1,23 @@
 import(Matrix)
 importFrom("Biostrings", "DNAStringSet")
-importFrom("methods", "is")
+importFrom("methods", "is", "new")
 importFrom("stats", "rexp", "rgamma", "rnorm", "runif")
 importFrom("utils", "write.table")
 
-S3method(alignsim, ou)
-S3method(alignsim, omega)
-S3method(alignsim, discrete)
-S3method(aaSCupdate, discrete)
-S3method(aaSCupdate, ou)
-S3method(sitesim, discrete)
-S3method(sitesim, ou)
-S3method(sitesim, omega)
+exportClasses(
+    aminoSC,
+    codonvalues,
+    discrete,
+    hbParameters,
+    ou,
+    omega,
+    scoup,
+    seqParameters)
 
 export(
     "aaGamma",
     "aaGauss",
-    "aaSCupdate",
-    "aaSCupdate.discrete",
-    "aaSCupdate.ou",
     "alignsim",
-    "alignsim.discrete",
-    "alignsim.ou",
-    "alignsim.omega",
     "biTree",
     "codonCoeffs",
     "codonFreq",
@@ -32,15 +27,38 @@ export(
     "hbInput",
     "ouEvolve",
     "ouInput",
-    "print.aminoSC",
-    "print.codonvalues",
     "seqDetails",
     "seqWriter",
-    "sitesim",
-    "sitesim.discrete",
-    "sitesim.ou",
-    "sitesim.omega",
     "subsMatrix",
     "wInput"
+)
+
+exportMethods(
+    "aInfo",
+    "aaSCupdate",
+    "alignsim",
+    "asymMean",
+    "asymVar",
+    "branchL",
+    "coeffs",
+    "cseq",
+    "dNdS",
+    "details",
+    "effpop",
+    "freqs",
+    "lscape",
+    "nodes",
+    "nsynVar",
+    "phylogeny",
+    "reversion",
+    "sampler",
+    "seqCOL",
+    "seqs",
+    "sites",
+    "sitesim",
+    "synVar",
+    "taxa",
+    "vNvS",
+    "show"
 )
 

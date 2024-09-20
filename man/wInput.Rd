@@ -63,5 +63,11 @@
     \bold{11}(5): 715-724.
 }
 \examples{
-    wInput()
+    w0 <- wInput()
+    vNvS(w0)
+    w0
+
+    w1 <- wInput(list(aaPlus=c(4,2,11), nsynVar=10))
+    lscape(w1)
+    w1
 }

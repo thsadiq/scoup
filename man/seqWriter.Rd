@@ -44,7 +44,6 @@
     Simulation function \code{\link{alignsim}}.
 }
 \examples{
-    # See "cranrSeqs.nex" in working directory for output
     sqAlign <- alignsim(ouInput(), seqDetails(), hbInput(), NA)
-    seqWriter(sqAlign$seqs)
+    seqWriter(seqs(sqAlign))
 }

@@ -23,7 +23,7 @@
     An observation is sampled from a \code{Normal(0,nsynVar)} distribution
     independently for each of the 20 amino acid residues. The variance of the
     synonymous selection coefficients (\code{synVar}) is calculated as
-    \code{nsynVar/vNvS}. If \code{nsynVar} is less than \eqn{10^(-12)}, all the
+    \code{nsynVar/vNvS}. If \code{nsynVar} is less than \eqn{10^{-12}}, all the
     amino acid coefficients will be equal to a single random draw from a
     \code{Normal(0,synVar)} distribution.
 }
@@ -31,12 +31,14 @@
     Returns an object of class \code{aminoSC}, a vector that at least contains
     the following component.
     \describe{
-        \item{\code{aacoeff}}{A vector of 22 elements of which the first 20
-            elements represent the sampled amino acid coefficients. The 21st
-            element is the variance of the synonymous coefficients and the 22nd
-            element is the input \code{nsynVar} value. The coefficients are
-            ordered in terms of the 1-letter amino acid IUPAC labels. that is,
-            (A, C, ..., W, Y).}
+        \item{\code{coeffs}}{A vector of 20 numeric elements that represent the
+            sampled amino acid coefficients. The coefficients are ordered in
+            terms of the 1-letter amino acid IUPAC labels. That is, (A, C,
+            . . . , W, Y).}
+        \item{\code{synVar}}{Variance of the selection coefficients of the
+            synonymous codons.}
+        \item{\code{nsynVar}}{Variance of the selection coefficients of the
+            non-synonymous codons.}
     }
 }
 
@@ -51,7 +53,13 @@
 }
 
 \examples{
-    aaGauss(0.50, 1e-04)
+    case0 <- aaGauss(0.50, 1e-04)
+    nsynVar(case0)
+    synVar(case0)
+    coeffs(case0)
     
-    aaGauss(1e-02, 0)
+    case1 <- aaGauss(1e-02, 0)
+    nsynVar(case1)
+    synVar(case1)
+    coeffs(case1)
 }

@@ -1,10 +1,6 @@
 # ><>< ================================================================ ><>< #
 # ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
 # ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                      <- aaGauss -> Function                      ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                         V0: 18 May, 2024                         ><>< #
 # ><>< ================================================================ ><>< #
 
 # ><>< # Generate Amino Acid Selection Coefficients (reviewed)
@@ -20,14 +16,12 @@ aaGauss <- function(vNvS, nsynVar){
         aacoefs <- rep(meansyn, 20)
         synVar <- synSD^2
     }
-    names(synVar) <- NULL; names(nsynVar) <- NULL
-    aacoeff <- c(aacoefs, synVar=synVar, nsynVar=nsynVar)
-    class(aacoeff) <- "aminoSC"
+    names(synVar) <- NULL
+    names(nsynVar) <- NULL
+    aacoeff <- new("aminoSC",
+        coeffs=abs(aacoefs), synVar=synVar, nsynVar=nsynVar)
     return(aacoeff)
 }
-## ><>< ## Example ## ><>< ##
-# anEG <- aaGauss(1, 1e-04)
-# print(anEG)
 
 # ><>< ================================================================ ><>< #
 # ><><                          CODE ENDS HERE                          ><>< #

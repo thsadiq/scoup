@@ -29,11 +29,9 @@
 \value{
     An \code{ou} object that contains the following.
     \describe{
-        \item{\code{var}}{Asymptotic variance of the OU process.}
-        \item{\code{theta}}{Reversion rate of the OU process.}
-        \item{\code{mu}}{Asymptotic mean of the OU process.}
-        \item{\code{words}}{Comments about the preferred parameter values that
-            will be added to the simulation output file.}
+        \item{\code{asymMean}}{Asymptotic mean of the OU process.}
+        \item{\code{asymVar}}{Asymptotic variance of the OU process.}
+        \item{\code{reversion}}{Reversion rate of the OU process.}
     }
 }
 \author{
@@ -48,6 +46,11 @@
     Motion, \emph{Physical Review} \bold{36}: 823-841.
 }
 \examples{
-    ouInput()
-    ouInput( c(eVar=1e-02, Theta=10))
+    o0 <- ouInput()
+    reversion(o0)
+    o0
+    
+    o1 <- ouInput( c(eVar=1e-02, Theta=10))
+    asymMean(o1)
+    asymVar(o1)
 }

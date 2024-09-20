@@ -34,7 +34,7 @@
 \value{
     Returns a \code{codonvalues} object that contains the following.
     \describe{
-        \item{\code{codonF}}{A vector of 61 fractional values that sum to one
+        \item{\code{freqs}}{A vector of 61 fractional values that sum to one
             and represent the frequencies of sense codons that are ordered
             alphabetically in terms of the IUPAC nucleotide triplets
             nomenclature.}
@@ -50,5 +50,6 @@
 \examples{
     aaEG1 <- aaGamma(1e-03, 0)
     csc01 <- codonCoeffs(aaEG1, 4)
-    codonFreq(csc01)
+    cFq <- codonFreq(csc01)
+    freqs(cFq)
 }

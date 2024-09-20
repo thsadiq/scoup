@@ -1,14 +1,11 @@
 # ><>< ================================================================ ><>< #
 # ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
 # ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                     <- fixMatrix -> Function                     ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                         V0: 18 May, 2024                         ><>< #
 # ><>< ================================================================ ><>< #
 
 # ><>< # Generate Fixation Matrix
 fixMatrix <- function(sc01x61, effpopsize){
+    sc01x61 <- coeffs(sc01x61)
     fixMtx <- matrix(0, 61, 61)
     for(a1 in seq(1,61)){
         for(a2 in seq(1,61)){
@@ -22,11 +19,6 @@ fixMatrix <- function(sc01x61, effpopsize){
     } } } }
     return(fixMtx)
 }
-## ><>< ## Example:
-# aaEG <- aaGamma(.5, 1e-03)
-# codonsc <- codonCoeffs(aaEG)
-# fMat <- fixMatrix(codonsc, 1000)
-# print(head(fMat))
 
 # ><>< ================================================================ ><>< #
 # ><><                          CODE ENDS HERE                          ><>< #

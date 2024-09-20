@@ -1,7 +1,6 @@
 % File src/library/scoup/man/..Rd
 \name{biTree}
 \alias{biTree}
-\alias{phylogeny}
 \alias{tree}
 
 \title{Generate a Balanced Bifurcating Evolutionary Tree}

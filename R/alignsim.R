@@ -1,11 +1,11 @@
 # ><>< ================================================================ ><>< #
 # ><><     scoup: Simulate Codon Sequences with Darwinian Selection     ><>< #
 # ><><          Incorporated  as an Ornstein-Uhlenbeck Process          ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                       Background Functions                       ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                         V0: 23 Jan, 2024                         ><>< #
 # ><>< ================================================================ ><>< #
+
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                       Background Data Sets                       ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
 
 # ><>< # Amino Acid and Codon Correspondence.
 amino2codon <- c( 9, 12,  9, 12, 17, 17, 17, 17, 15, 16, 15, 16, 
@@ -29,7 +29,8 @@ nucleotides <- c("A", "C", "G", "T")
 aacids <- LETTERS[c(1,seq(3,9),seq(11,14),seq(16,20),22,23,25)]
 
 # ><>< # Substitution Matrix Indicator.
-qmatID <- matrix(0, 61, 61); codonNuc <- matrix(NA, 61, 61)
+qmatID <- matrix(0, 61, 61)
+codonNuc <- matrix(NA, 61, 61)
 
 for(i in seq(1,61)){
     for(j in seq(1,61)){
@@ -45,6 +46,17 @@ for(i in seq(1,61)){
                 codonNuc[i,j] <- paste0("c(", p1, ",", p2, ")")
 } } } }
 
+# ><>< ==== ><>< # Non-Synonymous Codon Indicator Matrix
+nonsynonymID <- synonymID <- matrix(0, 61, 61)
+for(i in seq(1,61)){ for(j in seq(1,61)){
+    synonymID[i, j] <- (amino2codon[i] == amino2codon[j]) * qmatID[i,j]
+    nonsynonymID[i, j] <- (amino2codon[i] != amino2codon[j]) * qmatID[i,j]
+} }
+
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                       Background Functions                       ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+
 # ><>< # Codon Mutation Matrix
 mutationMatrix <- function(kappa=4, mu_ij=1){
     codon_mutate <- matrix(0, 61, 61)
@@ -59,35 +71,10 @@ mutationMatrix <- function(kappa=4, mu_ij=1){
 }
 codon_m_matrix <- mutationMatrix()
 
-# ><>< ==== ><>< # Non-Synonymous Codon Indicator Matrix
-nonsynonymID <- synonymID <- matrix(0, 61, 61)
-for(i in seq(1,61)){ for(j in seq(1,61)){
-    synonymID[i, j] <- (amino2codon[i] == amino2codon[j]) * qmatID[i,j]
-    nonsynonymID[i, j] <- (amino2codon[i] != amino2codon[j]) * qmatID[i,j]
-} }
-
-# ><>< ================================================================ ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
-# ><>< ================================================================ ><>< #
-
-# ><>< # Define print() Method for AA Selection Coefficient
-print.aminoSC <- function(aacoefs){
-    cat("\nAmino acid selection coefficients:\n")
-    cat(paste0(aacids[seq(1,4)],"=",round(aacoefs[seq(1,4)],3),", ")," ...\n")
-    cat("\nSynonymous variance:\n",aacoefs[21],"\n")
-    cat("\nNonsynonymous variance:\n",aacoefs[22],"\n\n")
-}
-
-# ><>< # Define print() Method for Codon Related Values
-print.codonvalues <- function(codonSCF){
-    cat("\n",paste0(codonTriplets[seq(1,6)],"=",
-        round(codonSCF[seq(1,6)],3),", "), " ...\n\n")
-}
-
 # ><>< # Simulate Along Internal Node of a Tree
 branchSimulate <- function(parentcodon, blength, q61x61e){
-    init_time <- 0; nevolve <- 0
+    init_time <- 0
+    nevolve <- 0
     while(init_time < blength){
         init_codon <- parentcodon
         weights <- q61x61e[init_codon,]
@@ -99,24 +86,14 @@ branchSimulate <- function(parentcodon, blength, q61x61e){
     }
     return(c(codon=parentcodon, evolved=nevolve))
 }
-## ><>< ======== ><>< ## Example
-# cvec <- codonCoeffs(aaGamma(1e-10,1e-01))
-# smatx <- subsMatrix(cvec, 1000)
-# newXter <- branchSimulate(15, 0.2, smatx)
-# print(newXter)
 
 # ><>< # Generate Codon Sequence at Root Node
 initSeq <- function(s01x22){
-    scoefvalues <- s01x22[seq(1,20)]
-    coeffs_weights <- codonFreq(scoefvalues)
-    aa_resid <- sample(seq(1,20), 1, FALSE, coeffs_weights)
-    codonResidue <- sample(which(amino2codon==aa_resid),1)
+    scoefvalues <- codonCoeffs(s01x22)
+    coeffs_weights <- coeffs( codonFreq(scoefvalues))
+    codonResidue <- sample(seq(1,61), 1, FALSE, coeffs_weights)
     return(codonResidue)
 }
-## ><>< ====== ><>< # Example:
-# trial <- aaGauss(0.5, 1e-02)
-# trialSeq <- initSeq(trial)
-# print(aminoacid[trialSeq])
 
 # ><>< # Merge Simulated Sequence
 seqMerger <- function(alignmentMatrix, erase, t3model, filePrefix){
@@ -144,20 +121,96 @@ seqMerger <- function(alignmentMatrix, erase, t3model, filePrefix){
     }
 }
 
-# ><>< # Simulate Sequence Alignment
-alignsim <- function(adaptIn, seqIn, modelIn, filename=NA){
-    UseMethod("alignsim")
+# ><>< # Erase redundant names
+nameDel <- function(y){
+    names(y) <- NULL
+    return(y)
 }
 
-# ><>< # Update Selection Coefficient
-aaSCupdate <- function(parameters, oldSC=NA, bLength=NA){
-    UseMethod("aaSCupdate")
+# ><>< # Warn of Redundant Input Labels
+warner <- function(pryIn, fullNames){
+    nameless <- any(names(pryIn) == "")
+    noName <- length(pryIn) - length(names(pryIn)) > 0
+    rule0 <- (length(pryIn) !=1) | all(unlist(pryIn) != 0)
+    regulate <- (nameless | noName) & rule0
+    xtraTag <- NULL
+    if(regulate)  xtraTag <- "*unnamed*"
+    inNames <- c(xtraTag, names(pryIn))
+    chck1 <- inNames %in% fullNames
+    if(!all(chck1)){
+        faux <- inNames[which(!chck1)]
+        communicate <- paste0("The inputs listed below were ignored ",
+            "because they are invalid entries of the discrete ",
+            "model.\n\t", paste(faux, collapse="\t"))
+        warning(communicate, call. = FALSE)
+    }
 }
 
-# ><>< # Simulate Genetic Sequence at a Site
-sitesim <- function(parameterz, nodeLength, popSize=NA, ntaxa=NA, s01x22=NA){
-    UseMethod("sitesim")
+# ><>< # Identify Input Distribution for Initial Coefficient Sampling
+detectApp <- function(x){ x1 <- x@sampler
+    tch <- ifelse(x1==1, "Normal distribution\n",  "Gamma distribution\n")
+    message(tch)
 }
+
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                        Generic Functions.                        ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+
+# ><>< # discrete, ou
+setGeneric("aaSCupdate", 
+    function(parameters, ...) standardGeneric("aaSCupdate") )
+# ><>< # discrete, omega, ou
+setGeneric("alignsim", 
+    function(adaptIn, seqIn, ...) standardGeneric("alignsim"))
+setGeneric("sitesim", 
+    function(parameters, nodeLength, ...) standardGeneric("sitesim") )
+# ><>< # scoup
+setGeneric("cseq", function(x) standardGeneric("cseq"))
+setGeneric("dNdS", function(x) standardGeneric("dNdS"))
+setGeneric("seqs", function(x) standardGeneric("seqs"))
+setGeneric("aInfo", function(x) standardGeneric("aInfo"))
+setGeneric("seqCOL", function(x) standardGeneric("seqCOL"))
+# ><>< # hbParameters, omega
+setGeneric("vNvS", function(x) standardGeneric("vNvS"))
+setGeneric("nsynVar", function(x) standardGeneric("nsynVar"))
+# ><>< # aminoSC, codonvalues
+setGeneric("freqs", function(x) standardGeneric("freqs"))
+setGeneric("coeffs", function(x) standardGeneric("coeffs"))
+# ><>< # discrete, hbParameters, omega
+setGeneric("effpop", function(x) standardGeneric("effpop"))
+setGeneric("sampler", function(x) standardGeneric("sampler"))
+# ><>< # discrete, omega
+setGeneric("lscape", function(x) standardGeneric("lscape"))
+# ><>< # aminoSC
+setGeneric("synVar", function(x) standardGeneric("synVar"))
+# ><>< # ou
+setGeneric("asymVar", function(x) standardGeneric("asymVar"))
+setGeneric("asymMean", function(x) standardGeneric("asymMean"))
+setGeneric("reversion", function(x) standardGeneric("reversion"))
+# ><>< # seqParameters
+setGeneric("taxa", function(xo) standardGeneric("taxa"))
+setGeneric("sites", function(xo) standardGeneric("sites"))
+setGeneric("nodes", function(xo) standardGeneric("nodes"))
+setGeneric("branchL", function(xo) standardGeneric("branchL"))
+setGeneric("details", function(xo) standardGeneric("details"))
+setGeneric("phylogeny", function(xo) standardGeneric("phylogeny"))
+
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+# ><><                        Class Definitions.                        ><>< #
+# ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
+setClass("seqParameters",
+    representation(sites="numeric", taxa="numeric", nodes="numeric",
+        branchL="numeric", phylogeny="character", details="character"))
+
+setClass("discrete",
+    representation(lscape="matrix", sampler="numeric",
+        nodeIndex="numeric", psize="numeric", t3mdl="character"))
+
+setClass("omega", representation(nsynVar="numeric", psize="numeric",
+    sampler="numeric", aaPlus="numeric", vNvS="numeric"))
+
+setClass("ou", representation(var="numeric",
+    theta="numeric", mu="numeric", words="character"))
 
 # ><>< ================================================================ ><>< #
 # ><><                          CODE ENDS HERE                          ><>< #

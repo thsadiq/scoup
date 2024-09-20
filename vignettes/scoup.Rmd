@@ -5,7 +5,7 @@ author: Hassan Sadiq
 output:
     BiocStyle::html_document:
         toc_float: true
-package: BiocStyle
+package: scoup
 bibliography: citation.bib
 abstract: |
     Genetic simulations are an important part of molecular biology. They are
@@ -141,7 +141,7 @@ for(g in seq(1,length(eVary))){
     }
 }
 # Print simulated alignment
-simData$seqCOL
+seqCOL(simData)
 ```
 As expected, the correlation coefficient estimate was approximately
 $0.9974$ when the means of the inferred ($\omega$) and the calculated
@@ -190,12 +190,12 @@ for(a in seq(1,length(vNvSvec))){
         for(i in seq(1,simSize)){
 
             # Execute simulation
-            simulateSeq <- alignsim(adaptData, seqStat, NULL, NA)
+            simulateSeq <- alignsim(adaptData, seqStat, NA)
         }
     }
 }
 # Print simulated alignment
-simulateSeq$cseq
+cseq(simulateSeq)
 ```
 Sequences generated with the presented code (with the excluded values
 activated) produced strongly correlated selection inferences
@@ -241,7 +241,7 @@ for(a0 in seq(1,length(sratio))){
     simSeq <- alignsim(adaptEntry, seqsEntry, mValues, NA)
 }
 # Print simulated codon sequence
-simSeq$cseq
+cseq(simSeq)
 ```
 This is another example of how to call the OU shifting landscape
 evolutionary approach. The results obtained yielded a pairwise
@@ -290,11 +290,11 @@ for(h in seq(1,length(vNvSvec))){
         adaptBranch <- discreteInput(list(p02xnodes=scInput))
         
         # Execute simulation
-        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NULL)
+        genSeq <- alignsim(adaptBranch, seqsBwise, NULL)
     }
 }
 # Print simulated sequence data
-genSeq$seqCOL
+seqCOL(genSeq)
 ```
 The correlation coefficient between the averages of the analytical
 $\mathrm{d}N/\mathrm{d}S$ and the inferred $\omega$ estimates was

@@ -33,11 +33,12 @@
     \describe{
         \item{\code{sites}}{Number of alignment sites.}
         \item{\code{taxa}}{Number of extant taxa.}
-        \item{\code{nodes}}{Number of internal nodes on the phylogeny.}
-        \item{\code{bl}}{Length of the branches on the phylogeny.}
-        \item{\code{t3}}{Evolutionary tree in newick format.}
-        \item{\code{words}}{Useful comments to be included in the alignment
-            file.}
+        \item{\code{nodes}}{Number of internal (bifurcating) stages on the
+            evolutionary tree. A tree with \eqn{2^{\code{m}}} leaves will have
+            \code{m} internal stages.}
+        \item{\code{branchL}}{Length of the branches on the phylogeny.}
+        \item{\code{phylogeny}}{Evolutionary tree in newick format.}
+        \item{\code{details}}{Text that describes the evolutionary tree.}
     }
 }
 \author{
@@ -48,6 +49,9 @@
     \code{\link{biTree}}, the balanced evolutionary tree generator.
 }
 \examples{
-    seqDetails()
-    seqDetails(c(ntaxa=16, nsite=10, blength=0.20, terModel=" #1"))
+    t0 <- seqDetails()
+    sites(t0)
+
+    t1 <- seqDetails(c(ntaxa=16, nsite=10, blength=0.20, terModel=" #1"))
+    details(t1)
 }

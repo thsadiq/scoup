@@ -34,9 +34,9 @@
     \code{s_(TTT)}), excluding the stop codons.
 }
 \value{
-    Returns a \code{codonvalues} object. The vector will contain the following.
+    Returns a \code{codonvalues} object that will contain the following.
     \describe{
-        \item{\code{codonSC}}{A 61-element vector of codon selection
+        \item{\code{coeffs}}{A 61-element vector of codon selection
             coefficients ordered alphabetically with respect to the IUPAC
             nucleotide triplets nomenclature.}
     }
@@ -51,13 +51,16 @@
 \examples{
     # Example 1:
     aasc1 <- aaGamma(1e-10, 1e-04)
-    codonCoeffs(aasc1)
+    ccfs0 <- codonCoeffs(aasc1)
+    coeffs(ccfs0)
     
     # Example 2:
     aasc2 <- aaGauss(1e-10, 1e-04)
-    codonCoeffs(aasc2)
+    ccfs1 <- codonCoeffs(aasc2)
+    coeffs(ccfs1)
 
     # Example 3:
     aasc3 <- aaGauss(1e-03, 0)
-    codonCoeffs(aasc3, c(2,6))
+    ccfs2 <- codonCoeffs(aasc3, c(2,6))
+    coeffs(ccfs2)
 }

@@ -36,7 +36,7 @@ for(h in 1:length(vNvSvec)){
         adaptBranch <- discreteInput(list(p02xnodes=scInput))
         
         # Execute simulation
-        genSeq <- alignsim(adaptBranch, seqsBwise, NULL, NA)
+        genSeq <- alignsim(adaptBranch, seqsBwise, NA)
     }
 }
 

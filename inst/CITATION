@@ -9,7 +9,7 @@ citEntry(entry = "article",
          year = "202x",
          volume = "",
          pages = "",
-         doi = "10.yyyyy/yyy.bioc.scoup",
+         doi = "10.18129/B9.bioc.scoup",
          url = "",
          textVersion = 
           paste("Sadiq, H., et al. (202x)",
