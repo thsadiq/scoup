@@ -1,5 +1,5 @@
 Package: scoup
-Version: 0.99.13
+Version: 0.99.14
 Date: 2024-07-31
 License: GPL (>= 2)
 Authors@R: c(person("Hassan", "Sadiq", role=c("aut","cre","cph"),
