@@ -28,13 +28,13 @@
         (default = "").}
     \item{fileTag}{Full path to where the output file should be printed. It
         should be a string (default = \code{NULL}). If not provided, the NEXUS
-        file returned will be saved as \code{cranrSeqs.nex} in the working
+        file returned will be saved as \code{cranrSeqs.nex} in a temporary
         directory.}
 }
 \value{
     \describe{
         \item{\code{NULL}}{A NEXUS file with codon alignment printed therein
-            will be saved in the working (or specified) directory.}
+            will be saved in a temporary (or specified) directory.}
     }
 }
 \author{
