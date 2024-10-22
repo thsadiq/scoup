@@ -88,14 +88,12 @@ alignsim.omega <- function(adaptIn, seqIn, filename=NA){
     return(omgOUT)
 }
 
-# ><>< # Function Relevant to "omega" Object 
-fdscape <- function(x){
-    writeLines("\nAmino acid(s) with non-zero vN/vS:\n")
-    writeLines( paste(aacids[x@aaPlus]), "\n\n")
-}
-
 # ><>< # "omega" Object Methods
-setMethod("lscape", signature("omega"), fdscape)
+setMethod("lscape", signature("omega"), function(x){
+    message("\nAmino acid(s) with non-zero vN/vS:")
+    cmnt <- paste(aacids[x@aaPlus])
+    message(cmnt, "\n\n")
+})
 setMethod("vNvS", signature("omega"), function(x) x@vNvS)
 setMethod("effpop", signature("omega"), function(x) x@psize)
 setMethod("nsynVar", signature("omega"), function(x) x@nsynVar)

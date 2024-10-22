@@ -3,16 +3,15 @@ citHeader("To cite the scoup package in publications use:")
 citEntry(entry = "article",
          title = "scoup: Simulate Codon Sequences with Darwinian Selection
                  Incorporated as an Ornstein-Uhlenbeck Process",
-         author = personList(as.person("Hassan Sadiq"),
-                             as.person("et al")),
-         journal = "In Progress",
-         year = "202x",
+         author = personList(as.person("Hassan Sadiq")),
+         journal = "R Package",
+         year = "2024",
          volume = "",
          pages = "",
          doi = "10.18129/B9.bioc.scoup",
          url = "",
          textVersion = 
-          paste("Sadiq, H., et al. (202x)",
+          paste("Sadiq, H.. (2024)",
                 "scoup: Simulate Codon Sequences with Darwinian Selection
                 Incorporated as an Ornstein-Uhlenbeck Process",
-                "In Progress"))
+                "R Package"))

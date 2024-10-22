@@ -4,6 +4,9 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
+0.99.16 (2024-10-22): Developmental Release Changes
++ Edited citation and vignette appropriately
+
 0.99.15 (2024-10-09): Review Changes
 + Incorporated recommendations from @jianhong
 + Updated 'biTree' to include test and warning

@@ -1,7 +1,10 @@
 ---
 title: "scoup: Simulate Codons with Darwinian Selection Incorporated as an
         Ornstein-Uhlenbeck Process"
-author: Hassan Sadiq
+author:
+- name: Hassan Sadiq
+  affiliation: Department of Statistics and Actuarial Science,
+    Stellenbosch University, South Africa
 output:
     BiocStyle::html_document:
         toc_float: true
@@ -23,7 +26,7 @@ abstract: |
     presented as a reliable selection discriminant metric. Example code of
     how to use the package are presented with elaborate comments.  
 vignette: |
-    %\VignetteIndexEntry{Authoring R Markdown vignettes}
+    %\VignetteIndexEntry{scoup Tutorial}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
