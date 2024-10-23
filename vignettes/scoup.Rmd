@@ -60,7 +60,7 @@ simulators in the literature used the MutSel framework [@wilke2015;
 @arenas2014]. This is most probably due to the perceived complexity of the
 methodology. In `scoup`, the versatility of the @uhlenbeck1930
 algorithm as a framework for evolutionary analyses [@bartoszek2017] was
-also exploited.
+exploited to circumvent the complexity.
 
 In a bid to identify an appropriate quantifier that permits direct comparison
 between the degree of selection signatures imposed during simulation and that
@@ -319,16 +319,12 @@ after it has been accepted to the Bioconductor platform and after
 the corresponding article has been accepted for publication. In the
 meantime, to cite this package, use <em>Sadiq, H. 2024. "scoup:
 Simulate Codon Sequences with Darwinian Selection Incorporated as an
-Ornstein-Uhlenbeck Process".</em>
+Ornstein-Uhlenbeck Process". R Package. doi:10.18129/B9.bioc.scoup.</em>
 
 # References
-::: {#refs}
-:::
 
-# Appendix
-
-## Sample Data Analyses Code
-`CODEML` script executed in `PAML` [@yang2007] to infer
+# Appendix: Sample Data Analyses (Non-R) Code
+`CODEML` script executed in `PAML` to infer
 single alignment-wide $\omega$ estimates for data sets generated from 50
 independent executions of each of the sensitivity analyses code presented
 above. The same `CODEML` script was used to analyse data (also 50
@@ -355,8 +351,8 @@ tree are `seq.nex` and `seq.tre`, respectively.
 ```
 
 \vspace*{1cm}
-`FUBAR` [@murrell2013] command executed with `HyPhy`
-[@hyphy2005] through the terminal in MacBook. Note that `HyPhy`
+`FUBAR` command executed with `HyPhy`
+through the terminal in MacBook. Note that `HyPhy`
 was already installed on the computer. The `seq.nex` input is the
 `scoup` simulated codon sequence data that is saved in the same
 NEXUS file with the tree data. The NEXUS file resides in the
@@ -365,7 +361,7 @@ working directory.
 hyphy fubar --code Universal --alignment seq.nex --tree seq.nex
 ```
 
-## Session info
+# Session info
 
 The output of `sessionInfo()` from the computer where this file was generated
 is provided below.
@@ -373,5 +369,3 @@ is provided below.
 ```{r sessionInfo, echo=FALSE}
 sessionInfo()
 ```
-
-
