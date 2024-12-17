@@ -4,7 +4,7 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
-1.99.0 (2024-12-17): Functional Update
+1.1.1 (2024-12-17): Functional Update
 + Improved flexibility by allowing specification of mutation rate parameters.
 
 0.99.16 - 0.99.17 (2024-10-23): Developmental Release Changes
