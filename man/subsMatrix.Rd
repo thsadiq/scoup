@@ -8,13 +8,17 @@
     mutation-selection framework.
 }
 \usage{
-    subsMatrix(sc01x61, effpopsize)
+    subsMatrix(sc01x61, effpopsize, kappa, mrate)
 }
 \arguments{
     \item{sc01x61}{Vector of selection coefficients associated with the
         61 sense codons, ordered alphabetically according to the nucleotide
         triplets and the IUPAC naming structure.}
     \item{effpopsize}{Effective population size.}
+    \item{kappa}{Transition to transversion rate between nucleotide pairs
+        suitable for the HKY85 DNA mutation model.}
+    \item{mrate}{Average rate at which mutation occurs between DNA pairs
+        suitable for the HKY85 DNA mutation model.}
 }
 \details{
     Given an arbitrary scaling constant (\code{k}), codon fixation rates
@@ -29,10 +33,11 @@
             0 & \text{if $i$ and $j$ differs by more than one nucleotide,}
         \end{cases}
     }
-    and \eqn{q_{ii}^{}=-\sum_{j}q_{ij}^{}}. The \code{HKY85} nucleotide
-    mutation matrix was embedded into the \code{alignsim} function (with
-    transition to transversion rate, \eqn{\kappa} = 4, average rate,
-    \eqn{\mu} = 1 and equal equilibrium frequencies).
+    and \eqn{q_{ii}^{}=-\sum_{j}q_{ij}^{}}. The corresponding \code{HKY85}
+    nucleotide mutation matrix from which \eqn{\text{m}_{ij}^{}} is obtained
+    is such that the transition to transversion rate, \eqn{\kappa} =
+    \code{kappa}, the average rate, \eqn{\mu} = \code{mrate} and the
+    equilibrium frequencies are equal.
 }
 \value{
     \describe{
@@ -60,5 +65,5 @@
 \examples{
     aacoeffs <- aaGauss(1e-03, 0)
     codonsc <- codonCoeffs(aacoeffs)
-    subsMatrix(codonsc, 1000)
+    subsMatrix(codonsc, 1000, 4, 0.25)
 }

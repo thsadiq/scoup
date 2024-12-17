@@ -1,6 +1,8 @@
 \name{hbParameters-class}
 \docType{class}
 \alias{hbParameters-class}
+\alias{kappa,hbParameters-method}
+\alias{hky85mu,hbParameters-method}
 \alias{effpop,hbParameters-method}
 \alias{nsynVar,hbParameters-method}
 \alias{sampler,hbParameters-method}
@@ -18,9 +20,9 @@
 \section{Objects from the Class}{
     Objects of this class can be created by calls of the form
     \code{new("hbParameters", psize=??, vNvS=??, sampler=??, nsynVar=??,
-    words=??)}. The object is an important input of the \code{\link{alignsim}}
-    function when interested in simulating sequences with respect to the
-    Ornstein-Uhlenbeck framework.
+    kappa=??, mrate=??, words=??)}. The object is an important input of
+    the \code{\link{alignsim}} function when interested in simulating
+    sequences with respect to the Ornstein-Uhlenbeck framework.
 }
 
 \section{Slots}{
@@ -33,6 +35,10 @@
             indicates the probability distribution where the amino acid
             selection coefficients should be sampled.}
         \item{\code{nsynVar}:}{numeric value returned by the \code{nsynVar}
+            method.}
+        \item{\code{kappa}:}{numeric value returned by the \code{kappa}
+            method.}
+        \item{\code{mrate}:}{numeric value returned by the \code{hky85mu}
             method.}
         \item{\code{words}:}{comments about the specified Halpern-Bruno model
             parameters. It is a \code{character} format string that is
@@ -54,6 +60,10 @@
             the \code{vNvS} and the \eqn{\sigma^2_\code{n}}.}
         \item{vNvS}{\code{signature(x = "hbParameters")}: ratio of the variance
             of the non-synonymous to synonymous selection coefficients.}
+        \item{kappa}{\code{signature(x = "hbParameters")}: ratio of the rate of
+            the transition to transversion of nucleotides.}
+        \item{hky85mu}{\code{signature(x = "hbParameters")}: average nucleotide
+            mutation rate.}
     }
 }
 

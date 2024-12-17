@@ -1,6 +1,6 @@
 Package: scoup
-Version: 0.99.17
-Date: 2024-10-23
+Version: 1.2.1
+Date: 2024-12-17
 License: GPL (>= 2)
 Authors@R: c(person("Hassan", "Sadiq", role=c("aut","cre","cph"),
                     email="hassan.t.sadiq@gmail.com",

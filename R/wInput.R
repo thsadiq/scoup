@@ -10,7 +10,8 @@
 # ><>< # Frequency-Dependent Landscape Input
 wInput <- function(wList=list()){
     stopifnot("`wInput` arg. must be a list!" = is(wList,"list"))
-    compNames <- c("pSize","vNvS","aaPlus","technique","nsynVar")
+    compNames <- c("pSize","vNvS","aaPlus",
+        "technique","nsynVar","kappa","mrate")
     runCheck <- warner(wList, compNames)
     pnum <- wList$pSize
     if(is.null(pnum)) pnum <- 1000
@@ -24,13 +25,20 @@ wInput <- function(wList=list()){
     match.arg(matched, c(1,2))
     nsySigm2 <- wList$nsynVar
     if(is.null(nsySigm2)) nsySigm2 <- 1e-05
+    hkyKappa <- wList$kappa
+    if(is.null(hkyKappa)) hkyKappa <- 4
+    hkyMu <- wList$mrate
+    if(is.null(hkyMu)) hkyMu <- 0.25
     names(pnum) <- NULL
+    names(hkyMu) <- NULL
     names(vaRatio) <- NULL
     names(plusCOEF) <- NULL
     names(approach) <- NULL
     names(nsySigm2) <- NULL
+    names(hkyKappa) <- NULL
     wEntry <- new("omega", nsynVar=nsySigm2, psize=pnum,
-        sampler=approach, aaPlus=plusCOEF, vNvS=vaRatio)
+        sampler=approach, aaPlus=plusCOEF, vNvS=vaRatio,
+        kappa=hkyKappa, mrate=hkyMu)
     return(wEntry)
 }
 

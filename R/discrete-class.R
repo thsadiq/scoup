@@ -17,6 +17,8 @@ aaSCupdate.discrete <- function(parameters){
 # ><>< # Deterministic Landscape Independent Site Simulation
 sitesim.discrete <- function(parameters, nodeLength){
     popSize <- parameters@psize
+    h85mean <- parameters@mrate
+    h85kappa <- parameters@kappa
     s01x22 <- aaSCupdate(parameters)
     parentCodon <- initSeq( s01x22 )
     n_nodes <- round(ncol(parameters@lscape), 0)
@@ -29,8 +31,9 @@ sitesim.discrete <- function(parameters, nodeLength){
         f01x22 <- aaSCupdate(parameters)
         s01x22 <- f01x22
         new_csc_vec <- codonCoeffs(s01x22)
-        qmatrix <- subsMatrix(new_csc_vec, popSize)
-        dndsVec[a4] <- dndsCalculator( codonFreq(new_csc_vec), qmatrix)
+        qmatrix <- subsMatrix(new_csc_vec, popSize, h85kappa, h85mean)
+        dndsVec[a4] <- dndsCalculator( codonFreq(new_csc_vec),
+                                    qmatrix, h85kappa, h85mean)
         
         for(a6 in seq(1,length(seqVector))){
             offspringID <- c(a6*2-1, a6*2)
@@ -70,6 +73,8 @@ alignsim.discrete <- function(adaptIn, seqIn, filename=NA){
     mString <- paste( apply(theMtrx, 2,
         function(a) paste(a, collapse=",")), collapse="|")
     notes <- paste0("Discrete Parameters: method=", aWord,
+        "Model Parameters: Pop.Size=", adaptIn@psize,", HKY85.Kappa=",
+        adaptIn@kappa, ", HKY85.Mu=", adaptIn@mrate,
         " node-wise=(vNvS,nsynVar|", mString, ")")
     commentText <- paste0(seqIn@details, ";   ", notes)
     cdnSEQs <- seqDframe(alignment)
@@ -87,6 +92,8 @@ alignsim.discrete <- function(adaptIn, seqIn, filename=NA){
 setMethod("effpop", "discrete", function(x) x@psize)
 setMethod("lscape", "discrete", function(x) x@lscape)
 setMethod("sampler", "discrete", function(x) detectApp(x))
+setMethod("kappa", signature("discrete"), function(x) x@kappa)
+setMethod("hky85mu", signature("discrete"), function(x) x@mrate)
 setMethod("aaSCupdate", signature("discrete"), aaSCupdate.discrete)
 setMethod("show", "discrete", function(object) {
     cat("\n", is(object)[[1]])

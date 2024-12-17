@@ -4,8 +4,9 @@
 # ><>< ================================================================ ><>< #
 
 # ><>< # "hbParameters" Object Generics and Methods
-setClass("hbParameters", representation(psize="numeric", vNvS="numeric",
-    sampler="numeric", nsynVar="numeric", words="character"))
+setClass("hbParameters", representation(psize="numeric",
+    vNvS="numeric", sampler="numeric", nsynVar="numeric",
+    kappa="numeric", mrate="numeric", words="character"))
 
 setMethod("show", "hbParameters", function(object){
     cat("\n", is(object)[[1]])
@@ -15,7 +16,9 @@ setMethod("show", "hbParameters", function(object){
     cat("\n\tRatio of coefficients variances (vN/vS) = ", object@vNvS, "\n\n")
 })
 setMethod("vNvS", signature("hbParameters"), function(x) x@vNvS)
+setMethod("kappa", signature("hbParameters"), function(x) x@kappa)
 setMethod("effpop", signature("hbParameters"), function(x) x@psize)
+setMethod("hky85mu", signature("hbParameters"), function(x) x@mrate)
 setMethod("nsynVar", signature("hbParameters"), function(x) x@nsynVar)
 setMethod("sampler", signature("hbParameters"), function(x) detectApp(x))
 

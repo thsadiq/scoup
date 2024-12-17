@@ -3,6 +3,8 @@
 \alias{discrete-class}
 \alias{aaSCupdate,discrete-method}
 \alias{alignsim,discrete,seqParameters-method}
+\alias{kappa,discrete-method}
+\alias{hky85mu,discrete-method}
 \alias{effpop,discrete-method}
 \alias{lscape,discrete-method}
 \alias{sampler,discrete-method}
@@ -19,9 +21,9 @@
 
 \section{Objects from the Class}{
     Objects can be created by calls of the form \code{new("discrete",
-    lscape=..., sampler=..., nodeIndex=..., psize=..., t3mdl=...)}. Objects
-    can also be created straightforwardly with the \code{\link{discreteInput}}
-    function.
+    lscape=..., sampler=..., nodeIndex=..., psize=..., t3mdl=..., kappa=...,
+    mrate=...)}. Objects can also be created straightforwardly with the
+    \code{\link{discreteInput}} function.
 }
 
 \section{Slots}{
@@ -40,6 +42,10 @@
             suffix for the leaves on the returned phylogeny. It is intended
             to facilitate inference analyses with external software such as
             \code{PAML} or \code{HyPhy}.}
+        \item{\code{kappa}:}{numeric value returned by the \code{kappa}
+            method.}
+        \item{\code{mrate}:}{numeric value returned by the \code{hky85mu}
+            method.}
     }
 }
 
@@ -72,6 +78,10 @@
             nodeLength="numeric")}: background function that is not to be used
             by an end-user. It generates the DNA data at each site
             independently.}
+        \item{kappa}{\code{signature(x="discrete")}: ratio of the rate of the
+            transition to transversion of nucleotides.}
+        \item{hky85mu}{\code{signature(x="discrete")}: average nucleotide
+            mutation rate.}
     }
 }
 
@@ -80,7 +90,8 @@
 }
 
 \seealso{
-    \code{\link{discreteInput}}, \verb{  } \code{\link{alignsim}}.
+    \code{\link{discreteInput}}, \verb{  } \code{\link{codonMutation}},
+    \verb{  } \code{\link{alignsim}}.
 }
 
 \examples{

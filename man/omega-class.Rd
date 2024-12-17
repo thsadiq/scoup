@@ -2,6 +2,8 @@
 \docType{class}
 \alias{omega-class}
 \alias{alignsim,omega,seqParameters-method}
+\alias{kappa,omega-method}
+\alias{hky85mu,omega-method}
 \alias{effpop,omega-method}
 \alias{lscape,omega-method}
 \alias{nsynVar,omega-method}
@@ -22,10 +24,11 @@
 \section{Objects from the Class}{
     Objects of this class can be created by calls of the form
     \code{new("omega", nsynVar=..., psize=..., sampler=..., aaPlus=...,
-    vNvS=...)}. The object is an important input of the \code{\link{alignsim}}
-    function when interested in simulating sequences with respect to the
-    frequency-dependent framework. The \code{\link{wInput}} function in the
-    \code{\link{scoup}} package returns this kind of object.
+    vNvS=..., kappa=..., mrate=...)}. The object is an important input of
+    the \code{\link{alignsim}} function when interested in simulating
+    sequences with respect to the frequency-dependent framework. The
+    \code{\link{wInput}} function in the \code{\link{scoup}} package
+    returns this kind of object.
 }
 
 \section{Slots}{
@@ -41,6 +44,10 @@
             corresponding one-letter IUPAC names are arranged in increasing
             alphabetical order) that should be assigned non-zero \code{vNvS}.}
         \item{\code{vNvS}:}{numeric value returned by the \code{vNvS}
+            method.}
+        \item{\code{kappa}:}{numeric value returned by the \code{kappa}
+            method.}
+        \item{\code{mrate}:}{numeric value returned by the \code{hky85mu}
             method.}
     }
 }
@@ -65,6 +72,10 @@
             to end-user. It generates the DNA data at each site independently.}
         \item{vNvS}{\code{signature(x="omega")}: ratio of the variance of the
             non-synonymous to synonymous selection coefficients.}
+        \item{kappa}{\code{signature(x="omega")}: ratio of the rate of the
+            transition to transversion of nucleotides.}
+        \item{hky85mu}{\code{signature(x="omega")}: average nucleotide mutation
+            rate.}
     }
 }
 
