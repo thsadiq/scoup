@@ -49,7 +49,7 @@
 }
 \examples{
     aaEG1 <- aaGamma(1e-03, 0)
-    csc01 <- codonCoeffs(aaEG1, 4)
+    csc01 <- codonCoeffs(aaEG1)
     cFq <- codonFreq(csc01)
     freqs(cFq)
 }

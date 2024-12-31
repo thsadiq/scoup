@@ -8,17 +8,10 @@
     61-element vector of codon selection coefficients.
 }
 \usage{
-    codonCoeffs(s01x22, fixed=seq(1, 20))
+    codonCoeffs(s01x22)
 }
 \arguments{
     \item{s01x22}{A 22-element vector of class \code{aminoSC}.}
-    \item{fixed}{A vector of integers between 1 and 20 that indicates
-        which amino acid to assign positive coefficients to, based on the
-        alphabetical order of the 1-letter IUPAC notation. That is,
-        (1=\code{A}, 2=\code{C}, 3=\code{D}, ..., 19=\code{W}, 20=\code{Y}).
-        All the other amino acids are assigned zero coefficients. This input is
-        only necessary when the specified between-amino-acid variance is less
-        than \code{10^(-12)}. The default is \code{NULL}.}
 }
 \details{
     Consider a vector of amino acid selection coefficients, (\code{s_x:}
@@ -61,6 +54,6 @@
 
     # Example 3:
     aasc3 <- aaGauss(1e-03, 0)
-    ccfs2 <- codonCoeffs(aasc3, c(2,6))
+    ccfs2 <- codonCoeffs(aasc3)
     coeffs(ccfs2)
 }
