@@ -4,7 +4,7 @@
 # ><>< ================================================================ ><>< #
 
 # ><>< # Transform Amino Acid to Codon Selection Coefficients (Reviewed)
-codonCoeffs <- function(s01x22, fixed=NULL){
+codonCoeffs <- function(s01x22, fixed=seq(1,20)){ # "fixed" should be "NULL"?
     logicMat <- matrix(FALSE, 20, 61)
     codonSC <- rep(0, 61)
     count <- 0
