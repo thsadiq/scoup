@@ -8,7 +8,7 @@
     61-element vector of codon selection coefficients.
 }
 \usage{
-    codonCoeffs(s01x22, fixed=NULL)
+    codonCoeffs(s01x22, fixed=seq(1, 20))
 }
 \arguments{
     \item{s01x22}{A 22-element vector of class \code{aminoSC}.}
