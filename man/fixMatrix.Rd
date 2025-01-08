@@ -13,16 +13,16 @@
     fixMatrix(sc01x61, effpopsize)
 }
 \arguments{
-    \item{sc01x61}{A vector of sense codon selection coefficients that
-        are ordered alphabetically in terms of the IUPAC nucleotide triplets
+    \item{sc01x61}{A vector of the selection coefficients for the sense codons,
+        ordered alphabetically in terms of the IUPAC nucleotide triplets
         nomenclature.}
     \item{effpopsize}{Effective population size.}
 }
 \details{
-    If the additive fitness of a mutant codon (\emph{j}) relative to a resident
-    codon (\emph{i}) is given by \eqn{s_{ij}^{} = (s_{j}^{}-s_{i}^{})}, then
-    the rate at which codon \emph{j} gets fixed in a codon position occupied
-    by codon \emph{i} can be expressed as follows.
+    If the additive fitness of a mutant codon (\emph{j}) relative to a
+    wild-type codon (\emph{i}) is given by \eqn{s_{ij}^{} = (s_{j}^{}-
+    s_{i}^{})}, then the rate at which codon \emph{j} gets fixed in a
+    codon position occupied by codon \emph{i} can be expressed as follows.
     \deqn{
         f_{ij}^{} =
         \begin{cases}
@@ -48,8 +48,10 @@
     Hassan Sadiq
 }
 \seealso{
-    \code{\link{codonCoeffs}}, \verb{  } \code{\link{aaGamma}},
-    \verb{  } \code{\link{aaGauss}}.
+    You may be interested in also consulting the \code{\link{codonCoeffs}}
+    function designed to generate selection coefficients for the sense codons
+    or similar functions, \code{\link{aaGamma}} and \code{\link{aaGauss}},
+    targeted at amino acid.
 }
 \references{
     Bershtein, S. and Serohijos, A. W. R. and Shakhnovich, E. I. (2017),

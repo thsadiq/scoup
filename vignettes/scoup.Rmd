@@ -16,8 +16,8 @@ abstract: |
     evolution. Despite their relevance, hardly any simulator dedicated to
     sequence generation for natural selection inference analyses exist on the
     Bioconductor platform. In the broader molecular evolution genre, existing
-    genetic simulators are yet to fully exploit the correspondence between
-    the population genomic and the phylogenetic literature. `scoup`  was
+    genetic simulators are yet to fully appreciate the correspondence between
+    the population genomic and the phylogenetic literature. `scoup`  is
     designed as a contribution toward filling these voids. With `scoup`, it
     is possible to explore the implications of the interplay between mutation
     and genetic drift on the phenomenological inferences of natural selection
@@ -37,16 +37,16 @@ vignette: |
 
 # Introduction
 Statistical inference of the extent at which Darwinian natural selection had
-impacted on genetic data from multiple populations commands a healthy quota
+impacted on genetic data from multiple populations commands a healthy portion
 of the phylogenetic literature [@jacques2023]. Validation of these
 codon-based models relies heavily on simulated data. A search of the entries
 on the Bioconductor [@bioc2004] platform, on 29 July 2024, with keywords
 `codon`, `mutation`, `selection`, `simulate` and `simulation` returned a total
 of 72 unique (out of the 2300 available Software) packages. None of the
-retrieved entries was dedicated to codon data
-simulation for natural selection analyses. Given the ever increasing diverse
-types of models of natural selection inference from molecular data that exist,
-there is indeed need for applicable packages on the platform.
+retrieved entries was dedicated to codon data simulation for natural selection
+analyses. Given the ever increasing diversity natural selection inference
+models that exist, there is indeed need for applicable packages on the
+platform.
 
 Population genomic studies provided the mathematical foundation upon which
 phylogenetics thrived [@wright1931; @fisher1922; @hardy1908; @weinberg1908;
@@ -60,7 +60,7 @@ simulators in the literature used the MutSel framework [@wilke2015;
 @arenas2014]. This is most probably due to the perceived complexity of the
 methodology. In `scoup`, the versatility of the @uhlenbeck1930
 algorithm as a framework for evolutionary analyses [@bartoszek2017] was
-exploited to circumvent the complexity.
+used to circumvent the complexity.
 
 In a bid to identify an appropriate quantifier that permits direct comparison
 between the degree of selection signatures imposed during simulation and that
@@ -82,11 +82,11 @@ BiocManager::install("scoup")
 # Sample Code
 Three primary evolutionary algorithms are available in `scoup`. These
 include the frequency-dependent [@jones2017; @ayala1974], the
-Ornstein-Uhlenbeck (OU) and the discrete algorithms. Example of `R`
-[@cran2024] code where these functions were utilised are presented.
+Ornstein-Uhlenbeck (OU) and the episodic algorithms. Example of `R`
+[@cran2024] code where these functions are utilised are presented.
 The homogeneous [@muse1994; @goldman1994] and heterogeneous (site-wise
 and branch-wise) [@nielsen1998; @kpond2005] selection inference modelling
-contexts were explored. Data quality was assessed by comparing the
+contexts are explored. Data quality is assessed by comparing the
 maximum likelihood inferred ($\omega$) and the analytically calculated
 ($\mathrm{d}N/\mathrm{d}S$) estimates to the magnitude of the imposed
 selection pressure (measured by vN/vS). Template code used to analyse
@@ -101,24 +101,19 @@ installed the `scoup` package.
 library(scoup)
 
 # Number of extant taxa
-## Excluded values contributed to results presented in article
-leaves <- 8 # 64
+leaves <- 8
 
 # Number of codon sites
-## Excluded values contributed to results presented in article
-sSize <- 15 # 250
+sSize <- 15
 
 # Number of data replications for each parameter combination
-## Edited count was used for the results presented in article
-sims <- 1 # 50
+sims <- 1
 
 # OU reversion parameter (Theta) value
-## Excluded values contributed to results presented in article
-eThta <- c(0.01) # c(0.01, 0.1, 1)
+eThta <- c(0.01)
 
 # OU asymptotic variance value
-## Excluded values contributed to results presented in article 
-eVary <- c(0.0001) # c(0.0001, 0.01, 1)
+eVary <- c(0.0001)
 
 # OU landscape shift parameters
 hbrunoStat <- hbInput(c(vNvS=1, nsynVar=0.01))
@@ -148,8 +143,8 @@ seqCOL(simData)
 ```
 As expected, the correlation coefficient estimate was approximately
 $0.9974$ when the means of the inferred ($\omega$) and the calculated
-($\mathrm{d}N/\mathrm{d}S$) selection effects were compared. The
-correlation estimation included all the commented values.
+($\mathrm{d}N/\mathrm{d}S$) selection effects were first compared. The
+correlation estimation included more iterations.
 
 
 ## vN/vS Sensitivity
@@ -158,24 +153,19 @@ correlation estimation included all the commented values.
 library(scoup)
 
 # Number of extant taxa
-## Omitted value was used for the results presented in article
-xtant <- 8 # 64
+xtant <- 8
 
 # Number of codon sites
-## Omitted count was used for the results presented in article
-siteSize <- 15 # 64
+siteSize <- 15
 
 # Number of data replications for each parameter combination
-## Omitted count was used for the results presented in article
-simSize <- 1 # 50
+simSize <- 1
 
 # Variance of the non-synonymous selection coefficients
-## Excluded values contributed to results presented in article
-nsynVary <- c(0) # c(0, 0.001, 0.1)
+nsynVary <- c(0.001)
 
 # Ratio of the variance of the non-synonymous to synonymous coeff.
-## Excluded values contributed to results presented in article
-vNvSvec <- c(0) # c(0, 0.001,  1, 10)
+vNvSvec <- c(1)
 
 # Sequence alignment size information
 seqStat <- seqDetails(c(nsite=siteSize, ntaxa=xtant))
@@ -200,8 +190,8 @@ for(a in seq(1,length(vNvSvec))){
 # Print simulated alignment
 cseq(simulateSeq)
 ```
-Sequences generated with the presented code (with the excluded values
-activated) produced strongly correlated selection inferences
+Sequences generated with the presented code (with more iterations
+included) produced strongly correlated selection inferences
 (correlation coefficient $\approx 0.9923$) when the average
 $\mathrm{d}N/\mathrm{d}S$ and the $\omega$ values were compared.
 This implementation is an example of how to execute the
@@ -213,15 +203,14 @@ frequency-dependent evolutionary technique with the package.
 library(scoup)
 
 # Number of codon sites
-## Commented value was used for results presented in article
-sitesize<- 15 # 100
+sitesize<- 15
 
 # Variance of non-synonymous selection coefficients
 nsynVary <- 0.01
 
 # Number of extant taxa
 ## Commented value was used for results presented in article
-taxasize <- 8 # 1024
+taxasize <- 8
 
 # Sequence alignment size information
 seqsEntry <- seqDetails(c(nsite=sitesize, ntaxa=taxasize))
@@ -231,8 +220,7 @@ seqsEntry <- seqDetails(c(nsite=sitesize, ntaxa=taxasize))
 adaptEntry <- ouInput(c(eVar=0.1,Theta=1))
 
 # Ratio of the variance of the non-synonymous to synonymous coeff.
-## Excluded values contributed to results presented in article
-sratio <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 1000)
+sratio <- c(1e-06)
 
 # Iterate over all listed coefficient variance ratios
 for(a0 in seq(1,length(sratio))){
@@ -262,19 +250,16 @@ library(scoup)
 iNode <- 3
 
 # Number of required codon sites
-## Excluded value was used for the results presented in article
-siteCount <- 15 # 1000
+siteCount <- 15
 
 # Variance of non-synonymous selection coefficients
 nsnV <- 0.01
 
 # Number of data replications for each parameter combination
-## Edited count was used for the results presented in article
-nsim <- 1 # 50
+nsim <- 1
 
 # Ratio of the variance of the non-synonymous to synonymous coeff.
-## Excluded values contributed to results presented in article
-vNvSvec <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 100)
+vNvSvec <- c(1e-06)
 
 # Sequence alignment size information
 seqsBwise <- seqDetails(c(nsite=siteCount, blength=0.10))
@@ -302,31 +287,30 @@ seqCOL(genSeq)
 The correlation coefficient between the averages of the analytical
 $\mathrm{d}N/\mathrm{d}S$ and the inferred $\omega$ estimates was
 approximately $0.9998$, obtained from 50 independent iterations of
-the code for all the listed vN/vS values. The correlation coefficient
+the code for a set of vN/vS values. The correlation coefficient
 estimate was approximately $0.6349$ for vN/vS vs $\omega$ and $0.6360$
 for vN/vS vs $\mathrm{d}N/\mathrm{d}S$.
 
 # Conclusion
-Reference `scoup` code were presented to facilitate use of the package.
-Although not explicitly presented, it is also possible to generate data with
-signatures of directional selection by setting the `aaPlus` element of
-the `wInput` entry of the `alignsim` function accordingly. The
+Reference `scoup` code are presented to facilitate use of the package.
+Although not explicitly presented, it is also possible to generate data
+with signatures of directional selection by setting the `aaPlus` element
+of the `wInput` entry of the `alignsim` function accordingly. The
 capacity of the package is expected to be extended in future versions.
 
 # Citation
 A more appropriate citation will be provided for the package 
-after it has been accepted to the Bioconductor platform and after
-the corresponding article has been accepted for publication. In the
-meantime, to cite this package, use <em>Sadiq, H. 2024. "scoup:
-Simulate Codon Sequences with Darwinian Selection Incorporated as an
-Ornstein-Uhlenbeck Process". R Package. doi:10.18129/B9.bioc.scoup.</em>
+after it has been accepted for publication. In the meantime, to cite
+this package, use <em>Sadiq, H. 2024. "scoup: Simulate Codon Sequences
+with Darwinian Selection Incorporated as an Ornstein-Uhlenbeck Process".
+R Package. doi:10.18129/B9.bioc.scoup.</em>
 
 # References
 
 # Appendix: Sample Data Analyses (Non-R) Code
 `CODEML` script executed in `PAML` to infer
 single alignment-wide $\omega$ estimates for data sets generated from 50
-independent executions of each of the sensitivity analyses code presented
+independent executions of the sensitivity analyses code presented
 above. The same `CODEML` script was used to analyse data (also 50
 replicates) from the episodic analyses code, with the `model` entry
 replaced with `2`. The `scoup` simulated sequence data and
@@ -363,7 +347,7 @@ hyphy fubar --code Universal --alignment seq.nex --tree seq.nex
 
 # Session info
 
-The output of `sessionInfo()` from the computer where this file was generated
+The output of `sessionInfo()` from the computer where this file is generated
 is provided below.
 
 ```{r sessionInfo, echo=FALSE}

@@ -15,8 +15,7 @@ aaSCupdate.ou <- function(parameters, oldSC, bLength){
 }
 
 # ><>< # Ornstein-Uhlenbeck Landscape Independent Site Simulation
-sitesim.ou <- function(parameters, nodeLength, popSize,
-    ntaxa, s01x22, kappa, mrate){
+sitesim.ou <- function(parameters, nodeLength, popSize, ntaxa, s01x22){
     parentCodon <- initSeq( s01x22 )
     n_nodes <- ceiling( log(ntaxa, 2))
     seqVector <- c(parentCodon)
@@ -27,9 +26,8 @@ sitesim.ou <- function(parameters, nodeLength, popSize,
         f01x22 <- aaSCupdate(parameters, s01x22, nodeLength)
         s01x22 <- f01x22
         new_csc_vec <- codonCoeffs(s01x22)
-        qmatrix <- subsMatrix(new_csc_vec, popSize, kappa, mrate)
-        dndsVec[a4] <- dndsCalculator( codonFreq(new_csc_vec),
-            qmatrix, kappa, mrate)
+        qmatrix <- subsMatrix(new_csc_vec, popSize)
+        dndsVec[a4] <- dndsCalculator( codonFreq(new_csc_vec), qmatrix)
         
         for(a6 in seq(1,length(seqVector))){
             offspringID <- c(a6*2-1, a6*2)
@@ -56,8 +54,7 @@ alignsim.ou <- function(adaptIn, seqIn, modelIn, filename=NA){
     
     for(b0 in seq(1,seqIn@sites)){
         aaSC <- scFunc(modelIn@vNvS, modelIn@nsynVar)
-        simOut <- sitesim(adaptIn,seqIn@branchL,modelIn@psize,seqIn@taxa,
-            aaSC, modelIn@kappa, modelIn@mrate)
+        simOut <- sitesim(adaptIn,seqIn@branchL,modelIn@psize,seqIn@taxa,aaSC)
         alignment[,b0] <- simOut$codons
         dnds_matrix[,b0] <- simOut$dnds
     }

@@ -20,8 +20,10 @@
 \title{Simulate Codon Sequence Alignment}
 \description{
     Obtain an alignment of codon sequences that have been artificially subjected
-    to natural selection, imposed as changes in the fitness landscape along the
-    branches of a symmetric evolutionary tree.
+    to natural selection, imposed as perturbations on a static fitness landscape
+    or seascape. Codon evolution may be executed as a semi-controlled
+    (deterministic) frequency-dependent procedure or as a fully stochastic
+    Ornstein-Uhlenbeck process.
 }
 \usage{
     alignsim(adaptIn, seqIn, ...)
@@ -36,11 +38,12 @@
 \details{
     This is the primary function of the package. Codon sequence alignment be
     simulated in terms of the population genetics paradigm. Fitness landscape
-    may be kept static or set to be renewed along the branches of a balanced
-    phylogeny based on any of the three available methods: Ornstein-Uhlenbeck,
-    frequency-dependent or deterministic. Other possible inputs include,
-    \code{modelIn}: a \code{hbParameters} object. Only applicable when
-        \code{adaptIn} is an \code{ou} object.
+    may be kept static or set to be updated during every substitution event
+    along the branches of a balanced phylogeny based on any of the three
+    available methods: Ornstein-Uhlenbeck, frequency-dependent or episodic
+    (referred to as `deterministic`). Other possible inputs include,
+    \code{modelIn}: a ``hbParameters'' object. Only applicable when
+        \code{adaptIn} is an ``ou'' object.
     \code{filename}: a string that specifies the full path of the file
         that will contain the simulated alignment in NEXUS format. Say it is
         given as \code{"seq.nex"}, a file with that name will be printed in
@@ -58,8 +61,8 @@
             nucleotide triplets. The rows are the extant sequences and the
             columns are alignment sites.}
         \item{\code{dNdS}}{A matrix of the corresponding site-wise (or
-            codon-wise) dN/dS value for all the fitness landscapes utilised in
-            the simulation.}
+            codon-wise) dN/dS value for all the fitness landscapes utilised
+            during the simulation.}
         \item{\code{aInfo}}{A string of text that contains details of the
             parameter values that were used during simulation of the codon
             sequence alignment.}

@@ -3,27 +3,26 @@
 \alias{discrete-class}
 \alias{aaSCupdate,discrete-method}
 \alias{alignsim,discrete,seqParameters-method}
-\alias{kappa,discrete-method}
-\alias{hky85mu,discrete-method}
 \alias{effpop,discrete-method}
 \alias{lscape,discrete-method}
 \alias{sampler,discrete-method}
 \alias{show,discrete-method}
 \alias{sitesim,discrete,numeric-method}
 
-\title{Deterministic Simulation Model Input}
+\title{(Deterministic) Episodic Simulation Model Input}
 
 \description{
     Creates an object suitable for use when interested in generating an
-    alignment of genetic sequences following the deterministic simulation
-    technique available in the \code{\link{scoup}} package.
+    alignment of genetic sequences following the episodic (referenced as,
+    ``deterministic'') simulation technique available in the
+    \code{\link{scoup}} package.
 }
 
 \section{Objects from the Class}{
     Objects can be created by calls of the form \code{new("discrete",
-    lscape=..., sampler=..., nodeIndex=..., psize=..., t3mdl=..., kappa=...,
-    mrate=...)}. Objects can also be created straightforwardly with the
-    \code{\link{discreteInput}} function.
+    lscape=..., sampler=..., nodeIndex=..., psize=..., t3mdl=...)}. Objects
+    can also be created straightforwardly with the \code{\link{discreteInput}}
+    function.
 }
 
 \section{Slots}{
@@ -32,7 +31,7 @@
             method.}
         \item{\code{sampler}:}{numeric value that can be set as 1 or 2. It
             indicates the probability distribution where the amino acid
-            selection coefficients should be sampled.}
+            selection coefficients is sampled.}
         \item{\code{nodeIndex}:}{numeric input only relevant for implicit
             execution of the simulation algorithm. It is of no practical
             utility to the end-user.}
@@ -42,10 +41,6 @@
             suffix for the leaves on the returned phylogeny. It is intended
             to facilitate inference analyses with external software such as
             \code{PAML} or \code{HyPhy}.}
-        \item{\code{kappa}:}{numeric value returned by the \code{kappa}
-            method.}
-        \item{\code{mrate}:}{numeric value returned by the \code{hky85mu}
-            method.}
     }
 }
 
@@ -78,10 +73,6 @@
             nodeLength="numeric")}: background function that is not to be used
             by an end-user. It generates the DNA data at each site
             independently.}
-        \item{kappa}{\code{signature(x="discrete")}: ratio of the rate of the
-            transition to transversion of nucleotides.}
-        \item{hky85mu}{\code{signature(x="discrete")}: average nucleotide
-            mutation rate.}
     }
 }
 
@@ -90,8 +81,9 @@
 }
 
 \seealso{
-    \code{\link{discreteInput}}, \verb{  } \code{\link{codonMutation}},
-    \verb{  } \code{\link{alignsim}}.
+    Objects of this class are returned by the \code{\link{discreteInput}}
+    function. This class of objects are also required as inputs of the
+    \code{\link{alignsim} function}.
 }
 
 \examples{

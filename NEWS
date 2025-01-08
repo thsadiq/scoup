@@ -1,12 +1,15 @@
-Sadiq, H. et al (2024), "scoup: Simulate Codon Sequences with
+Sadiq, H. et al (2025), "scoup: Simulate Codon Sequences with
 Darwinian Selection Incorporated as an Ornstein-Uhlenbeck
 Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
-1.1.1 - 1.1.3 (2024-12-31): Functional Update
+1.1.1 - 1.1.4 (2025-01-07): Functional Update
 + Improved flexibility by allowing specification of mutation rate parameters.
 + Adjusted the `fixed` input in `codonCoeffs` function.
++ Reversed the mutation matrix flexibility due to expensive computational cost.
++ Updated help files to aptly emphasise episodic in-place of "deterministic".
++ Revised the `codonFreq` function so that it uses `softmax` identity.
 
 0.99.16 - 0.99.17 (2024-10-23): Developmental Release Changes
 + Edited citation and vignette appropriately

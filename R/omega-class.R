@@ -20,10 +20,8 @@ wUpdate <- function(omegaInput){
         if(a3 %in% aaZero){ s01x22 <- aaCreate(0, 0) }else{
             s01x22 <- aaCreate(omegaInput@vNvS, omegaInput@nsynVar) }
         csc01x61 <- codonCoeffs(s01x22)
-        subMTX <- subsMatrix(csc01x61, omegaInput@psize,
-            omegaInput@kappa, omegaInput@mrate)
-        dndsBank[a3] <- dndsCalculator( codonFreq(csc01x61), subMTX,
-            omegaInput@kappa, omegaInput@mrate)
+        subMTX <- subsMatrix(csc01x61, omegaInput@psize)
+        dndsBank[a3] <- dndsCalculator( codonFreq(csc01x61), subMTX)
         editedQmat[synonymsID,] <- subMTX[synonymsID,]
     }
     cqOutput <- list(qFrame=editedQmat, dnds=dndsBank)
@@ -77,8 +75,7 @@ alignsim.omega <- function(adaptIn, seqIn, filename=NA){
     aWord <- ifelse(adaptIn@sampler==1, "Gauss", "Gamma")
     nzaa <- paste0("(", paste0(adaptIn@aaPlus,collapse=","), ")")
     notes <- paste0("Omega-Based Parameters: method=", aWord, " vNvS=",
-        adaptIn@vNvS, " nsynVar=", adaptIn@nsynVar, " NonZero-AA=", nzaa,
-        " hky85mu=", adaptIn@mrate, " hky85kappa=", adaptIn@kappa)
+        adaptIn@vNvS, " nsynVar=", adaptIn@nsynVar, " NonZero-AA=", nzaa)
     commentText <- paste0(seqIn@details, ";   ", notes)
     cdnSEQs <- seqDframe(alignment)
     if(is.null(filename)){
@@ -98,9 +95,7 @@ setMethod("lscape", signature("omega"), function(x){
     message(cmnt, "\n\n")
 })
 setMethod("vNvS", signature("omega"), function(x) x@vNvS)
-setMethod("kappa", signature("omega"), function(x) x@kappa)
 setMethod("effpop", signature("omega"), function(x) x@psize)
-setMethod("hky85mu", signature("omega"), function(x) x@mrate)
 setMethod("nsynVar", signature("omega"), function(x) x@nsynVar)
 setMethod("sampler", signature("omega"), function(x) detectApp(x))
 setMethod("alignsim",

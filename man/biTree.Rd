@@ -6,20 +6,20 @@
 \title{Generate a Balanced Bifurcating Evolutionary Tree}
 \description{
     Obtain an evolutionary tree that is such that all its internal nodes have
-    exactly two offspring and all the branches on the tree have equal length.
+    exactly two offspring and all the branches on the tree have equal lengths.
 }
 \usage{
     biTree(ntaxa, bLength, terModel=NA)
 }
 \arguments{
     \item{ntaxa}{Number of extant taxa. It must be an integer (\code{t})
-        that may be expressed as \code{2^m}, where \code{m} is itself a
+        that may be expressed as \eqn{2^m}, where \code{m} is itself a
         positive integer.}
     \item{bLength}{Branch length. All the branches of the generated tree
         will have the same length that is equal to the specified value.}
-    \item{terModel}{A text that would be added as suffix to the extant
-        taxa names. If set as \code{NA} (default), no suffix will be added.
-        This is useful for assigning a model to the leaves in branch-specific
+    \item{terModel}{A text to be added as suffix to the extant taxa names. If
+        set equal to \code{NA} (default), no suffix will be added. This is
+        useful for assigning a model to the leaves in branch-specific 
         analyses.}
 }
 \value{

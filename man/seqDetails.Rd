@@ -12,7 +12,7 @@
 }
 \arguments{
     \item{seqVector}{A named vector that provides characteristics of the
-        intended sequence alignment. See \bold{Details} for further
+        required sequence alignment. See \bold{Details} for further
         information.}
 }
 \details{

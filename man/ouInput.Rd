@@ -18,13 +18,14 @@
 }
 \details{
     In its full form, \code{ouVector} is a three-element vector. Its contents
-    each represents part of the parameters required to implement an OU process.
+    each represents part of the parameters required to implement an OU codon
+    evolutionary process with respect to the \code{\link{scoup}} package.
     The vector contents include, \code{eMean}, \code{eVar} and \code{Theta}.
     Input \code{eMean} is the asymptotic mean (\eqn{\mu}) and zero is its
     default value. \code{eVar} denotes the asymptotic variance (\eqn{\Sigma^2}).
     It has a 0.01 default value. \code{Theta} (default = 0.01) represents the
     reversion rate (\eqn{\theta}). This function was aimed as a complement to
-    \code{alignsim}, not for use in isolation.
+    \code{alignsim}.
 }
 \value{
     An \code{ou} object that contains the following.

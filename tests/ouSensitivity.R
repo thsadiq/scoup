@@ -1,5 +1,8 @@
 # ><>< ================================================================= ><>< #
 # ><><                      OU Sensitivity Analyses                      ><>< #
+# ><><                             ~~~~~~~~~                             ><>< #
+# ><>< NOTE:- The edited (commented out) values were deemed necessary to ><>< #
+# ><><        avoid unnecessary delays during package installation.      ><>< #
 # ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
@@ -9,15 +12,12 @@ library(scoup)
 leaves <- 64
 
 # Number of data replications for each parameter combination
-## Edited count was used for the results presented in article
 sims <- 1 # 50
 
 # OU reversion parameter (Theta) value
-## Excluded values contributed to results in published article
 eThta <- c(0.01) # c(0.01, 0.1, 1)
 
 # OU asymptotic variance value
-## Excluded values contributed to results in published article 
 eVary <- c(0.0001) # c(0.0001, 0.01, 1)
 
 # OU landscape shift parameters

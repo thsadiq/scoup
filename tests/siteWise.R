@@ -1,5 +1,8 @@
 # ><>< ================================================================= ><>< #
 # ><><                        Site-wise Analyses.                        ><>< #
+# ><><                             ~~~~~~~~~                             ><>< #
+# ><>< NOTE:- The edited (commented out) values were deemed necessary to ><>< #
+# ><><        avoid unnecessary delays during package installation.      ><>< #
 # ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
@@ -22,7 +25,6 @@ seqsEntry <- seqDetails(c(nsite=sitesize, ntaxa=taxasize))
 adaptEntry <- ouInput(c(eVar=0.1,Theta=1))
 
 # Ratio of the variance of the non-synonymous to synonymous coeff.
-## Excluded values contributed to results presented in article
 sratio <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 1000)
 
 # Iterate over all listed coefficient variance ratios

@@ -8,7 +8,7 @@
     rate (dN/dS) of codon substitution.
 }
 \usage{
-    dndsCalculator(pi01x61, q61x61, kappa, mrate)
+    dndsCalculator(pi01x61, q61x61)
 }
 \arguments{
     \item{pi01x61}{Vector of sense codon frequencies that are ordered
@@ -17,10 +17,6 @@
     \item{q61x61}{A \eqn{61 \times 61} matrix of sense codon instantaneous
         substitution rates, where the rows and the columns are ordered in terms
         of IUPAC-lettered nucleotide triplets.}
-    \item{kappa}{Transition to transversion rate between nucleotide pairs
-        suitable for the HKY85 DNA mutation model.}
-    \item{mrate}{Average rate at which mutation occurs between DNA pairs
-        suitable for the HKY85 DNA mutation model.}
 }
 \details{
     The returned dN/dS estimate is obtained from the ratio of the following
@@ -51,10 +47,10 @@
     Hassan Sadiq
 }
 \seealso{
-    Codon frequencies generating function \code{\link{codonFreq}},
-    instantaneous substitution rate matrix function \code{\link{subsMatrix}}
-    and the nucleotide to codon mutation matrix converter
-    \code{\link{codonMutation}}.
+    Consider seeing the functions designed to facilitate generation of the
+    two necessary inputs. That is, the frequency generator,
+    \code{\link{codonFreq}} and the substitution matrix constructor,
+    \code{\link{subsMatrix}}.
 }
 \references{
     Spielman, S. J. and Wilke, C. O. (2015). The Relationship between dN/dS and
@@ -65,6 +61,6 @@
     aasc <- aaGauss(0.5, 1e-03)
     codonsc <- codonCoeffs(aasc)
     piFreq <- codonFreq(codonsc)
-    smat <- subsMatrix(codonsc, 1000, 4, 0.25)
-    dndsCalculator(piFreq, smat, 4, 0.25)
+    smat <- subsMatrix(codonsc, 1000)
+    dndsCalculator(piFreq, smat)
 }

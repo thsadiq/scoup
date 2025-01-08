@@ -14,8 +14,8 @@
 
 \title{Ornstein-Uhlenbeck Stochastic Simulation Model Object}
 \description{
-    Contains the inputs that are necessary to define an Ornstein-Uhlenbeck
-    (OU) evolutionary process.
+    Contains the inputs that are necessary to implement the Ornstein-Uhlenbeck
+    (OU) evolutionary algorithm.
 }
 
 \section{Objects from the Class}{
@@ -34,9 +34,9 @@
             method.}
         \item{\code{mu}:}{numeric value returned by the \code{asymMean}
             method.}
-        \item{\code{words}:}{descriptive text that contains details of the set
-            parameter values. Useful as reference comments to be included in
-            the generated sequence alignment.}
+        \item{\code{words}:}{descriptive text that contains details of the
+            input parameter values. Useful as reference comments to be
+            included in the generated sequence alignment.}
     }
 }
 
@@ -55,7 +55,7 @@
             \eqn{\Sigma^2}, of the OU evolutionary framework.}
         \item{reversion}{\code{signature(x="ou")}: reversion parameter,
             \eqn{\theta}, that acts as a selective pull in the OU process.}
-        \item{show}{\code{signature(object="ou")}: prints the values of
+        \item{show}{\code{signature(object="ou")}: prints the input values of
             \eqn{\Sigma^2}, \eqn{\mu} and \eqn{\theta}.}
         \item{sitesim}{\code{signature(parameters="ou", nodeLength="numeric")}:
             background function that is not to be used by an end-user. It
@@ -68,7 +68,9 @@
 }
 
 \seealso{
-    \code{\link{alignsim}}, \verb{  } \code{\link{ouInput}}.
+    Further help may be sought by consulting the help pages of the main
+    simulation function, \code{\link{alignsim}}, and/or the page of the
+    object generating function, \code{\link{ouInput}}.
 }
 
 \examples{

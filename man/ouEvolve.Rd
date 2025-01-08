@@ -30,7 +30,8 @@
     \eqn{\Delta t = t_{k}-t_{k-1}} approaches infinity, the asymptotic mean
     (\code{asymptoteMew}) and the asymptotic variance (\code{asymptoteVar})
     of the distribution are \eqn{\mu} and \eqn{\Sigma^2=\sigma^2/2\theta}
-    respectively, where \eqn{\theta} is the reversion rate.
+    respectively, where \eqn{\theta} is the reversion rate. The function
+    may be used to simulate toy OU trends. See \bold{Example} below.
 }
 \value{
     \describe{

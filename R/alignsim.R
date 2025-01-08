@@ -57,6 +57,20 @@ for(i in seq(1,61)){ for(j in seq(1,61)){
 # ><><                       Background Functions                       ><>< #
 # ><><                       ~~~~~~~~~~~~~~~~~~~~                       ><>< #
 
+# ><>< # Codon Mutation Matrix
+mutationMatrix <- function(kappa=4, mu_ij=1){
+    codon_mutate <- matrix(0, 61, 61)
+    hky85 <- 0.25 * matrix(c(
+        0, mu_ij, mu_ij*kappa, mu_ij, mu_ij, 0, mu_ij, mu_ij*kappa,
+        mu_ij*kappa, mu_ij, 0, mu_ij, mu_ij, mu_ij*kappa, mu_ij, 0), 4)
+    for(a3 in seq(1,61)){ for(a4 in seq(1,61)){ if(!is.na(codonNuc[a3,a4])){
+        diffpost <- eval( parse(text=codonNuc[a3,a4]))
+        codon_mutate[a3,a4] <- hky85[diffpost[1], diffpost[2]]
+    } } }
+    return(codon_mutate)
+}
+codon_m_matrix <- mutationMatrix()
+
 # ><>< # Simulate Along Internal Node of a Tree
 branchSimulate <- function(parentcodon, blength, q61x61e){
     init_time <- 0
@@ -163,9 +177,7 @@ setGeneric("nsynVar", function(x) standardGeneric("nsynVar"))
 setGeneric("freqs", function(x) standardGeneric("freqs"))
 setGeneric("coeffs", function(x) standardGeneric("coeffs"))
 # ><>< # discrete, hbParameters, omega
-setGeneric("kappa", function(x) standardGeneric("kappa"))
 setGeneric("effpop", function(x) standardGeneric("effpop"))
-setGeneric("hky85mu", function(x) standardGeneric("hky85mu"))
 setGeneric("sampler", function(x) standardGeneric("sampler"))
 # ><>< # discrete, omega
 setGeneric("lscape", function(x) standardGeneric("lscape"))
@@ -192,12 +204,10 @@ setClass("seqParameters",
 
 setClass("discrete",
     representation(lscape="matrix", sampler="numeric",
-        nodeIndex="numeric", psize="numeric",
-        t3mdl="character", kappa="numeric", mrate="numeric"))
+        nodeIndex="numeric", psize="numeric", t3mdl="character"))
 
 setClass("omega", representation(nsynVar="numeric", psize="numeric",
-    sampler="numeric", aaPlus="numeric", vNvS="numeric",
-    kappa="numeric", mrate="numeric"))
+    sampler="numeric", aaPlus="numeric", vNvS="numeric"))
 
 setClass("ou", representation(var="numeric",
     theta="numeric", mu="numeric", words="character"))

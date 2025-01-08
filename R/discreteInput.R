@@ -6,8 +6,7 @@
 # ><>< # Deterministic Landscape Input
 discreteInput <- function(defList=list()){
     stopifnot("`discreteInput` arg. must be a list!" = is(defList,"list"))
-    everyTag <- c("p02xnodes","technique","psize",
-        "nodeIndex","leafModel", "kappa", "mrate")
+    everyTag <- c("p02xnodes","technique","psize","nodeIndex","leafModel")
     runCheck <- warner(defList, everyTag)
     aaParams <- defList$p02xnodes[c(1,2),]
     app <- defList$technique
@@ -20,10 +19,6 @@ discreteInput <- function(defList=list()){
     if(is.null(xMD)) xMD <- NA_character_
     pnum <- defList$pSize
     if(is.null(pnum)) pnum <- 1000
-    hkyKappa <- defList$kappa
-    if(is.null(hkyKappa)) hkyKappa <- 4
-    hkyMu <- defList$mrate
-    if(is.null(hkyMu)) hkyMu <- 0.25
     if(is.null(aaParams)) aaParams <- rbind(rep(1,4),rep(1e-05,4))
     rownames(aaParams) <- c("vNvS","nsynVar")
     names(aaParams) <- NULL
@@ -31,10 +26,8 @@ discreteInput <- function(defList=list()){
     names(nID) <- NULL
     names(pnum) <- NULL
     names(xMD) <- NULL
-    names(hkyKappa) <- NULL
-    names(hkyMu) <- NULL
-    defEntry <- new("discrete", lscape=aaParams, sampler=app, nodeIndex=nID,
-        psize=pnum, t3mdl=xMD, kappa=hkyKappa, mrate=hkyMu)
+    defEntry <- new("discrete", lscape=aaParams, sampler=app,
+        nodeIndex=nID, psize=pnum, t3mdl=xMD)
     return(defEntry)
 }
 

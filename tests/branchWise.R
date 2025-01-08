@@ -1,5 +1,8 @@
 # ><>< ================================================================= ><>< #
 # ><><                       Branch-wise Analyses.                       ><>< #
+# ><><                             ~~~~~~~~~                             ><>< #
+# ><>< NOTE:- The edited (commented out) values were deemed necessary to ><>< #
+# ><><        avoid unnecessary delays during package installation.      ><>< #
 # ><>< ================================================================= ><>< #
 
 # Make package accessible in R session
@@ -12,11 +15,9 @@ iNode <- 3
 nsnV <- 0.01
 
 # Number of data replications for each parameter combination
-## Edited count was used for the results presented in article
 nsim <- 1 # 50
 
 # Ratio of the variance of the non-synonymous to synonymous coeff.
-## Excluded values contributed to results presented in article
 vNvSvec <- c(0) # c(0, 1e-06, 1e-03, 0.1, 1, 10, 100)
 
 # Sequence alignment size information

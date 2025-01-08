@@ -58,7 +58,9 @@
 }
 
 \seealso{
-    \code{\link{aaGamma}}, \verb{  } \code{\link{aaGauss}}
+    Functions that return objects of the the ``aminoSC'' class include the two
+    amino acid selection coefficient generators. That is,
+    \code{\link{aaGamma}} and \code{\link{aaGauss}}.
 }
 
 \examples{

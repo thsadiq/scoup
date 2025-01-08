@@ -15,7 +15,7 @@
 \alias{taxa}
 \alias{taxa,seqParameters-method}
 
-\title{Simulated Codon Sequence Structure}
+\title{Codon Sequence Structure}
 
 \description{
     A S4 object that contains information about the structure (that is, size,
@@ -51,32 +51,32 @@
         \item{alignsim}{\code{signature(adaptIn="discrete",
             seqIn="seqParameters")}: an option of the primary simulation
             function in the \code{\link{scoup}} package. This setting
-            activates the deterministic framework.}
+            activates the episodic (branch-wise) framework.}
         \item{alignsim}{\code{signature(adaptIn="omega",
-            seqIn="seqParameters")}: an option of the primary simulation
-            function in the \code{\link{scoup}} package. This setting
-            activates the frequency-dependent framework.}
+            seqIn="seqParameters")}: an option of the main function in the
+            \code{\link{scoup}} package. This setting calls the
+            frequency-dependent framework.}
         \item{alignsim}{\code{signature(adaptIn="ou",
-            seqIn="seqParameters")}: an option of the primary simulation
-            function in the \code{\link{scoup}} package. This setting
-            activates the Ornstein-Uhlenbeck framework.}
+            seqIn="seqParameters")}: an option of the simulation function
+            in the \code{\link{scoup}} package. This setting executes the
+            Ornstein-Uhlenbeck algorithm.}
         \item{branchL}{\code{signature(xo="seqParameters")}: branch length.
             Only balanced evolutionary trees are permitted. Therefore, all
             tree nodes have the same length.}
-        \item{details}{\code{signature(xo="seqParameters")}: note that
-            contain the important parameter settings that generated the
-            corresponding data. It is added as comments to the saved output.}
+        \item{details}{\code{signature(xo="seqParameters")}: a text string
+            that contains the parameter inputs for initiating the simulation
+            process. It is included as comments to saved sequence output.}
         \item{nodes}{\code{signature(xo="seqParameters")}: number of internal
             (bifurcating) stages of the balanced phylogeny. An evolutionary
             tree with \eqn{2^\code{m}} extant taxa will have \code{m} nodes.}
-        \item{phylogeny}{\code{signature(xo="seqParameters")}: newick string
-            of the phylogeny utilised for the codon sequence simulation.}
-        \item{show}{\code{signature(object="seqParameters")}: summary
-            descriptive details about the corresponding sequence alignment.}
-        \item{sites}{\code{signature(xo="seqParameters")}: number of codon
+        \item{phylogeny}{\code{signature(xo="seqParameters")}: a newick string
+            of the phylogeny for the codon sequence simulation.}
+        \item{show}{\code{signature(object="seqParameters")}: a summary
+            descriptive details with respect to the sequence alignment.}
+        \item{sites}{\code{signature(xo="seqParameters")}: the number of codon
             sites that make up the sequence.}
-        \item{taxa}{\code{signature(xo="seqParameters")}: number of leaves on
-            the phylogeny.}
+        \item{taxa}{\code{signature(xo="seqParameters")}: the number of leaves
+            on the phylogeny.}
     }
 }
 

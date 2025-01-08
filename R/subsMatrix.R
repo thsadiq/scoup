@@ -4,10 +4,9 @@
 # ><>< ================================================================ ><>< #
 
 # ><>< # Generate Codon Substitution Matrix
-subsMatrix <- function(sc01x61, effpopsize, kappa, mrate){
-    codonMmatrix <- codonMutation(kappa, mrate)
+subsMatrix <- function(sc01x61, effpopsize){
     fmatrix <- fixMatrix(sc01x61, effpopsize)
-    qmatrix <- codonMmatrix * fmatrix
+    qmatrix <- codon_m_matrix * fmatrix
     return(qmatrix)
 }
 

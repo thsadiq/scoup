@@ -4,7 +4,7 @@
 \alias{scoup-package}
 \docType{package}
 
-\title{Simulate Codons with Darwinian Selection Added as an OU Process}
+\title{Simulate Codons with Darwinian Selection Imposed as an OU Process}
 
 \description{
     The primary objective of this package is to facilitate more rigorous
@@ -17,11 +17,11 @@
     infeasible. For example, it is possible to explicitly interrogate the
     concepts of static and changing fitness landscapes with regards to
     Darwinian natural selection in the context of DNA sequences. The ratio of
-    the variance in selection coefficients, vN/vS, is presented as a new
-    measure of the net selection effect acting on genetic sequences. This
-    package could be very useful for generating more appropriate test data
-    sets for validation of likelihood-based (\eqn{\omega}) codon models of
-    evolution.
+    the variance of selection coefficients, vN/vS, is used to control the
+    magnitude of Darwinian selection pressure. No such application previously
+    existed. This package could be very useful for generating more appropriate
+    test data sets for validation of likelihood-based (\eqn{\omega}) codon
+    models of evolution.
 }
 
 \details{
@@ -30,9 +30,10 @@
     Brownian motion evolutionary paradigm. Explicit parameters exist to control
     the extent of drift, mutation and selection that are acting on the
     biological system. (b.) The frequency-dependent approach where every
-    substitution event that corresponds to a shift in the fitness landscape.
-    (c.) The deterministic method where the model parameters may be fixed
-    for each internal node of the phylogeny.
+    substitution event causes a shift in the fitness landscape. (c.) The
+    ``deterministic'' method that corresponds to an episodic evolutionary
+    process, where the model parameters may be fixed for each internal node
+    of the phylogeny.
 }
 
 \author{

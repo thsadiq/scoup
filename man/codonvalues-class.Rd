@@ -40,7 +40,8 @@
             are ordered in increasing alphabetical order in terms of the IUPAC
             nucleotide triplets naming structure.}
         \item{show}{\code{signature(object = "codonvalues")}: prints the first
-            six relevant (that is, coefficients or frequencies) codon values.}
+            six relevant (that is, coefficients or frequencies) codon related
+            values.}
     }
 }
 
@@ -49,7 +50,10 @@
 }
 
 \seealso{
-    \code{\link{codonCoeffs}}, \verb{  } \code{\link{codonFreq}}
+    The pair of functions that return objects of this class include,
+    the generating function for codon selection coefficients
+    \code{\link{codonCoeffs}} and the \code{\link{codonFreq}} function that
+    converts codon coefficients to frequencies.
 }
 
 \examples{

@@ -5,18 +5,18 @@
 \title{Populate Frequency-Dependent Simulation Model Parameters}
 \description{
     Create an \code{omega} object. The utility is for defining the parameters
-    that are necessary for simulating codon sequences that mimic the
+    that are necessary to simulate codon sequences that mimic the
     evolutionary process described by the frequency-dependent models.
 }
 \usage{
     wInput(wList=list())
 }
 \arguments{
-    \item{wList}{A list that may contain up to seven named entries. See
+    \item{wList}{A list that may contain up to five named entries. See
         \bold{Details} for further information.}
 }
 \details{
-    In its full form, \code{wList} will contain seven named elements. The
+    In its full form, \code{wList} will contain five named elements. The
     elements include (a.) \code{pSize}: an integer that represents the effective
     population size (default = 1000). (b.) \code{vNvS}: a numerical value that
     corresponds to the ratio of the variance of the non-synonymous to the
@@ -24,14 +24,12 @@
     default is a vector of integers between 1 and 20, inclusive. It gives the
     indices, if the one-letter IUPAC amino acid notations were ordered
     alphabetically, of the residues that should be assigned non-zero coefficient
-    variances. (d.) \code{technique}: it informs of the preferred probability
-    distribution where the selection coefficients should be sampled. It could be
-    set as 1 for Gaussian or 2 for Gamma (default) distribution. (e.)
-    \code{nsynVar}: variance of the non-synonymous selection coefficients. This
-    is a complementary function to \code{alignsim}. (f.) \code{kappa}:
-    transition to transversion rate between nucleotide pairs (default = 4).
-    (g.) \code{mrate}: average rate at which mutation occurs between DNA pairs
-    (default = 0.25).
+    variances. It is useful for executing directional evolution. (d.)
+    \code{technique}: it informs of the preferred probability distribution
+    where the selection coefficients should be sampled. It could be set as 1
+    for Gaussian or 2 for Gamma (default) distribution. (e.) \code{nsynVar}:
+    variance of the non-synonymous selection coefficients. This is a
+    complementary function to \code{alignsim}.
 }
 \value{
     An \code{omega} object that contains the following.
@@ -45,8 +43,6 @@
         \item{\code{vNvS}}{Ratio of the variance of the non-synonymous to the
             synonymous selection coefficients.}
         \item{\code{psize}}{Effective population size.}
-        \item{\code{kappa}}{Nucleotide transition to transversion ratio.}
-        \item{\code{mrate}}{Average nucleotide mutation rate.}
     }
 }
 \author{
