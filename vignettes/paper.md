@@ -11,6 +11,7 @@ tags:
   - Statistics
 authors:
   - name: Hassan Sadiq
+    corresponding: true
     orcid: 0000-0003-0192-7134
     affiliation: "1, 2"
   - name: Darren P. Martin
