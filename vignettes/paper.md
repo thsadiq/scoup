@@ -58,7 +58,7 @@ impacted genetic data commands a healthy portion of the phylogenetic
 literature [@jacques2023]. Validation of these largely codon-based models
 relies heavily on simulated data. Given the ever increasing diversity of
 natural selection inference models that exist [@yang2007; @hyphy2020],
-there is a need for more sophisticated simulators to match the ever
+there is a need for more sophisticated simulators to match the
 expanding model complexities.
 
 Bioconductor [@bioc2004] is a leading platform where peer-reviewed
@@ -76,63 +76,68 @@ sequences are also rare in the scientific literature [@gearty2024].
 
 `scoup` is further unique for at least three reasons. First, it incorporates
 Darwinian natural selection into the MutSel model in terms of variability of
-selection coefficients [@spielman2015]. Second, it directly utilises the
-concept of fitness landscapes. Third, fitness landscape updates can be
-executed in either a deterministic or a stochastic format. The stochastic
-updates are implemented in terms of the more biologically amenable,
-Ornstein-Uhlenbeck (OU) process [@bartoszek2017; @uhlenbeck1930]. A crude
-summary of how substitution events are initiated and progresses in
-`scoup` is presented in Figure \autoref{sfrrame}.
+selection coefficients, an extension of an idea from @spielman2015. Second,
+it directly utilises the concept of fitness landscapes. Third, fitness
+landscape updates can be executed in either a deterministic or a stochastic
+format. The stochastic updates are implemented in terms of the more
+biologically amenable, Ornstein-Uhlenbeck (OU) process
+[@bartoszek2017; @uhlenbeck1930]. A crude summary of how substitution
+events are executed in `scoup` is presented in \autoref{sfrrame}.
+
 
 ![\label{sfrrame}**Summarised `scoup` algorithm.**
-  After each substitution event and until the input tree length
-  ($\tau \in \mathbf{SEQ}$) is exhausted, the process returns to
-  *STEP A*. $\sigma^{2}_{`n`}=$ variance of amino acid selection
-  coefficients. $\sigma^{2}_{`s`}=$ variance of synonymous codon
-  selection coefficients. $\Sigma^{2}_{}=$ OU asymptotic variance.
+  After each substitution event, the process returns to *STEP A*,
+  until the input tree length ($\tau \in \mathbf{SEQ}$) is exhausted.
+  $\sigma^{2}_{n}=$ variance of amino acid selection coefficients.
+  $\sigma^{2}_{s}=$ variance of synonymous codon selection
+  coefficients. $\Sigma^{2}_{}=$ OU asymptotic variance.
   $\theta=$ OU mean reversion rate. $\mathbf{SEQ}=$ sequence
-  alignment details. $x_{\star}^{}=$ codon. $\mathbf{s}_{\star}^{}=$
+  information. $x_{\star}^{}=$ codon. $\mathbf{s}_{\star}^{}=$
   codon selection coefficient vector.](FIG0.pdf)
+
 
 # Implementation
 
-We simulated (see sample code in Figure \ref{pseudocode}) $20$ independent
+We simulated (see sample code in \autoref{pseudocode}) $20$ independent
 sequence alignments made up of $1000$ codon sites and $8$ extant taxa for
-each of the parameter combinations presented in Figure \ref{testfig}. The
+each of the parameter combinations presented in \autoref{testfig}. The
 phylogeny used was balanced and the length of its branches were $0.10$ each.
 The stochastic OU framework was implemented and other function inputs were
-left at their default values (Figure \ref{pseudocode}). Estimates of
+left at their default values (\autoref{pseudocode}). Estimates of
 $\mathrm{d}N/\mathrm{d}S$ were obtained following @spielman2015 and were
 averaged over all selection coefficient updates at each site and across
 the alignment. Inferences of $\omega$ were obtained with `CODEML` in
 `PAML` [@yang2007].
+
 
 ![\label{pseudocode}**An example R code for simulating a codon sequence
   alignment with `scoup`**. Default values were left unchanged. `Line01`:
   OU adaptation parameters where, $\mu=0$, $\Sigma^{2}_{}=0.01$ and
   $\theta=0.01$. `Line02`: evolution model input where,
   $\mathbf{s} \sim \text{Gamma}(1,\sigma_{n}^{-1})$,
-  $\sigma^{2}_{`n`}=10^{-5}_{}$, $\sigma^{2}_{`s`}=10^{-5}_{}$ and
+  $\sigma^{2}_{n}=10^{-5}_{}$, $\sigma^{2}_{s}=10^{-5}_{}$ and
   effective population size, $N_{\texttt{e}}^{}=1000$. `Line03`:
   sequence information where, site count is $250$, extant taxa count
-  is $64$ and branch length is $0.1$.](FIG1.png)
+  is $64$ and branch length is $0.1$.](FIG1.pdf)
+
 
 ![\label{testfig}**Demonstration of the accuracy of outputs from `scoup`
   in terms of the likelihood $\omega$ and the analytical dN/dS measures
   of natural selection.** The estimates of the selection measures were
   obtained homogeneously from each alignment generated for every combination
   of the stochastic landscape ($\Sigma^{2}_{}$ and $\theta$) and the
-  Darwinian selection ($\sigma^{2}_{`n`}$ and $\sigma^{2}_{`s`}$) parameters.
+  Darwinian selection ($\sigma^{2}_{n}$ and $\sigma^{2}_{s}$) parameters.
   The filled circles represent the average $\mathrm{d}N/\mathrm{d}S$
   estimates while the empty squares represent the average $\omega$ estimates,
   across $20$ independent codon sequence alignments. The widths of the arrows
   correspond to twice the standard errors. The dashed lines highlight point
   of neutral selection effect.](FIG2.pdf)
 
-Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in Figure
-\ref{testfig} strongly agree, except for the case of
-$(\sigma^{2}_{`n`},\sigma^{2}_{`s`})=(0.10,0.02)$. The suppressed $\omega$
-estimates, that is most pronounced for $\sigma^{2}_{`n`},\sigma^{2}_{`s`}>0$,
+
+Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
+\autoref{testfig} strongly agree, except for the case of
+$(\sigma^{2}_{n},\sigma^{2}_{s})=(0.10,0.02)$. The suppressed $\omega$
+estimates, that is most pronounced for $\sigma^{2}_{n},\sigma^{2}_{s}>0$,
 is likely a consequence of the well-documented conservative property of
 homogeneous $\omega$ inference techniques (see for example, @nielsen1998).
 Regardless, a correlation coefficient of approximately $0.9971$ was obtained
@@ -154,7 +159,7 @@ potentially interacting, molecular evolutionary processes. In another
 unique contribution to the literature, the magnitude of the Darwinian
 selection affect on the simulated sequences was controlled with the ratio
 of the variances of selection coefficients. Given the summaries
-in Figure \autoref{testfig}, we state the following hypothesis with respect
+in \autoref{testfig}, we state the following hypothesis with respect
 to natural selection inference from multi-population genetic sequences.
 With $\omega$, it is difficult to fully distinguish between compensatory and
 adaptive diversifying selection occurring on static and changing landscapes,
@@ -170,8 +175,8 @@ along with detailed documentation and tutorial files.
 
 # Whitepaper
 
-The `scoup` whitepaper is available on the
-[bioRxiv](https://www.biorxiv.org/collection/evolutionary-biology) preprint
+A `scoup` whitepaper is available on the
+[biorXiv](https://www.biorxiv.org/collection/evolutionary-biology) preprint
 server.
 
 # Acknowledgements
