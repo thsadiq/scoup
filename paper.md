@@ -176,7 +176,7 @@ along with detailed documentation and tutorial files.
 # Whitepaper
 
 A `scoup` whitepaper is available on the
-[bioRxiv](https://www.biorxiv.org/collection/evolutionary-biology) preprint
+[bioRxiv](https://doi.org/10.1101/2025.06.14.659628) preprint
 server.
 
 # Acknowledgements
