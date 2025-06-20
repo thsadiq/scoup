@@ -176,8 +176,8 @@ along with detailed documentation and tutorial files.
 # Whitepaper
 
 A `scoup` whitepaper is available on the
-[bioRxiv](https://doi.org/10.1101/2025.06.14.659628) preprint
-server.
+[bioRxiv](https://www.biorxiv.org/cgi/content/short/2025.06.14.659628v1)
+preprint server.
 
 # Acknowledgements
 
