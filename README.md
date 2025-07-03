@@ -11,10 +11,10 @@ A R package intended for the Bioconductor platform. It avails an opportunity to 
 - [LICENSE](LICENSE): a file that contains details of the GNU v3.0 that governs the free use and sharing of the package
 - [man](man): a folder where the R markdown files are saved.
 - [NAMESPACE](NAMESPACE): what functions and/or classes are imported and/or exported.
-- [NEWS](NEWS): Details of the edits, bug fixes and updates made to the package.
+- [NEWS](NEWS): Details of the edits, bug fixes and updates made to the package. It is consistent with the most recent version iteration on Bioconductor.
 - [R](R): a folder of R scripts that contains different (back-end) functions of the package.
 - [README](README.md): the file that contains this preface information.
-- [test](test): a directory of R scripts where sample applications of the package are saved. The scripts are intended to assist users get familiar with the package. They are also (minimally) used within the vignette.
+- [tests](tests): a directory of R scripts where sample applications of the package are saved. The scripts are intended to assist users get familiar with the package. They are also (minimally) used within the vignette.
 - [vignettes](vignettes): a folder where the markdown and citation files for building the vignette are saved.
 
 ## Installation
