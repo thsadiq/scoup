@@ -1,6 +1,6 @@
 name: Draft PDF
 on:
-  push:
+  pull_request:
     paths:
       - paper.md
       - paper.bib
