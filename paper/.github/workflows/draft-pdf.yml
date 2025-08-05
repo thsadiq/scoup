@@ -1,8 +1,9 @@
 name: Draft PDF
 on:
   push:
+    workflow_dispatch: {}
     branches:
-      - 'joss/scoup'
+      - 'joss'
     paths:
       - paper.md
       - paper.bib
