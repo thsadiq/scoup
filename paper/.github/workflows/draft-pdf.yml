@@ -1,6 +1,8 @@
 name: Draft PDF
 on:
-  pull_request:
+  push:
+    branches:
+      - 'joss/scoup'
     paths:
       - paper.md
       - paper.bib
