@@ -4,6 +4,9 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
+1.5.1 (2026-02-03): JOSS Publication Update
++ Extended the vignettes/exData folder to incorporate reviewers suggestions.
+
 1.1.1 - 1.1.4 (2025-01-07): Functional Update
 + Improved flexibility by allowing specification of mutation rate parameters.
 + Adjusted the `fixed` input in `codonCoeffs` function.
