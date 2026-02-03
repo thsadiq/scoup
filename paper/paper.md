@@ -211,10 +211,14 @@ of the package.
 
 A `scoup` whitepaper is available on the
 <<<<<<< HEAD
+<<<<<<< HEAD
 [bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
 =======
 [bioRxiv](https://www.biorxiv.org/cgi/content/short/2025.06.14.659628v1)
 >>>>>>> 31e1ba6 (Updated subfolder for joss submission)
+=======
+[bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
+>>>>>>> 682a77b (Update paper.md)
 preprint server.
 
 # Acknowledgements
