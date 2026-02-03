@@ -109,7 +109,10 @@ averaged over all selection coefficient updates at each site and across
 the alignment. Likelihood inferences of $\omega$ were obtained with `CODEML`
 in `PAML` [@yang2007].
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 ![\label{pseudocode}**An example R code for simulating a codon sequence
   alignment with `scoup`**. Default values were left unchanged. `Line01`:
   OU adaptation parameters where, $\mu=0$, $\Sigma^{2}_{}=0.01$ and
@@ -133,7 +136,10 @@ in `PAML` [@yang2007].
   the arrows correspond to twice the standard errors. The dashed lines
   highlight point of neutral selection effect.](FIG2.pdf)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
 \autoref{testfig} strongly agree as expected, except for the case of
 $(\sigma^{2}_{n},\sigma^{2}_{s})=(0.10,0.02)$. The mismatch in the top
