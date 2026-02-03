@@ -1,6 +1,21 @@
 Package: scoup
+<<<<<<< HEAD
 Version: 1.5.1
 Date: 2026-02-03
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Version: 1.5.0
+Date: 2025-01-10
+=======
+Version: 1.5.1
+Date: 2026-02-03
+>>>>>>> 3111287 (Update DESCRIPTION)
+=======
+Version: 1.5.1
+Date: 2026-02-03
+>>>>>>> eedb460 (Update DESCRIPTION)
+>>>>>>> devel
 License: GPL (>= 2)
 Authors@R: c(person("Hassan", "Sadiq", role=c("aut","cre","cph"),
                     email="hassan.t.sadiq@gmail.com",
