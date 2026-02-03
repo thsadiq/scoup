@@ -103,34 +103,11 @@ sequence alignments made up of $1000$ codon sites and $8$ extant taxa for
 each of the parameter combinations presented in \autoref{testfig}. The
 phylogeny used was balanced and the length of its branches were $0.10$ each.
 The stochastic OU framework was implemented and other function inputs were
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> devel
 left at their default values (\autoref{pseudocode}). Analytical estimates of
 $\mathrm{d}N/\mathrm{d}S$ were obtained following @spielman2015 and were
 averaged over all selection coefficient updates at each site and across
 the alignment. Likelihood inferences of $\omega$ were obtained with `CODEML`
 in `PAML` [@yang2007].
-<<<<<<< HEAD
-=======
-=======
-left at their default values (\autoref{pseudocode}). Estimates of
-$\mathrm{d}N/\mathrm{d}S$ were obtained following @spielman2015 and were
-averaged over all selection coefficient updates at each site and across
-the alignment. Inferences of $\omega$ were obtained with `CODEML` in
-`PAML` [@yang2007].
->>>>>>> 31e1ba6 (Updated subfolder for joss submission)
-=======
-left at their default values (\autoref{pseudocode}). Analytical estimates of
-$\mathrm{d}N/\mathrm{d}S$ were obtained following @spielman2015 and were
-averaged over all selection coefficient updates at each site and across
-the alignment. Likelihood inferences of $\omega$ were obtained with `CODEML`
-in `PAML` [@yang2007].
->>>>>>> 48b33c4 (Review 1 update of paper.md)
->>>>>>> devel
-
 
 ![\label{pseudocode}**An example R code for simulating a codon sequence
   alignment with `scoup`**. Default values were left unchanged. `Line01`:
@@ -149,23 +126,11 @@ in `PAML` [@yang2007].
   obtained homogeneously from each alignment generated for every combination
   of the stochastic landscape ($\Sigma^{2}_{}$ and $\theta$) and the
   Darwinian selection ($\sigma^{2}_{n}$ and $\sigma^{2}_{s}$) parameters.
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 48b33c4 (Review 1 update of paper.md)
->>>>>>> devel
   The solid points represent the average analytical $\mathrm{d}N/\mathrm{d}S$
   estimates while the open squares represent the average likelihood $\omega$
   estimates, across $20$ independent codon sequence alignments. The widths of
   the arrows correspond to twice the standard errors. The dashed lines
   highlight point of neutral selection effect.](FIG2.pdf)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> devel
-
 
 Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
 \autoref{testfig} strongly agree as expected, except for the case of
@@ -177,42 +142,6 @@ approximately $0.9971$ was obtained when the $\omega$ and
 $\mathrm{d}N/\mathrm{d}S$ averages were compared. The standard errors
 ranged between $[0.0000,\;0.0077)$ and $(0.0004,\;0.0627)$ for the
 $\mathrm{d}N/\mathrm{d}S$ and $\omega$ estimates respectively. These
-<<<<<<< HEAD
-=======
-=======
-  The filled circles represent the average $\mathrm{d}N/\mathrm{d}S$
-  estimates while the empty squares represent the average $\omega$ estimates,
-  across $20$ independent codon sequence alignments. The widths of the arrows
-  correspond to twice the standard errors. The dashed lines highlight point
-  of neutral selection effect.](FIG2.pdf)
-
-
-Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
-\autoref{testfig} strongly agree, except for the case of
-$(\sigma^{2}_{n},\sigma^{2}_{s})=(0.10,0.02)$. The suppressed $\omega$
-estimates, that is most pronounced for $\sigma^{2}_{n},\sigma^{2}_{s}>0$,
-is likely a consequence of the well-documented conservative property of
-homogeneous $\omega$ inference techniques (see for example, @nielsen1998).
-Regardless, a correlation coefficient of approximately $0.9971$ was obtained
-when the $\omega$ and $\mathrm{d}N/\mathrm{d}S$ averages were compared. The
-standard errors ranged between $[0.0000,\;0.0077)$ and $(0.0004,\;0.0627)$
-for the $\mathrm{d}N/\mathrm{d}S$ and $\omega$ estimates respectively. These
->>>>>>> 31e1ba6 (Updated subfolder for joss submission)
-=======
-
-
-Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
-\autoref{testfig} strongly agree as expected, except for the case of
-$(\sigma^{2}_{n},\sigma^{2}_{s})=(0.10,0.02)$. The mismatch in the top
-row is most likely a consequence of the well-documented conservative
-property of homogeneous $\omega$ likelihood inference techniques (see
-for example, @nielsen1998). Regardless, a correlation coefficient of
-approximately $0.9971$ was obtained when the $\omega$ and
-$\mathrm{d}N/\mathrm{d}S$ averages were compared. The standard errors
-ranged between $[0.0000,\;0.0077)$ and $(0.0004,\;0.0627)$ for the
-$\mathrm{d}N/\mathrm{d}S$ and $\omega$ estimates respectively. These
->>>>>>> 48b33c4 (Review 1 update of paper.md)
->>>>>>> devel
 measures confirm that the outputs from `scoup` are accurate.
 
 # Conclusions
@@ -241,41 +170,14 @@ respectively. To establish this hypothesis, at least numerically,
 GPL-2 license. It is available for download from the
 [Bioconductor platform](doi.org/10.18129/B9.bioc.scoup),
 along with detailed documentation and tutorial files.
-<<<<<<< HEAD
 All the code necessary to reproduce the results in
 this paper are accessible in `vignettes/extdata/` folder
 of the package.
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-All the code necessary to reproduce the results in
-this paper are accessible in `vignettes/extdata/` folder
-of the package.
-=======
->>>>>>> 31e1ba6 (Updated subfolder for joss submission)
-=======
-All the code necessary to reproduce the results in
-this paper are accessible in `vignettes/extdata/` folder
-of the package.
->>>>>>> 48b33c4 (Review 1 update of paper.md)
->>>>>>> devel
 
 # Whitepaper
 
 A `scoup` whitepaper is available on the
-<<<<<<< HEAD
 [bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-[bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
-=======
-[bioRxiv](https://www.biorxiv.org/cgi/content/short/2025.06.14.659628v1)
->>>>>>> 31e1ba6 (Updated subfolder for joss submission)
-=======
-[bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
->>>>>>> 682a77b (Update paper.md)
->>>>>>> devel
 preprint server.
 
 # Acknowledgements
