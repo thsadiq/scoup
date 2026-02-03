@@ -15,7 +15,7 @@ A R package intended for the Bioconductor platform. It avails an opportunity to 
 - [R](R): a folder of R scripts that contains different (back-end) functions of the package.
 - [README](README.md): the file that contains this preface information.
 - [tests](tests): a directory of R scripts where sample applications of the package are saved. The scripts are intended to assist users get familiar with the package. They are also (minimally) used within the vignette.
-- [vignettes](vignettes): a folder where the markdown and citation files for building the vignette are saved.
+- [vignettes](vignettes): a folder where the markdown and citation files for building the vignette are saved. All the files necessary to replicate the results presented in the JOSS paper and bioRxiv preprint are saved herein.
 
 ## Installation
 `scoup` can be installed from the Bioconductor platform with the following command. Interested users should visit the `devel` section on the Bioconductor website for access to the developmental version of the package that include the most recent updates and bug fixes.
