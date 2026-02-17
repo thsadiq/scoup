@@ -1,0 +1,52 @@
+% ><>< ================================================================= ><>< %
+% ><><     scoup:- Simulate Codon Sequences with Darwinian Selection     ><>< %
+% ><><           Incorporated as an Ornstein-Uhlenbeck Process           ><>< %
+% ><><                       ~~~~~~~~~~~~~~~~~~~~~                       ><>< %
+% ><><                          13th June 2025.                          ><>< %
+% ><>< ================================================================= ><>< %
+
+\documentclass[12pt]{article}
+
+% ><><                      Load necessary packages                      ><>< %
+\usepackage{pifont}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{graphicx, color}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\usepackage[paperheight=1.5in, paperwidth=10in,
+    margin=.08in, heightrounded]{geometry}
+ \renewcommand{\familydefault}{\sfdefault}
+% --------------------------------------------------------------------------- %
+
+% ><><                         Begin compilation                         ><>< %
+\begin{document}
+\thispagestyle{empty}
+
+\newcommand{\xbig}{\fontsize{40}{0}\selectfont}
+\setlength{\fboxrule}{2.5pt}
+\setlength{\fboxsep}{0pt}
+
+\begin{minipage}{\hsize}\xbig
+
+\fbox{
+   \centering
+   {\renewcommand{\tabcolsep}{0.30cm}
+   \renewcommand{\arraystretch}{1.1}
+   \hspace*{-.9cm}
+   \begin{tabular}{l}
+        \phantom{0} \\[-.8ex]
+        \texttt{if(!requireNamespace("BiocManager", quietly=TRUE))} \\[1ex]
+        \texttt{\phantom{0000}install.packages("BiocManager")} \\[1ex]
+        \texttt{BiocManager::install("scoup")} \\[1ex]
+   \end{tabular}}
+}
+\end{minipage}
+
+
+\end{document}
+
+% ><>< ================================================================= ><>< %
+% ><><                        DOCUMENT ENDS HERE.                        ><>< %
+% ><>< ================================================================= ><>< %

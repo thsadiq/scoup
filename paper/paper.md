@@ -26,7 +26,7 @@ affiliations:
          Department of Integrative Biomedical Sciences,
          University of Cape Town, South Africa
    index: 2
-date: 13 June 2025
+date: 17 February 2026
 bibliography: paper.bib
 ---
 
@@ -54,7 +54,7 @@ populations.
 # Statement of need
 
 Statistical inference of the extent to which Darwinian natural selection has
-impacted genetic data commands a healthy portion of the phylogenetic
+impacted genetic data, commands a healthy portion of the phylogenetic
 literature [@jacques2023]. Validation of these largely codon-based models
 relies heavily on simulated data. Given the ever increasing diversity of
 natural selection inference models that exist [@yang2007; @hyphy2020],
@@ -93,21 +93,33 @@ events are executed in `scoup` is presented in \autoref{sfrrame}.
   coefficients. $\Sigma^{2}_{}=$ OU asymptotic variance.
   $\theta=$ OU mean reversion rate. $\mathbf{SEQ}=$ sequence
   information. $x_{\star}^{}=$ codon. $\mathbf{s}_{\star}^{}=$
-  codon selection coefficient vector.](FIG0.pdf)
+  codon selection coefficient vector.](FIG1.pdf)
 
+We highlight two important design choices from \autoref{sfrrame}. First,
+we assume that a static fitness landscape is obtained from a single set of
+parameters ($\xi$) needed to sample a $20$-element numerical vector of amino
+acid selection coefficients (that is, $s_{0}^{}$ in \autoref{sfrrame}). The
+coefficients are subsequently used as inputs of the corresponding MutSel model.
+This ensured that a seascape setting is then defined as a function of multiple
+sets of parameters ($\xi_{1}^{}$, $\xi_{2}^{}$, \ldots, $\xi_{k}^{}$, where
+$k \leq$ extant taxa size). Second, the coefficient update ($s_t$) step is
+done after every substitution event. In addition, the Ornstein-Uhlenbeck
+update process is discretised. In other words, the OU jump sizes are fixed
+and pre-specified as an input to the simulation functions.
 
 # Implementation
 
-We simulated (see sample code in \autoref{pseudocode}) $20$ independent
-sequence alignments made up of $1000$ codon sites and $8$ extant taxa for
-each of the parameter combinations presented in \autoref{testfig}. The
-phylogeny used was balanced and the length of its branches were $0.10$ each.
-The stochastic OU framework was implemented and other function inputs were
-left at their default values (\autoref{pseudocode}). Analytical estimates of
-$\mathrm{d}N/\mathrm{d}S$ were obtained following @spielman2015 and were
-averaged over all selection coefficient updates at each site and across
-the alignment. Likelihood inferences of $\omega$ were obtained with `CODEML`
-in `PAML` [@yang2007].
+`scoup` may be installed directly from Bioconductor using the following
+`R` code in \autoref{installcode}.
+
+![\label{installcode}**R installation code for `scoup`**. Allows the most
+  recently published version of the package to be installed from Bioconductor.
+  Development version of the package may be installed by adding
+  `BiocManager::install(version="devel")` before the final line.](FIG2.pdf)
+
+A sample code for executing a simulation run with `scoup` is presented in
+\autoref{pseudocode}. The code executes a stochastic OU framework on a
+balanced phylogeny with $64$ extant taxa.
 
 ![\label{pseudocode}**An example R code for simulating a codon sequence
   alignment with `scoup`**. Default values were left unchanged. `Line01`:
@@ -117,32 +129,8 @@ in `PAML` [@yang2007].
   $\sigma^{2}_{n}=10^{-5}_{}$, $\sigma^{2}_{s}=10^{-5}_{}$ and
   effective population size, $N_{\texttt{e}}^{}=1000$. `Line03`:
   sequence information where, site count is $250$, extant taxa count
-  is $64$ and branch length is $0.1$.](FIG1.pdf)
+  is $64$ and branch length is $0.1$.](FIG3.pdf)
   
-![\label{testfig}**Demonstration of the accuracy of outputs from `scoup`
-  in terms of the likelihood $\omega$ and the analytical dN/dS measures
-  of natural selection.** The estimates of the selection measures were
-  obtained homogeneously from each alignment generated for every combination
-  of the stochastic landscape ($\Sigma^{2}_{}$ and $\theta$) and the
-  Darwinian selection ($\sigma^{2}_{n}$ and $\sigma^{2}_{s}$) parameters.
-  The solid points represent the average analytical $\mathrm{d}N/\mathrm{d}S$
-  estimates while the open squares represent the average likelihood $\omega$
-  estimates, across $20$ independent codon sequence alignments. The widths of
-  the arrows correspond to twice the standard errors. The dashed lines
-  highlight point of neutral selection effect.](FIG2.pdf)
-
-Estimates of $\omega$ and $\mathrm{d}N/\mathrm{d}S$ summarised in
-\autoref{testfig} strongly agree as expected, except for the case of
-$(\sigma^{2}_{n},\sigma^{2}_{s})=(0.10,0.02)$. The mismatch in the top
-row is most likely a consequence of the well-documented conservative
-property of homogeneous $\omega$ likelihood inference techniques (see
-for example, @nielsen1998). Regardless, a correlation coefficient of
-approximately $0.9971$ was obtained when the $\omega$ and
-$\mathrm{d}N/\mathrm{d}S$ averages were compared. The standard errors
-ranged between $[0.0000,\;0.0077)$ and $(0.0004,\;0.0627)$ for the
-$\mathrm{d}N/\mathrm{d}S$ and $\omega$ estimates respectively. These
-measures confirm that the outputs from `scoup` are accurate.
-
 # Conclusions
 
 We present `scoup`, a R package that allows for simulation of codon
@@ -155,13 +143,7 @@ existing knowledge about the complex interactions of different,
 potentially interacting, molecular evolutionary processes. In another
 unique contribution to the literature, the magnitude of the Darwinian
 selection affect on the simulated sequences was controlled with the ratio
-of the variances of selection coefficients. Given the summaries
-in \autoref{testfig}, we state the following hypothesis with respect
-to natural selection inference from multi-population genetic sequences.
-With $\omega$, it is difficult to fully distinguish between compensatory and
-adaptive diversifying selection occurring on static and changing landscapes,
-respectively. To establish this hypothesis, at least numerically,
-`scoup` should be an invaluable resource.
+of the variances of selection coefficients.
 
 # Code availability
 
@@ -172,12 +154,6 @@ along with detailed documentation and tutorial files.
 All the code necessary to reproduce the results in
 this paper are accessible in `vignettes/extdata/` folder
 of the package.
-
-# Whitepaper
-
-A `scoup` whitepaper is available on the
-[bioRxiv](https://doi.org/10.1101/2025.06.14.659628)
-preprint server.
 
 # Acknowledgements
 
