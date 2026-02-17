@@ -151,9 +151,8 @@ of the variances of selection coefficients.
 GPL-2 license. It is available for download from the
 [Bioconductor platform](doi.org/10.18129/B9.bioc.scoup),
 along with detailed documentation and tutorial files.
-All the code necessary to reproduce the results in
-this paper are accessible in `vignettes/extdata/` folder
-of the package.
+Some additional sample code are accessible in
+`tests/` and `vignettes/` folders of the package.
 
 # Acknowledgements
 
