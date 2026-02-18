@@ -53,24 +53,39 @@ populations.
 
 # Statement of need
 
-Statistical inference of the extent to which Darwinian natural selection has
-impacted genetic data, commands a healthy portion of the phylogenetic
-literature [@jacques2023]. Validation of these largely codon-based models
-relies heavily on simulated data. Given the ever increasing diversity of
-natural selection inference models that exist [@yang2007; @hyphy2020],
-there is a need for more sophisticated simulators to match the
-expanding model complexities.
+Statistical inference models that are used to analyse the degree of the impact
+of Darwinian natural selection on observed genetic data, command a healthy
+portion of the phylogenetic literature [@gupta2023]. Validation of these
+largely codon-based models relies heavily on simulated data. Given the ever
+increasing diversity of natural selection inference models that exist
+[@yang2007; @arenas2015; @hyphy2020], there is a need for more sophisticated
+simulators to match the expanding model complexities.
 
-Bioconductor [@bioc2004] is a leading platform where peer-reviewed
-bioinformatic software useful for biological data analyses are hosted. A
-search of the entries on the platform, in Version 3.19 on 29 October 2024,
-with keywords including, `codon`, `mutation`, `selection`, `simulate`, and
-`simulation` returned a total of 72 unique packages out of the 2300 available.
-None of the retrieved entries was dedicated to codon data simulation for
-natural selection analyses. Thus, `scoup` is designed on the basis of the
-mutation-selection (MutSel) framework [@halpern1998] as an overdue
-contribution to the void. Software and/or packages for simulating genetic
-sequences are also rare in the scientific literature [@gearty2024]. 
+Bioconductor [@bioc2004] is a leading bioinformatics platform distributing
+peer-reviewed R packages. A search of the entries on the platform, in
+Version 3.22 on 18 February 2026, with keywords including, `codon`, `mutation`,
+`selection`, `simulate`, and `simulation` returned a total of 70 packages
+(excluding `scoup`) out of the 2361 available. None of the retrieved entries
+was dedicated to codon data simulation for natural selection analyses. Thus,
+`scoup` is designed on the basis of the mutation-selection (MutSel) framework
+[@halpern1998] as an overdue contribution to the void.
+
+Software and/or packages for simulating molecular protein sequences are
+a few in the scientific literature [@peng2015]. Existing simulators tend
+to be more suitable for quantitative character evolution. These include,
+`ape` [@paradis2019], `ouch` [@cressler2015; @butler2004] and `geiger`
+[@pennell2014]. Other extensively used DNA sequence simulators including,
+`Seq-Gen` [@rambaut1997], `INDELible` [@fletcher2009], `PhyloSim`
+[@sipos2011] and `phangorn` [@klaus2011] are parameterized in accordance
+with $\omega$-based models [@goldman1994; @muse1994]. More recent sequence
+simulators, such as, `phastSim` [@nicola2022] and `AliSim-HPC` [@nhan2023]
+prioritized output capacity. Only few genetic simulators were built upon the
+more elaborate MutSel evolutionary concept. These include, `Pyvolve`
+[@wilke2015] and `SGWE` [@arenas2014]. To the best of our knowledge, these
+existing MutSel friendly simulators are only able to generate data from
+static landscapes. With our proposed simulator (`scoup`), it is possible
+to generate codon sequences from landscapes that are static or those that
+are changing (also known as *seascapes*) [@lassig2009].
 
 # Algorithm
 
@@ -85,8 +100,9 @@ biologically amenable, Ornstein-Uhlenbeck (OU) process
 events are executed in `scoup` is presented in \autoref{sfrrame}.
 
 
-![\label{sfrrame}**Summarised `scoup` algorithm.**
-  After each substitution event, the process returns to *STEP A*,
+![\label{sfrrame}**Summarised `scoup` algorithm.** The flowchart
+  shows the process for a single substitution event. After each
+  substitution event, the process returns to *STEP A*,
   until the input tree length ($\tau \in \mathbf{SEQ}$) is exhausted.
   $\sigma^{2}_{n}=$ variance of amino acid selection coefficients.
   $\sigma^{2}_{s}=$ variance of synonymous codon selection
@@ -95,55 +111,35 @@ events are executed in `scoup` is presented in \autoref{sfrrame}.
   information. $x_{\star}^{}=$ codon. $\mathbf{s}_{\star}^{}=$
   codon selection coefficient vector.](FIG1.pdf)
 
+
 We highlight two important design choices from \autoref{sfrrame}. First,
 we assume that a static fitness landscape is obtained from a single set of
 parameters ($\xi$) needed to sample a $20$-element numerical vector of amino
 acid selection coefficients (that is, $s_{0}^{}$ in \autoref{sfrrame}). The
 coefficients are subsequently used as inputs of the corresponding MutSel model.
-This ensured that a seascape setting is then defined as a function of multiple
-sets of parameters ($\xi_{1}^{}$, $\xi_{2}^{}$, \ldots, $\xi_{k}^{}$, where
-$k \leq$ extant taxa size). Second, the coefficient update ($s_t$) step is
-done after every substitution event. In addition, the Ornstein-Uhlenbeck
+The seascape setting is then defined as a function of
+multiple sets of parameters ($\xi_{1}^{}$, $\xi_{2}^{}$, \ldots, $\xi_{k}^{}$,
+for $k \leq$ extant taxa size). Second, the coefficient update ($s_t$) step
+is done after every substitution event. In addition, the Ornstein-Uhlenbeck
 update process is discretised. In other words, the OU jump sizes are fixed
 and pre-specified as an input to the simulation functions.
 
 # Implementation
 
-`scoup` may be installed directly from Bioconductor using the following
-`R` code in \autoref{installcode}.
-
-![\label{installcode}**R installation code for `scoup`**. Allows the most
-  recently published version of the package to be installed from Bioconductor.
-  Development version of the package may be installed by adding
-  `BiocManager::install(version="devel")` before the final line.](FIG2.pdf)
-
-A sample code for executing a simulation run with `scoup` is presented in
-\autoref{pseudocode}. The code executes a stochastic OU framework on a
-balanced phylogeny with $64$ extant taxa.
-
-![\label{pseudocode}**An example R code for simulating a codon sequence
-  alignment with `scoup`**. Default values were left unchanged. `Line01`:
-  OU adaptation parameters where, $\mu=0$, $\Sigma^{2}_{}=0.01$ and
-  $\theta=0.01$. `Line02`: evolution model input where,
-  $\mathbf{s} \sim \text{Gamma}(1,\sigma_{n}^{-1})$,
-  $\sigma^{2}_{n}=10^{-5}_{}$, $\sigma^{2}_{s}=10^{-5}_{}$ and
-  effective population size, $N_{\texttt{e}}^{}=1000$. `Line03`:
-  sequence information where, site count is $250$, extant taxa count
-  is $64$ and branch length is $0.1$.](FIG3.pdf)
+`scoup` is primarily designed using base functions in `R`. Some important
+complementary functions are imported from the
+[`Matrix`](doi.org/10.32614/CRAN.package.Matrix) and
+[`Biostrings`](doi.org/10.18129/B9.bioc.Biostrings) packages.
   
 # Conclusions
 
-We present `scoup`, a R package that allows for simulation of codon
-sequences in a way that is capable of recapitulating the evolutionary
-processes of biological systems more realistically than most existing
+We present `scoup`, a R package for codon sequences simulation, where the
+evolutionary processes are mirrored more realistically than most existing
 simulators. Our framework creatively incorporates the Ornstein-Uhlenbeck
 process into the mutation-selection evolutionary model. This attribute
 could potentially unlock exciting research avenues that will improve
 existing knowledge about the complex interactions of different,
-potentially interacting, molecular evolutionary processes. In another
-unique contribution to the literature, the magnitude of the Darwinian
-selection affect on the simulated sequences was controlled with the ratio
-of the variances of selection coefficients.
+potentially interacting, molecular evolutionary processes.
 
 # Code availability
 
