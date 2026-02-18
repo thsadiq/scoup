@@ -147,12 +147,14 @@ of the variances of selection coefficients.
 
 # Code availability
 
-`scoup` is published for free public use under the
-GPL-2 license. It is available for download from the
+`scoup` is published for free public use under the GPL-2 license. It is
+available for download from the
 [Bioconductor platform](doi.org/10.18129/B9.bioc.scoup),
-along with detailed documentation and tutorial files.
-Some additional sample code are accessible in
-`tests/` and `vignettes/` folders of the package.
+along with detailed documentation and tutorial files. Some additional sample
+code are accessible in the
+[`tests`](https://github.com/thsadiq/scoup/tree/main/tests) and
+[`vignettes`](https://github.com/thsadiq/scoup/tree/main/vignettes)
+folders of the package.
 
 # Acknowledgements
 
