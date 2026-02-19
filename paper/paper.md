@@ -130,7 +130,7 @@ as an input to the simulation functions.
 
 [`scoup`](doi.org/10.18129/B9.bioc.scoup) is primarily designed using base
 functions in `R`. Some important complementary functions are imported from
-the `Matrix` [@bates2024] and the `Biostrings`[@pages2024] packages.
+the `Matrix` [@bates2024] and the `Biostrings` [@pages2024] packages.
   
 # Conclusions
 
