@@ -5,7 +5,7 @@ on:
       - paper/paper.md
       - paper/paper.bib
       - paper/README.md
-      - .github/workflows/draft-pdf.yml
+      - .github/workflows/draft.yml
       
 jobs:
   paper:
