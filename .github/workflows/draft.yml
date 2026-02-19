@@ -2,11 +2,9 @@ name: Draft PDF
 on:
   push:
     paths:
-      - paper.md
-      - paper.bib
-      - FIG0.pdf
-      - FIG1.pdf
-      - FIG2.pdf
+      - paper/paper.md
+      - paper/paper.bib
+      - paper/README.md
       - .github/workflows/draft-pdf.yml
       
 jobs:
