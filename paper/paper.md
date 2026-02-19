@@ -38,18 +38,18 @@ evolutionary biology (i.e. phylogenetics and population genetics) borne
 from the split can only benefit from research that seeks to bridge
 the gap. Simulation algorithms that combine fundamental concepts from
 both genres are important to achieve such unifying objective. 
-We introduce `scoup`, a codon sequence simulator that is implemented
-in R and hosted on the Bioconductor platform. There is hardly any other
-simulator dedicated to genetic sequence generation for natural selection
-analyses on the platform. Concepts from the Halpern-Bruno mutation-selection
-model and the Ornstein-Uhlenbeck (OU) evolutionary algorithm were creatively
-fused such that the end-product is a novelty with respect to computational
-genetic simulation. Users are able to seamlessly adjust the model parameters
-to mimic complex evolutionary procedures that may have been otherwise
-infeasible. For example, it is possible to explicitly interrogate the
-concepts of static and changing fitness landscapes with regards to Darwinian
-natural selection in the context of codon sequences from multiple
-populations.
+We introduce [`scoup`](doi.org/10.18129/B9.bioc.scoup), a codon sequence
+simulator that is implemented in R and hosted on the Bioconductor platform.
+There is hardly any other simulator dedicated to genetic sequence generation
+for natural selection analyses on the platform. Concepts from the
+Halpern-Bruno mutation-selection model and the Ornstein-Uhlenbeck (OU)
+evolutionary algorithm were creatively fused such that the end-product is a
+novelty with respect to computational genetic simulation. Users are able to
+seamlessly adjust the model parameters to mimic complex evolutionary
+procedures that may have been otherwise infeasible. For example, it is
+possible to explicitly interrogate the concepts of static and changing
+fitness landscapes with regards to Darwinian natural selection in the
+context of codon sequences from multiple populations.
 
 # Statement of need
 
@@ -65,10 +65,11 @@ Bioconductor [@bioc2004] is a leading bioinformatics platform distributing
 peer-reviewed R packages. A search of the entries on the platform, in
 Version 3.22 on 18 February 2026, with keywords including, `codon`, `mutation`,
 `selection`, `simulate`, and `simulation` returned a total of 70 packages
-(excluding `scoup`) out of the 2361 available. None of the retrieved entries
-was dedicated to codon data simulation for natural selection analyses. Thus,
-`scoup` is designed on the basis of the mutation-selection (MutSel) framework
-[@halpern1998] as an overdue contribution to the void.
+(excluding [`scoup`](doi.org/10.18129/B9.bioc.scoup)) out of the 2361 available.
+None of the retrieved entries was dedicated to codon data simulation for natural
+selection analyses. Thus, [`scoup`](doi.org/10.18129/B9.bioc.scoup) is designed
+on the basis of the mutation-selection (MutSel) framework [@halpern1998] as an
+overdue contribution to the void.
 
 Software and/or packages for simulating molecular protein sequences are
 a few in the scientific literature [@peng2015]. Existing simulators tend
@@ -83,21 +84,22 @@ prioritized output capacity. Only few genetic simulators were built upon the
 more elaborate MutSel evolutionary concept. These include, `Pyvolve`
 [@wilke2015] and `SGWE` [@arenas2014]. To the best of our knowledge, these
 existing MutSel friendly simulators are only able to generate data from
-static landscapes. With our proposed simulator (`scoup`), it is possible
-to generate codon sequences from landscapes that are static or those that
-are changing (also known as *seascapes*) [@lassig2009].
+static landscapes. With our proposed simulator, it is possible to generate
+codon sequences from landscapes that are static or those that are changing
+(also known as *seascapes*) [@lassig2009].
 
 # Algorithm
 
-`scoup` is further unique for at least three reasons. First, it incorporates
-Darwinian natural selection into the MutSel model in terms of variability of
-selection coefficients, an extension of an idea from @spielman2015. Second,
-it directly utilises the concept of fitness landscapes. Third, fitness
-landscape updates can be executed in either a deterministic or a stochastic
-format. The stochastic updates are implemented in terms of the more
-biologically amenable, Ornstein-Uhlenbeck (OU) process
+[`scoup`](doi.org/10.18129/B9.bioc.scoup) is further unique for at least three
+reasons. First, it incorporates Darwinian natural selection into the MutSel
+model in terms of variability of selection coefficients, an extension of an
+idea from @spielman2015. Second, it directly utilises the concept of fitness
+landscapes. Third, fitness landscape updates can be executed in either a
+deterministic or a stochastic format. The stochastic updates are implemented
+in terms of the more biologically amenable, Ornstein-Uhlenbeck (OU) process
 [@bartoszek2017; @uhlenbeck1930]. A crude summary of how substitution
-events are executed in `scoup` is presented in \autoref{sfrrame}.
+events are executed in [`scoup`](doi.org/10.18129/B9.bioc.scoup) is presented
+in \autoref{sfrrame}.
 
 
 ![\label{sfrrame}**Summarised `scoup` algorithm.** The flowchart
@@ -117,38 +119,36 @@ we assume that a static fitness landscape is obtained from a single set of
 parameters ($\xi$) needed to sample a $20$-element numerical vector of amino
 acid selection coefficients (that is, $s_{0}^{}$ in \autoref{sfrrame}). The
 coefficients are subsequently used as inputs of the corresponding MutSel model.
-The seascape setting is then defined as a function of
-multiple sets of parameters ($\xi_{1}^{}$, $\xi_{2}^{}$, \ldots, $\xi_{k}^{}$,
-for $k \leq$ extant taxa size). Second, the coefficient update ($s_t$) step
-is done after every substitution event. In addition, the Ornstein-Uhlenbeck
-update process is discretised. In other words, the OU jump sizes are fixed
-and pre-specified as an input to the simulation functions.
+The seascape setting is then defined as a function of multiple sets of
+parameters ($\xi_{1}^{}$, $\xi_{2}^{}$, \ldots, $\xi_{k}^{}$, for $k \leq$
+extant taxa size). Second, the coefficient update ($s_t$) step is done after
+every substitution event. In addition, the Ornstein-Uhlenbeck update process
+is discretised. In other words, the OU jump sizes are fixed and pre-specified
+as an input to the simulation functions.
 
 # Implementation
 
-`scoup` is primarily designed using base functions in `R`. Some important
-complementary functions are imported from the
-[`Matrix`](doi.org/10.32614/CRAN.package.Matrix) and
-[`Biostrings`](doi.org/10.18129/B9.bioc.Biostrings) packages.
+[`scoup`](doi.org/10.18129/B9.bioc.scoup) is primarily designed using base
+functions in `R`. Some important complementary functions are imported from
+the `Matrix` [@bates2024] and the `Biostrings`[@pages2024] packages.
   
 # Conclusions
 
-We present `scoup`, a R package for codon sequences simulation, where the
-evolutionary processes are mirrored more realistically than most existing
-simulators. Our framework creatively incorporates the Ornstein-Uhlenbeck
-process into the mutation-selection evolutionary model. This attribute
-could potentially unlock exciting research avenues that will improve
-existing knowledge about the complex interactions of different,
-potentially interacting, molecular evolutionary processes.
+We present [`scoup`](doi.org/10.18129/B9.bioc.scoup), a R package for codon
+sequences simulation, where the evolutionary processes are mirrored more
+realistically than most existing simulators. Our framework creatively
+incorporates the Ornstein-Uhlenbeck process into the mutation-selection
+evolutionary model. This attribute could potentially unlock exciting research
+avenues that will improve existing knowledge about the complex interactions of
+different, potentially interacting, molecular evolutionary processes.
 
 # Code availability
 
-`scoup` is published for free public use under the GPL-2 license. It is
-available for download from the
-[Bioconductor platform](doi.org/10.18129/B9.bioc.scoup),
-along with detailed documentation and tutorial files. Some additional sample
-code are accessible in the
-[`tests`](https://github.com/thsadiq/scoup/tree/main/tests) and
+[`scoup`](doi.org/10.18129/B9.bioc.scoup) is published for free public use
+under the GPL-2 license. It is available for download from the
+[Bioconductor platform](doi.org/10.18129/B9.bioc.scoup), along with detailed
+documentation and tutorial files. Some additional sample code are accessible
+in the [`tests`](https://github.com/thsadiq/scoup/tree/main/tests) and the
 [`vignettes`](https://github.com/thsadiq/scoup/tree/main/vignettes)
 folders of the package.
 
