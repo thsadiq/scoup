@@ -1,11 +1,11 @@
-name: Draft PDF
+name: PDF Preview
 on:
   push:
     paths:
       - paper/paper.md
       - paper/paper.bib
       - paper/README.md
-      - .github/workflows/draft.yml
+      - .github/workflows/main.yml
       
 jobs:
   paper:
