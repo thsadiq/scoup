@@ -4,7 +4,7 @@ Process", Journal Name Vol(No.): ppA–ppZ.
 
 This file documents package changes since first submission on Bioconductor.
 
-1.5.1 - 1.5.2 (2026-02-03): JOSS Publication Update
+1.5.1 - 1.5.2 (2026-02-28): JOSS Publication Update
 + Extended the vignettes/exData folder to incorporate reviewers suggestions.
 + Updated the paper, inst and vignettes folders in response to editor's queries.
 

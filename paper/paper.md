@@ -26,7 +26,7 @@ affiliations:
          Department of Integrative Biomedical Sciences,
          University of Cape Town, South Africa
    index: 2
-date: 17 February 2026
+date: 28 February 2026
 bibliography: paper.bib
 ---
 
@@ -130,8 +130,51 @@ as an input to the simulation functions.
 
 [`scoup`](doi.org/10.18129/B9.bioc.scoup) is primarily designed using base
 functions in `R`. Some important complementary functions are imported from
-the `Matrix` [@bates2024] and the `Biostrings` [@pages2024] packages.
-  
+the `Matrix` [@bates2024] and the `Biostrings` [@pages2024] packages. We
+simulated some sequences with `scoup` to verify the accuracy of the outputs
+from the package. The output data each comprise eight sequences and $1000$
+codon sites. All the other necessary model parameters were kept the same
+for all simulated replicates. The data and all the associated files,
+including the simulation and analyses code, are available in the
+`paper/data` folder as part of the package. Only the variance of the
+selection coefficients of the synonymous codons ($\sigma^{2}_{s}=
+\{0.00,\,0.01\}$) and the variance of the amino acids
+($\sigma^{2}_{n}=\{0.001,\,0.005,\,0.009,\,0.030,\,0.070,\,0.100,
+\,0.500,\,0.900\}$) were varied and five replicate sequences were
+generated for each ($\sigma^{2}_{s},\sigma^{2}_{n}$) combination. The
+data sets were analysed with PAML [@yang2007] to obtain maximum likelihood
+estimates of the ratio of the rates of non-synonymous to synonymous
+substitutions ($\omega$) and these were compared to the analytical
+estimates ($\mathrm{d}N/\mathrm{d}S$) obtained from `scoup`. The results
+are summarised in \autoref{check}.
+
+![\label{check}**Analyses of data generated with `scoup`.** The width
+  of the arrows correspond to two times the associated standard errors.
+  $\sigma^{2}_{n}=$ variance of amino acid selection coefficients.
+  $\sigma^{2}_{s}=$ variance of synonymous codon selection
+  coefficients. $\omega=$ maximum likelihood estimate of non-synonymous to
+  synonymous substitution rates ratio obtained using PAML, 
+  $\mathrm{d}N/\mathrm{d}S$ = analytical equivalent of $\omega$ that
+  is returned as part of the outputs from `scoup`.](FIG2.pdf)
+
+Three features from \autoref{check} are noteworthy. First, there is good
+correlation between the simulated (as measured by $\mathrm{d}N/\mathrm{d}S$)
+and the inferred (as measured by $\omega$) magnitude of natural selection
+effect. The slight discrepancies as $\sigma^{2}_{n}$ increases are likely
+due to the limited sizes of the data sets [@wilke2015]. This imply that
+outputs from `scoup` are reliable. Second, as expected [@spielman2015],
+in the absence of synonymous selection (that is, $\sigma^{2}_{s}=0$) the
+selection effect
+is predominantly negative (that is, $\mathrm{d}N/\mathrm{d}S,\,\omega < 1$)
+and the effect is largely positive when synonymous selection is present.
+This further asserts of the reliability of the outputs from `scoup`. Third,
+the magnitude of natural selection effect may be influenced by amino acid
+selection (or aptly, non-synonymous selection). This property is yet to be
+thoroughly investigated in the computational molecular evolution literature
+and there is hardly any other available computational resource that permits
+its exploration. This underlines the potential importance of  `scoup`.
+
+
 # Conclusions
 
 We present [`scoup`](doi.org/10.18129/B9.bioc.scoup), a R package for codon
