@@ -94,12 +94,12 @@ codon sequences from landscapes that are static or those that are changing
 reasons. First, it incorporates Darwinian natural selection into the MutSel
 model in terms of variability of selection coefficients, an extension of an
 idea from @spielman2015. Second, it directly utilises the concept of fitness
-landscapes. Third, fitness landscape updates can be executed in either a
-deterministic or a stochastic format. The stochastic updates are implemented
-in terms of the more biologically amenable, Ornstein-Uhlenbeck (OU) process
-[@bartoszek2017; @uhlenbeck1930]. A crude summary of how substitution
-events are executed in [`scoup`](doi.org/10.18129/B9.bioc.scoup) is presented
-in \autoref{sfrrame}.
+landscapes [@wright1932]. Third, fitness landscape updates can be executed in
+either a deterministic or a stochastic format. The stochastic updates are
+implemented in terms of the more biologically amenable, Ornstein-Uhlenbeck
+(OU) process [@bartoszek2017; @uhlenbeck1930]. A crude summary of how
+substitution events are executed in [`scoup`](doi.org/10.18129/B9.bioc.scoup)
+is presented in \autoref{sfrrame}.
 
 
 ![\label{sfrrame}**Summarised `scoup` algorithm.** The flowchart
@@ -178,8 +178,8 @@ its exploration. This underlines the potential importance of  `scoup`.
 # Conclusions
 
 We present [`scoup`](doi.org/10.18129/B9.bioc.scoup), a R package for codon
-sequences simulation, where the evolutionary processes are mirrored more
-realistically than most existing simulators. Our framework creatively
+sequences simulation, where molecular evolutionary processes are mirrored
+more realistically than most existing simulators. Our framework creatively
 incorporates the Ornstein-Uhlenbeck process into the mutation-selection
 evolutionary model. This attribute could potentially unlock exciting research
 avenues that will improve existing knowledge about the complex interactions of
@@ -199,7 +199,7 @@ folders of the package.
 
 We thank Ben Murrell for suggesting modelling varying selection coefficients
 with an OU process. Computations were performed using the
-[`HPC1`](http://www.sun.ac.za/hpc) facility at Stellenbosch University, South
+[`HPC`](http://www.sun.ac.za/hpc) facility at Stellenbosch University, South
 Africa.
 
 
