@@ -71,7 +71,7 @@ selection analyses. Thus, as an
 overdue contribution to the void, [`scoup`](doi.org/10.18129/B9.bioc.scoup) is designed
 on the basis of the mutation-selection (MutSel) framework [@halpern1998].
 
-There are a few software packages simulating molecular protein sequences [@peng2015].
+There are a few software packages simulating protein sequences [@peng2015].
 Existing simulators tend
 to be more suitable for quantitative character evolution. These include,
 `ape` [@paradis2019], `ouch` [@cressler2015; @butler2004] and `geiger`
