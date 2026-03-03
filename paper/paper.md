@@ -34,18 +34,18 @@ bibliography: paper.bib
 
 Genetic analyses of natural selection within and between populations have
 increasingly developed along separate paths. The two important genres of
-evolutionary biology (i.e. phylogenetics and population genetics) borne
+evolutionary biology (i.e., phylogenetics and population genetics) borne
 from the split can only benefit from research that seeks to bridge
 the gap. Simulation algorithms that combine fundamental concepts from
 both genres are important to achieve such unifying objective. 
 We introduce [`scoup`](doi.org/10.18129/B9.bioc.scoup), a codon sequence
-simulator that is implemented in R and hosted on the Bioconductor platform.
+simulator implemented in R and hosted on the Bioconductor platform.
 There is hardly any other simulator dedicated to genetic sequence generation
 for natural selection analyses on the platform. Concepts from the
 Halpern-Bruno mutation-selection model and the Ornstein-Uhlenbeck (OU)
 evolutionary algorithm were creatively fused such that the end-product is a
-novelty with respect to computational genetic simulation. Users are able to
-seamlessly adjust the model parameters to mimic complex evolutionary
+novel simulator of genetic sequence evolution. Users are able to
+adjust the model parameters to mimic complex evolutionary
 procedures that may have been otherwise infeasible. For example, it is
 possible to explicitly interrogate the concepts of static and changing
 fitness landscapes with regards to Darwinian natural selection in the
@@ -53,7 +53,7 @@ context of codon sequences from multiple populations.
 
 # Statement of need
 
-Statistical inference models that are used to analyse the degree of the impact
+Statistical inference models that are used to analyse the impact
 of Darwinian natural selection on observed genetic data, command a healthy
 portion of the phylogenetic literature [@gupta2023]. Validation of these
 largely codon-based models relies heavily on simulated data. Given the ever
@@ -67,12 +67,12 @@ Version 3.22 on 18 February 2026, with keywords including, `codon`, `mutation`,
 `selection`, `simulate`, and `simulation` returned a total of 70 packages
 (excluding [`scoup`](doi.org/10.18129/B9.bioc.scoup)) out of the 2361 available.
 None of the retrieved entries was dedicated to codon data simulation for natural
-selection analyses. Thus, [`scoup`](doi.org/10.18129/B9.bioc.scoup) is designed
-on the basis of the mutation-selection (MutSel) framework [@halpern1998] as an
-overdue contribution to the void.
+selection analyses. Thus, as an
+overdue contribution to the void, [`scoup`](doi.org/10.18129/B9.bioc.scoup) is designed
+on the basis of the mutation-selection (MutSel) framework [@halpern1998].
 
-Software and/or packages for simulating molecular protein sequences are
-a few in the scientific literature [@peng2015]. Existing simulators tend
+There are a few software packages simulating molecular protein sequences [@peng2015].
+Existing simulators tend
 to be more suitable for quantitative character evolution. These include,
 `ape` [@paradis2019], `ouch` [@cressler2015; @butler2004] and `geiger`
 [@pennell2014]. Other extensively used DNA sequence simulators including,
@@ -83,7 +83,7 @@ simulators, such as, `phastSim` [@nicola2022] and `AliSim-HPC` [@nhan2023]
 prioritized output capacity. Only few genetic simulators were built upon the
 more elaborate MutSel evolutionary concept. These include, `Pyvolve`
 [@wilke2015] and `SGWE` [@arenas2014]. To the best of our knowledge, these
-existing MutSel friendly simulators are only able to generate data from
+existing MutSel-friendly simulators are only able to generate data from
 static landscapes. With our proposed simulator, it is possible to generate
 codon sequences from landscapes that are static or those that are changing
 (also known as *seascapes*) [@lassig2009].
@@ -126,13 +126,13 @@ every substitution event. In addition, the Ornstein-Uhlenbeck update process
 is discretised. In other words, the OU jump sizes are fixed and pre-specified
 as an input to the simulation functions.
 
-# Implementation
+# Exemplary results
 
 [`scoup`](doi.org/10.18129/B9.bioc.scoup) is primarily designed using base
 functions in `R`. Some important complementary functions are imported from
 the `Matrix` [@bates2024] and the `Biostrings` [@pages2024] packages. We
 simulated some sequences with `scoup` to verify the accuracy of the outputs
-from the package. The output data each comprise eight sequences and $1000$
+from the package. The output data comprise eight sequences and $1000$
 codon sites. All the other necessary model parameters were kept the same
 for all simulated replicates. The data and all the associated files,
 including the simulation and analyses code, are available in the
@@ -140,7 +140,7 @@ including the simulation and analyses code, are available in the
 selection coefficients of the synonymous codons ($\sigma^{2}_{s}=
 \{0.00,\,0.01\}$) and the variance of the amino acids
 ($\sigma^{2}_{n}=\{0.001,\,0.005,\,0.009,\,0.030,\,0.070,\,0.100,
-\,0.500,\,0.900\}$) were varied and five replicate sequences were
+\,0.500,\,0.900\}$) were varied, with five replicate sequences
 generated for each ($\sigma^{2}_{s},\sigma^{2}_{n}$) combination. The
 data sets were analysed with PAML [@yang2007] to obtain maximum likelihood
 estimates of the ratio of the rates of non-synonymous to synonymous
@@ -149,7 +149,7 @@ estimates ($\mathrm{d}N/\mathrm{d}S$) obtained from `scoup`. The results
 are summarised in \autoref{check}.
 
 ![\label{check}**Analyses of data generated with `scoup`.** The width
-  of the arrows correspond to two times the associated standard errors.
+  of each arrow is proportional to the standard error.
   $\sigma^{2}_{n}=$ variance of amino acid selection coefficients.
   $\sigma^{2}_{s}=$ variance of synonymous codon selection
   coefficients. $\omega=$ maximum likelihood estimate of non-synonymous to
@@ -161,7 +161,7 @@ Three features from \autoref{check} are noteworthy. First, there is good
 correlation between the simulated (as measured by $\mathrm{d}N/\mathrm{d}S$)
 and the inferred (as measured by $\omega$) magnitude of natural selection
 effect. The slight discrepancies as $\sigma^{2}_{n}$ increases are likely
-due to the limited sizes of the data sets [@wilke2015]. This imply that
+due to the limited sizes of the data sets [@wilke2015]. This implies that
 outputs from `scoup` are reliable. Second, as expected [@spielman2015],
 in the absence of synonymous selection (that is, $\sigma^{2}_{s}=0$) the
 selection effect
@@ -177,7 +177,7 @@ its exploration. This underlines the potential importance of  `scoup`.
 
 # Conclusions
 
-We present [`scoup`](doi.org/10.18129/B9.bioc.scoup), a R package for codon
+We present [`scoup`](doi.org/10.18129/B9.bioc.scoup), an R package for codon
 sequences simulation, where molecular evolutionary processes are mirrored
 more realistically than most existing simulators. Our framework creatively
 incorporates the Ornstein-Uhlenbeck process into the mutation-selection
