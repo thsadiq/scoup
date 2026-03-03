@@ -6,6 +6,7 @@ A R package intended for the Bioconductor platform. It avails an opportunity to 
 
  <!-- badges: start -->
   [![Bioc history](https://bioconductor.org/shields/years-in-bioc/scoup.svg)](https://bioconductor.org/packages/release/bioc/html/scoup.html#since)
+  [![DOI](https://zenodo.org/badge/DOI/10.18129/B9.bioc.scoup.svg)](https://doi.org/10.18129/B9.bioc.scoup)
   <!-- badges: end -->
 
 ## Contents
