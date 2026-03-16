@@ -77,10 +77,10 @@ to be more suitable for quantitative character evolution. These include,
 `ape` [@paradis2019], `ouch` [@cressler2015; @butler2004] and `geiger`
 [@pennell2014]. Other extensively used DNA sequence simulators including,
 `Seq-Gen` [@rambaut1997], `INDELible` [@fletcher2009], `PhyloSim`
-[@sipos2011] and `phangorn` [@klaus2011] are parameterized in accordance
+[@sipos2011] and `phangorn` [@klaus2011] are parameterised in accordance
 with $\omega$-based models [@goldman1994; @muse1994]. More recent sequence
 simulators, such as, `phastSim` [@nicola2022] and `AliSim-HPC` [@nhan2023]
-prioritized output capacity. Only few genetic simulators were built upon the
+prioritised output capacity. Only few genetic simulators were built upon the
 more elaborate MutSel evolutionary concept. These include, `Pyvolve`
 [@wilke2015] and `SGWE` [@arenas2014]. To the best of our knowledge, these
 existing MutSel-friendly simulators are only able to generate data from
