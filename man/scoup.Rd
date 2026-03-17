@@ -45,9 +45,6 @@
     Protein-Coding Sequences: Modelling Site-Specific Residue Frequencies,
     \emph{Molecular Biology and Evolution} \bold{15}(7): 910-917.
 
-    Sadiq, H. et al. (in progress) \code{scoup}: \emph{Simulate Codon Sequences
-    with Darwinian Selection Incorporated as an Ornstein-Uhlenbeck Process}.
-
     Uhlenbeck, G. E. and Ornstein, L. S. (1930), On the Theory of the Brownian
     Motion, \emph{Physical Review} \bold{36}: 823-841.
 }

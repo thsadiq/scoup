@@ -11,21 +11,23 @@ citEntry(entry = "manual",
           paste("Sadiq, H.. (2024)",
                 "scoup: Simulate Codon Sequences with Darwinian Selection
                 Incorporated as an Ornstein-Uhlenbeck Process",
-                "R Package"))
+                "Bioconductor/R Package"))
 
 citEntry(entry = "article",
          title = "scoup: Simulate Codon Sequences with Darwinian Selection
                  Incorporated as an Ornstein-Uhlenbeck Process",
          author = personList(person(first="Hassan", last="Sadiq"),
                              person(first="Darren", middle="P", last="Martin")),
-         journal = "bioRxiv",
-         year = "2025",
-         volume = "",
-         pages = "",
-         doi = "10.1101/2025.06.14.659628",
+         journal = "Journal of Open Source Software",
+         year = "2026",
+         volume = "11",
+         number = "119",
+         pages = "9797",
+         doi = "10.21105/joss.09797",
          url = "",
          textVersion = 
-          paste("Sadiq, H and Martin, DP. (2024)",
+          paste("Sadiq, H and Martin, DP. (2026)",
                 "scoup: Simulate Codon Sequences with Darwinian Selection
                 Incorporated as an Ornstein-Uhlenbeck Process",
-                "bioRxiv"))
+                "Journal of Open Source Software", "11(119)", "9797",
+                "DOI: 10.21105/joss.09797"))

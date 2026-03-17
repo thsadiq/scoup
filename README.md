@@ -3,7 +3,9 @@ Simulate Codon Sequences with Darwinian Selection Incorporated as an Ornstein-Uh
 
 ## About
 <!-- badges: start -->
+   [![status](https://joss.theoj.org/papers/722baef39054109bbeb8e3b19f2f344c/status.svg)](https://joss.theoj.org/papers/722baef39054109bbeb8e3b19f2f344c)
    [![DOI](https://zenodo.org/badge/DOI/10.6084/m9.figshare.31743991.svg)](https://doi.org/10.6084/m9.figshare.31743991)
+   [![Bioc last commit](https://bioconductor.org/shields/lastcommit/devel/bioc/scoup.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/scoup/)
 <!-- badges: end -->
 A R package intended for the Bioconductor platform. It avails an opportunity to simulate molecular data that are primarily useful for investigating the effects of Darwinian natural selection. Concepts from the population genomics and the phylogenetics literature are merged so that components of observed selection signatures in genetic sequences may be interrogated more thoroughly. This is achieved by combining (a.) the explicit use of selection coefficients by Halpern-Bruno in their popular 1998 mutation-selection codon model and (b.) the versatility of the stochastic Ornstein-Uhlenbeck algorithm. Selection pressure is controlled with a new feature of the evolutionary biology research. That is, the ratio of the variance of non-synonymous to synonymous selection coefficients (vN/vS). Overall, the package represents a promising addition to the phylogenetics modelling literature in at least two ways. First, it extends the capacity to generate molecular data to validate codon models of evolution. It offers an uncommon opportunity to thoroughly examine the implications of different fitness landscape settings and the interactions among different evolutionary factors. Second, it creates an exciting avenue for the development of sophisticated evolutionary models that are functions of the introduced vN/vS statistic.
 

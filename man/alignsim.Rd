@@ -87,9 +87,6 @@
 }
 
 \references{
-    Sadiq, H. et al. (in progress) \code{scoup}: \emph{Simulate Codon Sequences
-    with Darwinian Selection Incorporated as an Ornstein-Uhlenbeck Process}.
-
     Pages H, Aboyoun P, Gentleman R, DebRoy S (2024). \emph{Biostrings:
     Efficient manipulation of biological strings. R package version 2.72.1},
     https://bioconductor.org/packages/Biostrings.
